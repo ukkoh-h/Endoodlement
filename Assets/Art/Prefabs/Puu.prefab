@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2899932312195930125
+--- !u!1001 &1489534089167675597
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 420.5078
+      value: 421.42786
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000027598617
+      value: -0.00000000507659
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 610.2228
+      value: 611.5872
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -4.3297806e-17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -4.3297806e-17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -48,11 +48,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1461304994638716399, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 4b141b46a0c23d84e99d0ae0b47b2a84, type: 2}
-    - target: {fileID: -678588488315902003, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
+    - target: {fileID: -7511558181221131132, guid: 27dae5eee1935674390549f789a8c9fb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4b141b46a0c23d84e99d0ae0b47b2a84, type: 2}
