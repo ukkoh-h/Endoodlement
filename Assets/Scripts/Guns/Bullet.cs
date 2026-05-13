@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(direction, ForceMode.Impulse);
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 3f);
     }
 
     /*private void OggerEnter2D(Collider2D collision)
