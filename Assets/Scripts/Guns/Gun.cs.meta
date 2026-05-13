@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cbc9b429c535af443a440d1a9bd73207
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - actionMap: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - muzzleFlashPrefab: {instanceID: 0}
+  - muzzlleFlashTransform: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - bulletsound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
