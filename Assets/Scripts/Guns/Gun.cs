@@ -335,4 +335,46 @@ public class Gun : MonoBehaviour
         }
         canShoot = true;
     }
+    /*public int GetSwitchWeaponInput()
+        {
+            if (CanProcessInput())
+            {
+                var input = m_NextWeaponAction.ReadValue<float>();
+
+                if (input > 0f)
+                    return -1;
+                
+                if (input < 0f)
+                    return 1;
+            }
+
+            return 0;
+        }
+
+        public int GetSelectWeaponInput()
+        {
+            if (CanProcessInput())
+            {
+                if (Keyboard.current.digit1Key.wasPressedThisFrame)
+                    return 1;
+                if (Keyboard.current.digit2Key.wasPressedThisFrame)
+                    return 2;
+                if (Keyboard.current.digit3Key.wasPressedThisFrame)
+                    return 3;
+                if (Keyboard.current.digit4Key.wasPressedThisFrame)
+                    return 4;
+                if (Keyboard.current.digit5Key.wasPressedThisFrame)
+                    return 5;
+                if (Keyboard.current.digit6Key.wasPressedThisFrame)
+                    return 6;
+                if (Keyboard.current.digit7Key.wasPressedThisFrame)
+                    return 7;
+                if (Keyboard.current.digit8Key.wasPressedThisFrame)
+                    return 8;
+                if (Keyboard.current.digit9Key.wasPressedThisFrame)
+                    return 9;
+            }
+
+            return 0;
+        }*/
 }
