@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -27,6 +28,8 @@ namespace StarterAssets
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
 
+
+
 		[Space(10)]
 		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
 		public float JumpTimeout = 0.1f;
@@ -41,15 +44,25 @@ namespace StarterAssets
 		[Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
 		public float GroundedRadius = 0.5f;
 		[Tooltip("What layers the character uses as ground")]
-		public LayerMask GroundLayers;
+		
+        public LayerMask GroundLayers;
 
-		[Header("Cinemachine")]
+		[Space(10)]
+		[Tooltip("How far the player can dash")]
+		public float DashSpeed = 15f;
+		public float DashDecaySpeed = 10f;
+		public float DashTimeout = 1f;
+        public Rigidbody rb;
+
+        [Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
 		public GameObject CinemachineCameraTarget;
 		[Tooltip("How far in degrees can you move the camera up")]
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+
+		
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -59,11 +72,13 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private float _horizontalVelocity;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
-
+		private float _dashTimeoutDelta;
+		bool _dashing;
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -101,13 +116,14 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
-#else
+			
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			_dashTimeoutDelta = DashTimeout;
 		}
 
 		private void Update()
@@ -115,7 +131,9 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-		}
+			Dash();
+
+        }
 
 		private void LateUpdate()
 		{
@@ -196,7 +214,8 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-		}
+            _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _horizontalVelocity, 0.0f) * Time.deltaTime);
+        }
 
 		private void JumpAndGravity()
 		{
@@ -245,6 +264,24 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
+
+
+		private void Dash()
+		{
+
+			if(_input.dash && !_dashing)
+			{
+				_dashing = true;
+				rb.linearVelocity = transform.forward.normalized * DashSpeed;
+			}
+
+			
+
+		}
+		
+		
+		private void ResetDash()
+		{ }
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
