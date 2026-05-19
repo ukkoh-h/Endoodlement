@@ -1,6 +1,6 @@
-/*using System.Collections;
-using UnityEngine.InputSystem;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.WSA;
 
 public class FlashColor : MonoBehaviour
@@ -10,13 +10,10 @@ public class FlashColor : MonoBehaviour
     public float flashDuration = 0.1f;
 
     private Color originalColor;
-    private InputAction hurtAction;
-
 
     private void Start()
     {
         originalColor = rend.material.color;
-        InputActionMap playerActionMap = actionMap.FindActionMap("Player");
     }
 
     private IEnumerator DoFlash()
@@ -34,9 +31,10 @@ public class FlashColor : MonoBehaviour
 
     private void Update()
     {
-        if(playerActionMap.FindAction("Jump"))
+        if(Keyboard.current.digit1Key.wasPressedThisFrame)
         {
+            //Debug.Log("was Pressed");
             Flash();
         }
     }
-}*/
+}
