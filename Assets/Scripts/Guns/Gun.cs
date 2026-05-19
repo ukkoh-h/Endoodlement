@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -70,18 +72,22 @@ public class Gun : MonoBehaviour
     [SerializeField] private float fireSpread = 0.1f;
     [SerializeField] private LayerMask hitLayers;
 
+    private List<int> gunList = new();
+
     private InputAction shootAction;
     private InputAction reloadAction;
-    private InputAction gunSwitchAction1;
-    private InputAction gunSwitchAction2;
-    private InputAction gunSwitchAction3;
-    private InputAction gunSwitchAction4;
-    private InputAction gunSwitchScroll;
+    private InputAction switchAction1;
+    private InputAction switchAction2;
+    private InputAction switchAction3;
+    private InputAction switchAction4;
+    private InputAction switchScrollAction;
 
     private int currentBulletsInMagazine;
     private bool isTryingToShoot;
     private bool canShoot = true;
     private bool isReloading;
+    private bool isSwitching;
+    private bool reloadCanceled;
     private bool reloadStarted;
     private float timeReloaded;
     private float defaultRotationAngle;
@@ -104,12 +110,20 @@ public class Gun : MonoBehaviour
         {
             timeReloaded += Time.deltaTime * 7 * (reloadTime/(reloadTime*reloadTime));
         }
+        if (timeReloaded < 1 && isSwitching)
+        {
+            timeReloaded += Time.deltaTime * 7 * (reloadTime/(reloadTime*reloadTime));
+        }
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.y, Mathf.LerpAngle(currentRotationAngle, defaultRotationAngle + (reloadStarted ? beingReloadedAngle : 0), timeReloaded), transform.localEulerAngles.z);
+    }
+    public bool CanProcessInput()
+    {
+        return Cursor.lockState == CursorLockMode.Locked;
     }
 
     private void OnShootPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("Trying to shoot");
+        //Debug.Log("Trying to shoot");
         isTryingToShoot = true;
     }
 
@@ -122,19 +136,37 @@ public class Gun : MonoBehaviour
     {
         AttemptReload();
     }
+    private void OnSwitch1Performed(InputAction.CallbackContext context)
+    {
+        if (isReloading) reloadCanceled = true;
+        gunType = GunType.SpellBook;
+        StartCoroutine(GunSwitchSequence());
+        reloadCanceled = false;
+    }
+        private void OnSwitch2Performed(InputAction.CallbackContext context)
+    {
+        if (isReloading) reloadCanceled = true;
+        gunType = GunType.Slingshot;
+        StartCoroutine(GunSwitchSequence());
+        reloadCanceled = false;
+    }
 
     private void InitialiseInputActions()
     {
         InputActionMap gunActionMap = actionMap.FindActionMap("Gun");
         shootAction = gunActionMap.FindAction("Shoot");
         reloadAction = gunActionMap.FindAction("Reload");
-        gunSwitchAction1 = gunActionMap.FindAction("gunSwitch1");
-        gunSwitchAction1 = gunActionMap.FindAction("gunSwitch2");
+        switchAction1 = gunActionMap.FindAction("Switch1");
+        switchAction2 = gunActionMap.FindAction("Switch2");
+        switchAction3 = gunActionMap.FindAction("Switch3");
+        switchAction4 = gunActionMap.FindAction("Switch4");
 
 
         shootAction.performed += OnShootPerformed;
         shootAction.canceled += OnShootCanceled;
         reloadAction.performed += OnReloadPerformed;
+        switchAction1.performed += OnSwitch1Performed;
+        switchAction2.performed += OnSwitch2Performed;
 
         shootAction.Enable();
         reloadAction.Enable();
@@ -145,6 +177,8 @@ public class Gun : MonoBehaviour
         shootAction.performed -= OnShootPerformed;
         shootAction.canceled -= OnShootCanceled;
         reloadAction.performed -= OnReloadPerformed;
+        switchAction1.performed -= OnSwitch1Performed;
+        switchAction2.performed -= OnSwitch2Performed;
     }
 
     private void OnDestroy()
@@ -179,7 +213,7 @@ public class Gun : MonoBehaviour
         bool hitSomething = Physics.Raycast(bulletSpawnTransform.position, direction, out hit, fireDistance,  hitLayers);
 
         Color lineColor = hitSomething ? Color.red : Color.blue;
-        Debug.DrawRay(bulletSpawnTransform.position, direction * fireDistance, lineColor, 1f);
+        //Debug.DrawRay(bulletSpawnTransform.position, direction * fireDistance, lineColor, 1f);
 
         GameObject bullet = Instantiate(DefaultProjectilePrefab, bulletSpawnTransform.position, Quaternion.identity);
 
@@ -204,12 +238,12 @@ public class Gun : MonoBehaviour
         reloadStarted = false;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
-        if (ammoCount >= magazineSize - currentBulletsInMagazine)
+        if (ammoCount >= magazineSize - currentBulletsInMagazine && !reloadCanceled)
         {
             ammoCount -= magazineSize - currentBulletsInMagazine;
             currentBulletsInMagazine = magazineSize;
             AmmoManager();
-        } else if (ammoCount < magazineSize - currentBulletsInMagazine && ammoCount > 0)
+        } else if (ammoCount < magazineSize - currentBulletsInMagazine && ammoCount > 0 && !reloadCanceled)
         {
             currentBulletsInMagazine += ammoCount;
             ammoCount = 0;
@@ -237,7 +271,7 @@ public class Gun : MonoBehaviour
     }
     private IEnumerator GunSwitchSequence()
     {
-        isReloading = true;
+        isSwitching = true;
         yield return new WaitForSeconds(reloadTime/4);
         timeReloaded = 0;
         reloadStarted = true;
@@ -257,12 +291,12 @@ public class Gun : MonoBehaviour
         reloadStarted = false;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
-        isReloading = false;
+        isSwitching = false;
     }
     private void SpellBookSwitchRoutine()
     {
         DefaultProjectilePrefab = projectile1Prefab;
-        gunBodyPrefab = spellBookBodyPrefab;
+        //gunBodyPrefab = spellBookBodyPrefab;
         magazineSize = spellBookMagazineSize;
         ammoCount = spellBookAmmoCount;
         delayBetweenBullets = spellBookDelayBetweenBullets;
@@ -273,7 +307,7 @@ public class Gun : MonoBehaviour
         private void SlingShotSwitchRoutine()
     {
         DefaultProjectilePrefab = projectile2Prefab;
-        gunBodyPrefab = slingShotBodyPrefab;
+        //gunBodyPrefab = slingShotBodyPrefab;
         magazineSize = slingShotMagazineSize;
         ammoCount = slingShotAmmoCount;
         delayBetweenBullets = slingShotkDelayBetweenBullets;
@@ -283,7 +317,7 @@ public class Gun : MonoBehaviour
     }
     private void AttemptReload()
     {
-        if (isReloading || currentBulletsInMagazine >= magazineSize)
+        if (isReloading || isSwitching || currentBulletsInMagazine >= magazineSize)
         {
             return;
         }
@@ -292,7 +326,7 @@ public class Gun : MonoBehaviour
 
     private void TryAutoReload()
     {
-        if (currentBulletsInMagazine <= 0 && autoReload && !isReloading)
+        if (currentBulletsInMagazine <= 0 && autoReload && !isReloading && !isSwitching)
         {
             StartCoroutine(ReloadSequence());
         }
@@ -335,11 +369,11 @@ public class Gun : MonoBehaviour
         }
         canShoot = true;
     }
-    /*public int GetSwitchWeaponInput()
-        {
+    public int GetSwitchWeaponInput()
+    {
             if (CanProcessInput())
             {
-                var input = m_NextWeaponAction.ReadValue<float>();
+                var input = switchScrollAction.ReadValue<float>();
 
                 if (input > 0f)
                     return -1;
@@ -349,32 +383,6 @@ public class Gun : MonoBehaviour
             }
 
             return 0;
-        }
+    }
 
-        public int GetSelectWeaponInput()
-        {
-            if (CanProcessInput())
-            {
-                if (Keyboard.current.digit1Key.wasPressedThisFrame)
-                    return 1;
-                if (Keyboard.current.digit2Key.wasPressedThisFrame)
-                    return 2;
-                if (Keyboard.current.digit3Key.wasPressedThisFrame)
-                    return 3;
-                if (Keyboard.current.digit4Key.wasPressedThisFrame)
-                    return 4;
-                if (Keyboard.current.digit5Key.wasPressedThisFrame)
-                    return 5;
-                if (Keyboard.current.digit6Key.wasPressedThisFrame)
-                    return 6;
-                if (Keyboard.current.digit7Key.wasPressedThisFrame)
-                    return 7;
-                if (Keyboard.current.digit8Key.wasPressedThisFrame)
-                    return 8;
-                if (Keyboard.current.digit9Key.wasPressedThisFrame)
-                    return 9;
-            }
-
-            return 0;
-        }*/
 }

@@ -247,8 +247,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808626109}
-  - component: {fileID: 808626108}
-  - component: {fileID: 808626106}
   - component: {fileID: 808626107}
   m_Layer: 0
   m_Name: Player
@@ -257,38 +255,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &808626106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808626105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba61a0319f2c34489cab1175e0959dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.FPS.Gameplay.PlayerCharacterController
-  PlayerCamera: {fileID: 1346729118}
-  GravityDownForce: 20
-  GroundCheckLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  GroundCheckDistance: 1
-  MaxSpeedOnGround: 10
-  MovementSharpnessOnGround: 15
-  MaxSpeedInAir: 10
-  AccelerationSpeedInAir: 25
-  RotationSpeed: 1
-  JumpForce: 9
-  CameraHeightRatio: 0.9
-  CapsuleHeightStanding: 1.8
-  RecievesFallDamage: 0
-  MinSpeedForFallDamage: 10
-  MaxSpeedForFallDamage: 30
-  FallDamageAtMinSpeed: 10
-  FallDamageAtMaxSpeed: 50
-  IsGrounded: 1
 --- !u!143 &808626107
 CharacterController:
   m_ObjectHideFlags: 0
@@ -314,23 +280,6 @@ CharacterController:
   m_SkinWidth: 0.001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &808626108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808626105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb71978fce2aa3e429b64f1f047aba92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.FPS.Gameplay.PlayerInputHandler
-  actionMap: {fileID: 0}
-  LookSensitivity: 1
-  TriggerAxisThreshold: 0.4
-  InvertYAxis: 1
-  InvertXAxis: 0
 --- !u!4 &808626109
 Transform:
   m_ObjectHideFlags: 0
@@ -600,6 +549,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &1482409024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6043444802568196296, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
+  m_PrefabInstance: {fileID: 4558318634776252266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1505190485
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125268948612841208, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 125268948612841208, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -958,11 +912,15 @@ PrefabInstance:
     - target: {fileID: 3893665294330516462, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: muzzleFlashPrefab
       value: 
-      objectReference: {fileID: 756054466}
+      objectReference: {fileID: 1482409024}
     - target: {fileID: 3893665294330516462, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: bulletSpawnTransform
       value: 
       objectReference: {fileID: 1704770862}
+    - target: {fileID: 8153060472117869186, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
