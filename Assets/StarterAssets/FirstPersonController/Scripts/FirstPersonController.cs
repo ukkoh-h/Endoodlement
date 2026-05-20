@@ -44,15 +44,15 @@ namespace StarterAssets
 		[Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
 		public float GroundedRadius = 0.5f;
 		[Tooltip("What layers the character uses as ground")]
-		
+		public bool Cooldown = true;
         public LayerMask GroundLayers;
 
 		[Space(10)]
 		[Tooltip("How far the player can dash")]
-		public float DashSpeed = 15f;
-		public float DashDecaySpeed = 10f;
-		public float DashTimeout = 1f;
-        public Rigidbody rb;
+        public float DashSpeed = 20f;
+        public float DashDuration = 0.2f;
+        public float DashCooldown = 1.5f;
+        public AnimationCurve DashEase;
 
         [Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -78,10 +78,13 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 		private float _dashTimeoutDelta;
-		bool _dashing;
-	
+        private bool _isDashing;
+        private float _dashTimer;
+        private float _dashCooldownTimer;
+        private Vector3 _dashDirection;
+
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
@@ -123,7 +126,7 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-			_dashTimeoutDelta = DashTimeout;
+			
 		}
 
 		private void Update()
@@ -171,8 +174,11 @@ namespace StarterAssets
 
 		private void Move()
 		{
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+
+            if (_isDashing)
+                return;
+            // set target speed based on move speed, sprint speed and if sprint is pressed
+            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -214,7 +220,7 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _horizontalVelocity, 0.0f) * Time.deltaTime);
+          
         }
 
 		private void JumpAndGravity()
@@ -266,21 +272,61 @@ namespace StarterAssets
 		}
 
 
-		private void Dash()
-		{
+        private void Dash()
+        {
+            // Cooldown timer
+            if (_dashCooldownTimer > 0f)
+            {
+                _dashCooldownTimer -= Time.deltaTime;
+            }
 
-			if(_input.dash && !_dashing)
-			{
-				_dashing = true;
-				rb.linearVelocity = transform.forward.normalized * DashSpeed;
-			}
+            // Start dash
+            if (_input.dash && !_isDashing && _dashCooldownTimer <= 0f)
+            {
+                _isDashing = true;
 
-			
+                _dashTimer = DashDuration;
+                _dashCooldownTimer = DashCooldown;
 
-		}
-		
-		
-		private void ResetDash()
+                // Dash in movement direction
+                Vector3 moveDir = transform.right * _input.move.x + transform.forward * _input.move.y;
+
+                // If not moving, dash forward
+                if (moveDir == Vector3.zero)
+                {
+                    moveDir = transform.forward;
+                }
+
+                _dashDirection = moveDir.normalized;
+
+                // Prevent repeated trigger from held button
+                _input.dash = false;
+            }
+
+            // During dash
+            if (_isDashing)
+            {
+                _dashTimer -= Time.deltaTime;
+
+                float normalizedTime = 1f - (_dashTimer / DashDuration);
+
+                // Ease out
+                float speedMultiplier = DashEase.Evaluate(normalizedTime);
+
+                float currentDashSpeed = DashSpeed * speedMultiplier;
+
+                _controller.Move(_dashDirection * currentDashSpeed * Time.deltaTime);
+
+                // End dash
+                if (_dashTimer <= 0f)
+                {
+                    _isDashing = false;
+                }
+            }
+        }
+
+
+        private void ResetDash()
 		{ }
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
