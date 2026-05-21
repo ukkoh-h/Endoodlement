@@ -12,7 +12,9 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
-		[Header("Player")]
+
+        
+        [Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
@@ -89,7 +91,7 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
-
+		
 		private const float _threshold = 0.01f;
 
 		private bool IsCurrentDeviceMouse
@@ -137,6 +139,9 @@ namespace StarterAssets
 			Dash();
 
         }
+
+
+
 
 		private void LateUpdate()
 		{

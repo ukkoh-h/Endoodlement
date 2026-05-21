@@ -670,6 +670,10 @@ PrefabInstance:
       propertyPath: cursorLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: cursorInputForLook
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: rb
       value: 
@@ -691,6 +695,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: pausemenu
+      value: 
+      objectReference: {fileID: 1704357354}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: JumpHeight
       value: 1.8
       objectReference: {fileID: 0}
@@ -701,6 +709,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: DashDuration
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: RotationSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: GroundedOffset
@@ -1429,6 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858b7202949a93241a2bca000984d427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUIManager
+  FirstPersonController: {fileID: 359689590}
   masterSlider: {fileID: 593066545}
   musicSlider: {fileID: 1437380484}
   sfxSlider: {fileID: 584586500}
@@ -1437,8 +1450,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1704357354}
   settingsMenu: {fileID: 1126596290}
   pausePanel: {fileID: 406310186}
-  cursorLocked: 0
-  cursorOpen: 0
+  cursorInputForLook: 0
   GamePaused: 0
 --- !u!1 &286817749
 GameObject:
@@ -1894,12 +1906,23 @@ Transform:
   m_GameObject: {fileID: 318207479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.824829, y: -0.5, z: -7.688324}
+  m_LocalPosition: {x: 12.99, y: -0.5, z: -7.688324}
   m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 563722061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359689590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 108966576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &403925125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3733,7 @@ Transform:
   m_GameObject: {fileID: 607566225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.824829, y: -0.5, z: 22.37387}
+  m_LocalPosition: {x: 13, y: -0.5, z: 22.37387}
   m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7584,8 +7607,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 284112901}
         m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
-        m_MethodName: SetPauseGame
-        m_Mode: 6
+        m_MethodName: ResumeGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8200,7 +8223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1704357355
 RectTransform:
   m_ObjectHideFlags: 0

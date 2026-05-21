@@ -10,6 +10,8 @@ public class GameUIManager : MonoBehaviour
 {
 
     public static GameUIManager instance;
+    public MonoBehaviour FirstPersonController;
+
 
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
@@ -22,10 +24,10 @@ public class GameUIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject pausePanel;
+    
 
-    public bool cursorLocked = true;
-    public bool cursorOpen = false;
-
+   
+    public bool cursorInputForLook = false;
     [HideInInspector] public bool GamePaused;
 
     private void Awake()
@@ -59,10 +61,41 @@ public class GameUIManager : MonoBehaviour
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            SetPauseGame(!GamePaused);
-            SetCursorState(cursorOpen);
+           if(pauseMenu.activeSelf)
+            {
+                ResumeGame();
+               
+            }
+           else
+            {
+                PauseGame();
+            }
+           
         }
     }
+
+    void PauseGame()
+    {
+
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        FirstPersonController.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+    }
+
+    public void ResumeGame()
+    {
+
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        FirstPersonController.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+    }
+
 
     public void SetMasterVolume(float level)
     {
@@ -92,15 +125,7 @@ public class GameUIManager : MonoBehaviour
         AudioSaveManager.instance.Data.ambVolume = level;
         SaveSystem.Save();
     }
-    public void SetPauseGame(bool value)
-    {
-        pauseMenu.SetActive(value);
-        
-        GamePaused = value;
-
-        SetCursorState(cursorLocked);
-
-    }
+    
 
 
 
@@ -123,21 +148,7 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    private void SetCursorState(bool newState)
-    {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-    }
-
-    private void SetCursorState2(bool newState)
-    {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.Locked;
-    }
-
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        SetCursorState(cursorOpen);
-       SetCursorState2(cursorLocked);
-    }
-
+  
+   
 
 }
