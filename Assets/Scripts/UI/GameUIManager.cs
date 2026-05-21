@@ -23,7 +23,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject pausePanel;
 
-    public bool cursorLocked = false;
+    public bool cursorLocked = true;
     public bool cursorOpen = false;
 
     [HideInInspector] public bool GamePaused;
@@ -43,7 +43,7 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    private void Start()
+   /* private void Start()
     {
 
         var data = AudioSaveManager.instance.Data;
@@ -53,13 +53,14 @@ public class GameUIManager : MonoBehaviour
         sfxSlider.value = data.sfxVolume;
         ambientSlider.value = data.ambVolume;
 
-    }
+    } */
     private void Update()
     {
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             SetPauseGame(!GamePaused);
+            SetCursorState(cursorOpen);
         }
     }
 
@@ -101,6 +102,9 @@ public class GameUIManager : MonoBehaviour
 
     }
 
+
+
+
     public void TogglePauseOnPopup(bool value)
     {
         GamePaused = value;
@@ -132,5 +136,8 @@ public class GameUIManager : MonoBehaviour
     private void OnApplicationFocus(bool hasFocus)
     {
         SetCursorState(cursorOpen);
+       SetCursorState2(cursorLocked);
     }
+
+
 }

@@ -1437,6 +1437,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 1704357354}
   settingsMenu: {fileID: 1126596290}
   pausePanel: {fileID: 406310186}
+  cursorLocked: 0
+  cursorOpen: 0
   GamePaused: 0
 --- !u!1 &286817749
 GameObject:
