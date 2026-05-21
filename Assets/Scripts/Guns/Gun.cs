@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
 {
     public enum GunType
     {
-        Normal,
+        //Normal,
         SpellBook,
         Slingshot,
         Shredder,
@@ -39,40 +39,68 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject gunBodyPrefab;
     [SerializeField] private int magazineSize = 1;
     [SerializeField] private int ammoCount = 30;
+    [SerializeField] private int projectailCount = 1;
     [SerializeField] private float delayBetweenBullets = 0.5f;
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float bulletAngle = 20f;
-    [SerializeField] private float reloadTime = 5f;
+    [SerializeField] private float reloadTime = 1f;
+    [SerializeField] private float fireSpread = 0.1f;
 
     [Header("SpellBook Settings")]
     //[SerializeField] private GunType gunType;
     [SerializeField] private GameObject spellBookBodyPrefab;
     [SerializeField] private int spellBookMagazineSize = 1;
     [SerializeField] private int spellBookAmmoCount = 30;
+    [SerializeField] private int spellBookProjectailCount = 1;
     [SerializeField] private float spellBookDelayBetweenBullets = 0.5f;
     [SerializeField] private float spellBookBulletSpeed = 10f;
     [SerializeField] private float spellBookBulletAngle = 20f;
     [SerializeField] private float spellBookReloadTime = 1f;
+    [SerializeField] private float spellBookFireSpread = 0.1f;
 
     [Header("SlingShot Settings")]
-    //[SerializeField] private GunType gunType;
+    [SerializeField] private bool slingShotActive = true;
     [SerializeField] private GameObject slingShotBodyPrefab;
     [SerializeField] private int slingShotMagazineSize = 1;
     [SerializeField] private int slingShotAmmoCount = 30;
-    [SerializeField] private float slingShotkDelayBetweenBullets = 0.5f;
+    [SerializeField] private int slingShotProjectailCount = 1;
+    [SerializeField] private float slingShotDelayBetweenBullets = 0.5f;
     [SerializeField] private float slingShotBulletSpeed = 20f;
     [SerializeField] private float slingShotBulletAngle = 10f;
     [SerializeField] private float slingShotReloadTime = 0.5f;
+    [SerializeField] private float slingShotFireSpread = 0.1f;
+
+    [Header("Shredder Settings")]
+    [SerializeField] private bool shredderActive;
+    [SerializeField] private GameObject shredderBodyPrefab;
+    [SerializeField] private int shredderMagazineSize = 30;
+    [SerializeField] private int shredderAmmoCount = 120;
+    [SerializeField] private int shredderProjectailCount = 1;
+    [SerializeField] private float shredderDelayBetweenBullets = 0.5f;
+    [SerializeField] private float shredderBulletSpeed = 20f;
+    [SerializeField] private float shredderBulletAngle = 10f;
+    [SerializeField] private float shredderReloadTime = 2f;
+    [SerializeField] private float shredderFireSpread = 0.1f;
+
+    [Header("GoblinLauncher Settings")]
+    [SerializeField] private bool gobLauncherActive;
+    [SerializeField] private GameObject gobLauncherBodyPrefab;
+    [SerializeField] private int gobLauncherMagazineSize = 1;
+    [SerializeField] private int gobLauncherAmmoCount = 3;
+    [SerializeField] private int gobLauncherProjectailCount = 1;
+    [SerializeField] private float gobLauncherDelayBetweenBullets = 0.5f;
+    [SerializeField] private float gobLauncherBulletSpeed = 20f;
+    [SerializeField] private float gobLauncherBulletAngle = 10f;
+    [SerializeField] private float gobLauncherReloadTime = 0.5f;
+    [SerializeField] private float gobLauncherFireSpread = 0.1f;
 
     [Header("Reload Settings")]
     [SerializeField] private bool autoReload = true;
 
-    [Header("Shooting Raycast Settings")]
+    /*[Header("Shooting Raycast Settings")]
     [SerializeField] private float fireDistance = 100f;
     [SerializeField] private float fireSpread = 0.1f;
-    [SerializeField] private LayerMask hitLayers;
-
-    private List<int> gunList = new();
+    [SerializeField] private LayerMask hitLayers;*/
 
     private InputAction shootAction;
     private InputAction reloadAction;
@@ -83,11 +111,18 @@ public class Gun : MonoBehaviour
     private InputAction switchScrollAction;
 
     private int currentBulletsInMagazine;
+    private int spellBookBulletsInMagazine;
+    private int slingShotBulletsInMagazine;
+    private int shredderBulletsInMagazine;
+    private int gobLauncherBulletsInMagazine;
+    private int currentWeapon;
+    private int numberOfWeapons = 1;
     private bool isTryingToShoot;
     private bool canShoot = true;
     private bool isReloading;
     private bool isSwitching;
     private bool reloadCanceled;
+    private bool switchCanceled;
     private bool reloadStarted;
     private float timeReloaded;
     private float defaultRotationAngle;
@@ -98,11 +133,15 @@ public class Gun : MonoBehaviour
     {
         InitialiseInputActions();
         currentBulletsInMagazine = magazineSize;
+        if (slingShotActive) numberOfWeapons += 1;
+        if (shredderActive) numberOfWeapons += 1;
+        if (gobLauncherActive) numberOfWeapons += 1;
     }
 
     private void Update()
     {
-        if (isTryingToShoot && canShoot && !isReloading)
+        //UnityEngine.Debug.Log(GetSwitchWeaponInput());
+        if (isTryingToShoot && canShoot && !isReloading && !isSwitching)
         {
             StartCoroutine(ShootSequence());
         }
@@ -139,15 +178,84 @@ public class Gun : MonoBehaviour
     private void OnSwitch1Performed(InputAction.CallbackContext context)
     {
         if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        if (gunType == GunType.SpellBook) return;
+        BulletsInMagManager();
         gunType = GunType.SpellBook;
+        currentWeapon = 0;
         StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
-        private void OnSwitch2Performed(InputAction.CallbackContext context)
+    private void OnSwitch2Performed(InputAction.CallbackContext context)
     {
+        if (!slingShotActive) return;
         if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        if (gunType == GunType.Slingshot) return;
+        BulletsInMagManager();
         gunType = GunType.Slingshot;
+        currentWeapon = 1;
         StartCoroutine(GunSwitchSequence());
+        reloadCanceled = false;
+    }
+    private void OnSwitch3Performed(InputAction.CallbackContext context)
+    {
+        if (!shredderActive) return;
+        if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        if (gunType == GunType.Shredder) return;
+        BulletsInMagManager();
+        gunType = GunType.Shredder;
+        currentWeapon = 1;
+        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        else StartCoroutine(GunSwitchSequence());
+        reloadCanceled = false;
+    }
+    private void OnSwitch4Performed(InputAction.CallbackContext context)
+    {
+        if (!gobLauncherActive) return;
+        if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        if (gunType == GunType.GobLauncher) return;
+        BulletsInMagManager();
+        gunType = GunType.GobLauncher;
+        currentWeapon = 1;
+        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        else StartCoroutine(GunSwitchSequence());
+        reloadCanceled = false;
+    }
+
+    private void OnSwitchScrollPerformed(InputAction.CallbackContext context)
+    {
+        if (!slingShotActive && !shredderActive && !gobLauncherActive) return;
+        if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        BulletsInMagManager();
+        currentWeapon += GetSwitchWeaponInput();
+        if(currentWeapon >= numberOfWeapons) currentWeapon = 0;
+        if(currentWeapon < 0) currentWeapon = numberOfWeapons -1;
+
+        switch (currentWeapon)
+        {
+            case 0:
+                gunType = GunType.SpellBook;
+                break;
+            case 1:
+                if (slingShotActive) gunType = GunType.Slingshot; 
+                else if (shredderActive) gunType = GunType.Shredder;
+                else if (gobLauncherActive) gunType = GunType.GobLauncher;
+                break;
+            case 2:
+                if (shredderActive) gunType = GunType.Shredder;
+                else if (gobLauncherActive) gunType = GunType.GobLauncher;
+                break;
+            case 3:
+                gunType = GunType.GobLauncher;
+                break;
+        }
+        UnityEngine.Debug.Log(gunType);
+        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
 
@@ -160,6 +268,7 @@ public class Gun : MonoBehaviour
         switchAction2 = gunActionMap.FindAction("Switch2");
         switchAction3 = gunActionMap.FindAction("Switch3");
         switchAction4 = gunActionMap.FindAction("Switch4");
+        switchScrollAction = gunActionMap.FindAction("NextWeapon");
 
 
         shootAction.performed += OnShootPerformed;
@@ -167,6 +276,9 @@ public class Gun : MonoBehaviour
         reloadAction.performed += OnReloadPerformed;
         switchAction1.performed += OnSwitch1Performed;
         switchAction2.performed += OnSwitch2Performed;
+        switchAction3.performed += OnSwitch3Performed;
+        switchAction4.performed += OnSwitch4Performed;
+        switchScrollAction.performed += OnSwitchScrollPerformed;
 
         shootAction.Enable();
         reloadAction.Enable();
@@ -179,6 +291,9 @@ public class Gun : MonoBehaviour
         reloadAction.performed -= OnReloadPerformed;
         switchAction1.performed -= OnSwitch1Performed;
         switchAction2.performed -= OnSwitch2Performed;
+        switchAction3.performed -= OnSwitch3Performed;
+        switchAction4.performed -= OnSwitch4Performed;
+        switchScrollAction.performed -= OnSwitchScrollPerformed;
     }
 
     private void OnDestroy()
@@ -188,8 +303,12 @@ public class Gun : MonoBehaviour
 
     private bool CheckIfGunCanShoot()
     {
-        if(currentBulletsInMagazine <= 0) return false;
-        if(isReloading) return false;
+        if(currentBulletsInMagazine <= 0) 
+        {
+            TryAutoReload();
+            return false;
+        }
+        if(isReloading || isSwitching) return false;
         return true;
     }
 
@@ -209,20 +328,9 @@ public class Gun : MonoBehaviour
     {
         Vector3 direction = GetRandomShotDirection();
 
-        RaycastHit hit;
-        bool hitSomething = Physics.Raycast(bulletSpawnTransform.position, direction, out hit, fireDistance,  hitLayers);
-
-        Color lineColor = hitSomething ? Color.red : Color.blue;
-        //Debug.DrawRay(bulletSpawnTransform.position, direction * fireDistance, lineColor, 1f);
-
         GameObject bullet = Instantiate(DefaultProjectilePrefab, bulletSpawnTransform.position, Quaternion.identity);
 
         bullet.GetComponent<Bullet>().Setup(direction);
-
-        if (hitSomething)
-        {
-            //Hit logick
-        }
     }
 
     private IEnumerator ReloadSequence()
@@ -238,16 +346,21 @@ public class Gun : MonoBehaviour
         reloadStarted = false;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
-        if (ammoCount >= magazineSize - currentBulletsInMagazine && !reloadCanceled)
+        if (ammoCount >= magazineSize - currentBulletsInMagazine && !reloadCanceled && gunType != GunType.SpellBook)
         {
             ammoCount -= magazineSize - currentBulletsInMagazine;
             currentBulletsInMagazine = magazineSize;
             AmmoManager();
-        } else if (ammoCount < magazineSize - currentBulletsInMagazine && ammoCount > 0 && !reloadCanceled)
+        } 
+        else if (ammoCount < magazineSize - currentBulletsInMagazine && ammoCount > 0 && !reloadCanceled && gunType != GunType.SpellBook)
         {
             currentBulletsInMagazine += ammoCount;
             ammoCount = 0;
             AmmoManager();
+        } 
+        else if (gunType == GunType.SpellBook)
+        {
+            currentBulletsInMagazine = magazineSize;
         }
         isReloading = false;
     }
@@ -255,18 +368,39 @@ public class Gun : MonoBehaviour
     {
         switch (gunType)
         {
-            case GunType.Normal:
+            /*case GunType.Normal:
 
-                break;
+                break;*/
             case GunType.SpellBook:
                 spellBookAmmoCount = ammoCount;
                 break;
             case GunType.Slingshot:
                 slingShotAmmoCount = ammoCount;
                 break;
-            /*case GunType.Shredder:
+            case GunType.Shredder:
                 shredderAmmoCount = ammoCount;
-                break;*/
+                break;
+            case GunType.GobLauncher:
+                shredderAmmoCount = ammoCount;
+                break;
+        }
+    }
+        private void BulletsInMagManager()
+    {
+        switch (gunType)
+        {
+            case GunType.SpellBook:
+                spellBookBulletsInMagazine = currentBulletsInMagazine;
+                break;
+            case GunType.Slingshot:
+                slingShotBulletsInMagazine = currentBulletsInMagazine;
+                break;
+            case GunType.Shredder:
+                shredderBulletsInMagazine = currentBulletsInMagazine;
+                break;
+            case GunType.GobLauncher:
+                gobLauncherBulletsInMagazine = currentBulletsInMagazine;
+                break;
         }
     }
     private IEnumerator GunSwitchSequence()
@@ -277,6 +411,11 @@ public class Gun : MonoBehaviour
         reloadStarted = true;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
+        if (switchCanceled) 
+        {
+            //switchCanceled = false;
+            yield break;
+        }
         switch (gunType)
         {
             case GunType.SpellBook:
@@ -284,6 +423,12 @@ public class Gun : MonoBehaviour
                 break;
             case GunType.Slingshot:
                 SlingShotSwitchRoutine();
+                break;
+            case GunType.Shredder:
+                ShredderSwitchRoutine();
+                break;
+            case GunType.GobLauncher:
+                GobLauncherSwitchRoutine();
                 break;
         }
         yield return new WaitForSeconds(reloadTime/4);
@@ -293,28 +438,104 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(reloadTime/4);
         isSwitching = false;
     }
+    private IEnumerator CanceledGunSwitchSequence()
+    {
+        switch (gunType)
+        {
+            case GunType.SpellBook:
+                SpellBookSwitchRoutine();
+                break;
+            case GunType.Slingshot:
+                SlingShotSwitchRoutine();
+                break;
+            case GunType.Shredder:
+                ShredderSwitchRoutine();
+                break;
+            case GunType.GobLauncher:
+                GobLauncherSwitchRoutine();
+                break;
+        }
+        yield return new WaitForSeconds(reloadTime/4);
+        timeReloaded = 0;
+        reloadStarted = false;
+        currentRotationAngle = transform.localEulerAngles.y;
+        yield return new WaitForSeconds(reloadTime/4);
+        switchCanceled = false;
+        isSwitching = false;
+    }
     private void SpellBookSwitchRoutine()
     {
         DefaultProjectilePrefab = projectile1Prefab;
-        //gunBodyPrefab = spellBookBodyPrefab;
+        spellBookBodyPrefab.SetActive(true);
+        //gunBodyPrefab.SetActive(false);
+        slingShotBodyPrefab.SetActive(false);
+        shredderBodyPrefab.SetActive(false);
+        //gobLauncherBodyPrefab.SetActive(false);
         magazineSize = spellBookMagazineSize;
         ammoCount = spellBookAmmoCount;
+        currentBulletsInMagazine = spellBookBulletsInMagazine;
+        projectailCount = spellBookProjectailCount;
         delayBetweenBullets = spellBookDelayBetweenBullets;
         bulletSpeed = spellBookBulletSpeed;
         bulletAngle = spellBookBulletAngle;
         reloadTime = spellBookReloadTime;
+        fireSpread = spellBookFireSpread;
     }
-        private void SlingShotSwitchRoutine()
+    private void SlingShotSwitchRoutine()
     {
         DefaultProjectilePrefab = projectile2Prefab;
-        //gunBodyPrefab = slingShotBodyPrefab;
+        spellBookBodyPrefab.SetActive(false);
+        //gunBodyPrefab.SetActive(false);
+        slingShotBodyPrefab.SetActive(true);
+        shredderBodyPrefab.SetActive(false);
+        //gobLauncherBodyPrefab.SetActive(false);
         magazineSize = slingShotMagazineSize;
         ammoCount = slingShotAmmoCount;
-        delayBetweenBullets = slingShotkDelayBetweenBullets;
+        currentBulletsInMagazine = slingShotBulletsInMagazine;
+        projectailCount = slingShotProjectailCount;
+        delayBetweenBullets = slingShotDelayBetweenBullets;
         bulletSpeed = slingShotBulletSpeed;
         bulletAngle = slingShotBulletAngle;
         reloadTime = slingShotReloadTime;
+        fireSpread = slingShotFireSpread;
     }
+    private void ShredderSwitchRoutine()
+    {
+        DefaultProjectilePrefab = projectile3Prefab;
+        spellBookBodyPrefab.SetActive(false);
+        //gunBodyPrefab.SetActive(false);
+        slingShotBodyPrefab.SetActive(false);
+        shredderBodyPrefab.SetActive(true);
+        //gobLauncherBodyPrefab.SetActive(false);
+        magazineSize = shredderMagazineSize;
+        ammoCount = shredderAmmoCount;
+        currentBulletsInMagazine = shredderBulletsInMagazine;
+        projectailCount = shredderProjectailCount;
+        delayBetweenBullets = shredderDelayBetweenBullets;
+        bulletSpeed = shredderBulletSpeed;
+        bulletAngle = shredderBulletAngle;
+        reloadTime = shredderReloadTime;
+        fireSpread = shredderFireSpread;
+    }
+    private void GobLauncherSwitchRoutine()
+    {
+        DefaultProjectilePrefab = projectile3Prefab;
+        spellBookBodyPrefab.SetActive(false);
+        //gunBodyPrefab.SetActive(false);
+        slingShotBodyPrefab.SetActive(false);
+        /*shredderBodyPrefab.SetActive(false);
+        gobLauncherBodyPrefab.SetActive(true);*/
+        magazineSize = gobLauncherMagazineSize;
+        ammoCount = gobLauncherAmmoCount;
+        currentBulletsInMagazine = gobLauncherBulletsInMagazine;
+        projectailCount = gobLauncherProjectailCount;
+        delayBetweenBullets = gobLauncherDelayBetweenBullets;
+        bulletSpeed = gobLauncherBulletSpeed;
+        bulletAngle = gobLauncherBulletAngle;
+        reloadTime = gobLauncherReloadTime;
+        fireSpread = gobLauncherFireSpread;
+    }
+
     private void AttemptReload()
     {
         if (isReloading || isSwitching || currentBulletsInMagazine >= magazineSize)
@@ -326,7 +547,7 @@ public class Gun : MonoBehaviour
 
     private void TryAutoReload()
     {
-        if (currentBulletsInMagazine <= 0 && autoReload && !isReloading && !isSwitching)
+        if (currentBulletsInMagazine <= 0 && autoReload && ammoCount > 0 && !isReloading && !isSwitching)
         {
             StartCoroutine(ReloadSequence());
         }
@@ -345,8 +566,11 @@ public class Gun : MonoBehaviour
         currentBulletsInMagazine--;
 
         TryAutoReload();
-
-        PerformRaycastShot();
+        
+        for(int i = 0; i < projectailCount; i++)
+        {
+            PerformRaycastShot();
+        }
     }
 
     private IEnumerator NormalShootRoutine()
@@ -361,26 +585,22 @@ public class Gun : MonoBehaviour
     private IEnumerator ShootSequence()
     {
         canShoot = false;
-        switch (gunType)
-        {
-            case GunType.Normal:
-                yield return NormalShootRoutine();
-                break;
-        }
+        yield return NormalShootRoutine();
         canShoot = true;
     }
     public int GetSwitchWeaponInput()
     {
-            if (CanProcessInput())
-            {
+            /*if (CanProcessInput())
+            {*/
                 var input = switchScrollAction.ReadValue<float>();
+                //UnityEngine.Debug.Log(input);
 
                 if (input > 0f)
                     return -1;
                 
                 if (input < 0f)
                     return 1;
-            }
+            //}
 
             return 0;
     }
