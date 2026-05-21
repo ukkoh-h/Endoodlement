@@ -24,9 +24,9 @@ public class GameUIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject pausePanel;
-    
+    public GameObject Controls;
 
-   
+
     public bool cursorInputForLook = false;
     [HideInInspector] public bool GamePaused;
 
@@ -141,6 +141,12 @@ public class GameUIManager : MonoBehaviour
         settingsMenu.SetActive(value);
     }
 
+
+    public void ToggleControls(bool value)
+    {
+        settingsMenu.SetActive(!value);
+        Controls.SetActive(value);
+    }
     public void ExitToMenu()
     {
 
