@@ -75,10 +75,10 @@ public class Enemy : MonoBehaviour
     private IEnumerator AttackSequence()
     {
         isAttacking = true;
-        sprite.Attack();
-        attackHitbox.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        attackHitbox.SetActive(false);
+        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        sprite.Attack();
+        //if(playerInAttackRange) player.TakeDmg();
         yield return new WaitForSeconds(timeBetweenAttacks);
 
         isAttacking = false;
