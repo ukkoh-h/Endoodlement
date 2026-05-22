@@ -11,12 +11,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Billboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject attackHitbox;
+    //[SerializeField] private GameObject bodyHitbox;
+    //[SerializeField] private GameObject headHitbox;
     [SerializeField] private float attackRange;
     [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
 
     private bool isAttacking;
+    private bool isWalking;
 
     private void Awake()
     {
@@ -33,26 +37,34 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-        Debug.Log(playerInAttackRange);
+        //Debug.Log(playerInAttackRange);
         if (isActive && playerInAttackRange)
         {
+            if(isWalking) sprite.Walk();
             TryAttackPlayer();
         } 
         else if (isActive)
         {
+            if(!isWalking) sprite.Walk();
             ChasePlayer();
-            //sprite.Walk();
         }
         
+    }
+    public void TakeDamage(int dmg)
+    {
+        hitPoints -= dmg;
+        sprite.Hit();
+        if (hitPoints <= 0) Destroy(gameObject);
     }
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-        //navAgent.isStopped = false; // Add this line?
+        isWalking = true;
     }
     private void TryAttackPlayer()
     {
         navAgent.SetDestination(transform.position);
+        isWalking = false;
 
         if (!isAttacking)
         {

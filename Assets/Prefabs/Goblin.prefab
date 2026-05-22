@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 4190008232618806284}
   - component: {fileID: 3896047140501841889}
   - component: {fileID: 6013637418901616702}
+  - component: {fileID: 8902053635189681804}
   m_Layer: 7
   m_Name: bodyHitbox
   m_TagString: Untagged
@@ -235,6 +236,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 5.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8902053635189681804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847060072298215520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7950be91658c0c6498c1dca80cdc003e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBox
+  isHead: 0
+  goblin: {fileID: 2902894835017574271}
 --- !u!1 &2908735517839112534
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +261,6 @@ GameObject:
   - component: {fileID: 149518821528334540}
   - component: {fileID: 2902894835017574271}
   - component: {fileID: 6836034840368231640}
-  - component: {fileID: 760570524630782721}
   m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
@@ -286,8 +300,11 @@ MonoBehaviour:
   player: {fileID: 0}
   sprite: {fileID: 0}
   attackHitbox: {fileID: 679480692502918344}
+  bodyHitbox: {fileID: 0}
+  headHitbox: {fileID: 0}
   attackRange: 1.8
   timeBetweenAttacks: 2
+  hitPoints: 6
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -317,31 +334,6 @@ NavMeshAgent:
   m_BaseOffset: 5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &760570524630782721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2908735517839112534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d5552dfd22e2be4a96d9128bfe2f5d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  navAgent: {fileID: 6836034840368231640}
-  player: {fileID: 0}
-  sprite: {fileID: 0}
-  attackHitbox: {fileID: 679480692502918344}
-  attackRange: 3
-  timeBetweenAttacks: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  isActive: 0
 --- !u!1 &5191759007550647737
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +345,7 @@ GameObject:
   - component: {fileID: 1652296718560187811}
   - component: {fileID: 6042372660846636620}
   - component: {fileID: 6565811425592778325}
+  - component: {fileID: 8909729607627353201}
   m_Layer: 7
   m_Name: headHitbox
   m_TagString: Untagged
@@ -404,3 +397,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 4, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8909729607627353201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191759007550647737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7950be91658c0c6498c1dca80cdc003e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBox
+  isHead: 1
+  goblin: {fileID: 2902894835017574271}

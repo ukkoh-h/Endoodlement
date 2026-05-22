@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private int dmg = 3;
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Setup(Vector3 direction)
@@ -12,12 +13,17 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    /*private void OggerEnter2D(Collider2D collision)
+    /*private void OggerEnter(BoxCollider collision)
     {
-        if (collision.TryGetComponent(out Target target))
+        if (collision.TryGetComponent(out Enemy target))
         {
-            target.Damage();
+            target.TakeDamage(dmg);
             Destroy(gameObject);
         }
     }*/
+
+    public int DealDmg()
+    {
+        return dmg;
+    }
 }

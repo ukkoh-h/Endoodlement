@@ -124,6 +124,8 @@ public class Gun : MonoBehaviour
     private bool reloadCanceled;
     private bool switchCanceled;
     private bool reloadStarted;
+    private bool weaponLowered;
+    private bool switchListening; 
     private float timeReloaded;
     private float defaultRotationAngle;
     private float currentRotationAngle;
@@ -133,6 +135,10 @@ public class Gun : MonoBehaviour
     {
         InitialiseInputActions();
         currentBulletsInMagazine = magazineSize;
+        spellBookBulletsInMagazine = spellBookMagazineSize;
+        slingShotBulletsInMagazine = slingShotMagazineSize;
+        shredderBulletsInMagazine = shredderMagazineSize;
+        gobLauncherBulletsInMagazine = gobLauncherMagazineSize;
         if (slingShotActive) numberOfWeapons += 1;
         if (shredderActive) numberOfWeapons += 1;
         if (gobLauncherActive) numberOfWeapons += 1;
@@ -140,7 +146,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        //UnityEngine.Debug.Log(GetSwitchWeaponInput());
+        //UnityEngine.Debug.Log(currentBulletsInMagazine);
         if (isTryingToShoot && canShoot && !isReloading && !isSwitching)
         {
             StartCoroutine(ShootSequence());
@@ -154,7 +160,12 @@ public class Gun : MonoBehaviour
             timeReloaded += Time.deltaTime * 7 * (reloadTime/(reloadTime*reloadTime));
         }
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.y, Mathf.LerpAngle(currentRotationAngle, defaultRotationAngle + (reloadStarted ? beingReloadedAngle : 0), timeReloaded), transform.localEulerAngles.z);
+        if (isSwitching && weaponLowered && !switchListening)
+        {
+            StartCoroutine(SwitchListenerSequence());
+        }
     }
+
     public bool CanProcessInput()
     {
         return Cursor.lockState == CursorLockMode.Locked;
@@ -178,36 +189,35 @@ public class Gun : MonoBehaviour
     private void OnSwitch1Performed(InputAction.CallbackContext context)
     {
         if (isReloading) reloadCanceled = true;
-        if (isSwitching) switchCanceled = true;
         if (gunType == GunType.SpellBook) return;
-        BulletsInMagManager();
+        if (!isSwitching) BulletsInMagManager();
         gunType = GunType.SpellBook;
         currentWeapon = 0;
-        StartCoroutine(GunSwitchSequence());
+        if (isSwitching) switchCanceled = true;
+        else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
     private void OnSwitch2Performed(InputAction.CallbackContext context)
     {
         if (!slingShotActive) return;
         if (isReloading) reloadCanceled = true;
-        if (isSwitching) switchCanceled = true;
         if (gunType == GunType.Slingshot) return;
-        BulletsInMagManager();
+        if (!isSwitching) BulletsInMagManager();
         gunType = GunType.Slingshot;
         currentWeapon = 1;
-        StartCoroutine(GunSwitchSequence());
+        if (isSwitching) switchCanceled = true;
+        else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
     private void OnSwitch3Performed(InputAction.CallbackContext context)
     {
         if (!shredderActive) return;
         if (isReloading) reloadCanceled = true;
-        if (isSwitching) switchCanceled = true;
         if (gunType == GunType.Shredder) return;
-        BulletsInMagManager();
+        if (!isSwitching) BulletsInMagManager();
         gunType = GunType.Shredder;
         currentWeapon = 1;
-        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        if (isSwitching) switchCanceled = true;
         else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
@@ -215,12 +225,11 @@ public class Gun : MonoBehaviour
     {
         if (!gobLauncherActive) return;
         if (isReloading) reloadCanceled = true;
-        if (isSwitching) switchCanceled = true;
         if (gunType == GunType.GobLauncher) return;
-        BulletsInMagManager();
+        if (!isSwitching) BulletsInMagManager();
         gunType = GunType.GobLauncher;
         currentWeapon = 1;
-        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        if (isSwitching) switchCanceled = true;
         else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
@@ -229,8 +238,7 @@ public class Gun : MonoBehaviour
     {
         if (!slingShotActive && !shredderActive && !gobLauncherActive) return;
         if (isReloading) reloadCanceled = true;
-        if (isSwitching) switchCanceled = true;
-        BulletsInMagManager();
+        if (!isSwitching) BulletsInMagManager();
         currentWeapon += GetSwitchWeaponInput();
         if(currentWeapon >= numberOfWeapons) currentWeapon = 0;
         if(currentWeapon < 0) currentWeapon = numberOfWeapons -1;
@@ -253,8 +261,8 @@ public class Gun : MonoBehaviour
                 gunType = GunType.GobLauncher;
                 break;
         }
-        UnityEngine.Debug.Log(gunType);
-        if (switchCanceled) StartCoroutine(CanceledGunSwitchSequence());
+        //UnityEngine.Debug.Log(gunType);
+        if (isSwitching) switchCanceled = true;
         else StartCoroutine(GunSwitchSequence());
         reloadCanceled = false;
     }
@@ -282,6 +290,11 @@ public class Gun : MonoBehaviour
 
         shootAction.Enable();
         reloadAction.Enable();
+        switchAction1.Enable();
+        switchAction2.Enable();
+        switchAction3.Enable();
+        switchAction4.Enable();
+        switchScrollAction.Enable();
     }
 
     private void UnsubscribeFromInputActions()
@@ -385,7 +398,7 @@ public class Gun : MonoBehaviour
                 break;
         }
     }
-        private void BulletsInMagManager()
+    private void BulletsInMagManager()
     {
         switch (gunType)
         {
@@ -411,34 +424,22 @@ public class Gun : MonoBehaviour
         reloadStarted = true;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
-        if (switchCanceled) 
-        {
-            //switchCanceled = false;
-            yield break;
-        }
-        switch (gunType)
-        {
-            case GunType.SpellBook:
-                SpellBookSwitchRoutine();
-                break;
-            case GunType.Slingshot:
-                SlingShotSwitchRoutine();
-                break;
-            case GunType.Shredder:
-                ShredderSwitchRoutine();
-                break;
-            case GunType.GobLauncher:
-                GobLauncherSwitchRoutine();
-                break;
-        }
-        yield return new WaitForSeconds(reloadTime/4);
-        timeReloaded = 0;
-        reloadStarted = false;
-        currentRotationAngle = transform.localEulerAngles.y;
-        yield return new WaitForSeconds(reloadTime/4);
-        isSwitching = false;
+        weaponLowered = true;
     }
-    private IEnumerator CanceledGunSwitchSequence()
+    private IEnumerator SwitchListenerSequence()
+    {
+        switchListening = true;
+        yield return new WaitForSeconds(0.5f);
+        if(switchCanceled)
+        {
+            switchCanceled = false;
+            switchListening = false;
+        } else
+        {
+            StartCoroutine(EndGunSwitchSequence());
+        }
+    }
+    private IEnumerator EndGunSwitchSequence()
     {
         switch (gunType)
         {
@@ -460,7 +461,8 @@ public class Gun : MonoBehaviour
         reloadStarted = false;
         currentRotationAngle = transform.localEulerAngles.y;
         yield return new WaitForSeconds(reloadTime/4);
-        switchCanceled = false;
+        weaponLowered = false;
+        switchListening = false;
         isSwitching = false;
     }
     private void SpellBookSwitchRoutine()

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 253673079}
   - component: {fileID: 253673078}
   - component: {fileID: 253673077}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,8 +225,8 @@ Transform:
   m_GameObject: {fileID: 253673076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.10151, y: 0.09726, z: 12.75337}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.3, y: -0.2, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450908548}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 756054469}
   - component: {fileID: 756054468}
   - component: {fileID: 756054467}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,6 +1225,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2016336157}
     - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -1236,8 +1240,7 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1346729118}
-    m_RemovedComponents:
-    - {fileID: 760570524630782721, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1328,7 +1331,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 682831244863615532, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1215610407712764119, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,11 +1379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2035720907687037250, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2215332575379424969, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3893665294330516462, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: magazineSize
@@ -1428,23 +1431,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5528991738884381994, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5838302602899512864, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043444802568196296, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7192763662601008252, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8153060472117869186, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8153060472117869186, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: m_IsActive

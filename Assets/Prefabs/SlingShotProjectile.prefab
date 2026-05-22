@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 136276944587811236}
   - component: {fileID: 2214400626121023798}
   - component: {fileID: 3901552908041269403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SlingShotProjectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,3 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4c6a984e1b2cf40a6040817f490137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  dmg: 3

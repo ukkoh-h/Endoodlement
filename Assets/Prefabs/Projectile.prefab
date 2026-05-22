@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4142877677700188968}
   - component: {fileID: 1957591784519136167}
   - component: {fileID: 8108314899000391357}
-  m_Layer: 0
+  - component: {fileID: -327785071130553541}
+  m_Layer: 8
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,3 +132,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4c6a984e1b2cf40a6040817f490137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  dmg: 3
+--- !u!135 &-327785071130553541
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407308176949478225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
