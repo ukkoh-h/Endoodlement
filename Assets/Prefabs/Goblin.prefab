@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7894274106382292150}
   - component: {fileID: 1846321707209628283}
   - component: {fileID: 3284685386048179616}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6768817645465510346}
   - component: {fileID: 5965574092977810850}
   - component: {fileID: 3614283842373739995}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4190008232618806284}
   - component: {fileID: 3896047140501841889}
   - component: {fileID: 6013637418901616702}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: bodyHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,9 +244,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149518821528334540}
-  - component: {fileID: 1331024293165290571}
   - component: {fileID: 2902894835017574271}
-  m_Layer: 6
+  - component: {fileID: 6836034840368231640}
+  - component: {fileID: 760570524630782721}
+  m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +270,32 @@ Transform:
   - {fileID: 7894274106382292150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1331024293165290571
+--- !u!114 &2902894835017574271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908735517839112534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5552dfd22e2be4a96d9128bfe2f5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  navAgent: {fileID: 0}
+  player: {fileID: 0}
+  sprite: {fileID: 0}
+  attackHitbox: {fileID: 679480692502918344}
+  attackRange: 1.8
+  timeBetweenAttacks: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isActive: 1
+--- !u!195 &6836034840368231640
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,11 +313,11 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 4
+  m_Height: 2
   m_BaseOffset: 5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2902894835017574271
+--- !u!114 &760570524630782721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,18 +329,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5552dfd22e2be4a96d9128bfe2f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  navAgent: {fileID: 1331024293165290571}
+  navAgent: {fileID: 6836034840368231640}
   player: {fileID: 0}
+  sprite: {fileID: 0}
   attackHitbox: {fileID: 679480692502918344}
-  attackRange: 1.8
-  timeBetweenAttacks: 2
+  attackRange: 3
+  timeBetweenAttacks: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
-  isActive: 1
+    m_Bits: 128
+  isActive: 0
 --- !u!1 &5191759007550647737
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +353,7 @@ GameObject:
   - component: {fileID: 1652296718560187811}
   - component: {fileID: 6042372660846636620}
   - component: {fileID: 6565811425592778325}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: headHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
