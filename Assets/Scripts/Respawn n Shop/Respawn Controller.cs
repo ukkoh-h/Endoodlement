@@ -19,7 +19,7 @@ public class RespawnController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Physics.Raycast(transform.position, _player.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity, layerMask))
+        if(Physics.Raycast(transform.position, _player.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity/*, layerMask*/))//layerMask aiheutti errorin
         {
             if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
