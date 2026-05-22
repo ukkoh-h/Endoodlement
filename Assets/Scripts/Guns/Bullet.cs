@@ -22,6 +22,11 @@ public class Bullet : MonoBehaviour
         }
     }*/
 
+    public void SetDmg(int weaponDmg)
+    {
+        dmg = weaponDmg;
+    }
+
     public int DealDmg()
     {
         return dmg;

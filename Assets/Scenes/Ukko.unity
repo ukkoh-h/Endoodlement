@@ -1082,6 +1082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 3893665294330516462, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
+      propertyPath: shredderFireSpread
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

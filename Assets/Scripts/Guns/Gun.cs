@@ -25,10 +25,15 @@ public class Gun : MonoBehaviour
 
     [Header("Projectile Stettings")]
     [SerializeField] private GameObject DefaultProjectilePrefab;
+    //[SerializeField] private Bullet DefaultProjectile;
     [SerializeField] private GameObject projectile1Prefab;
+    [SerializeField] private Bullet projectile1;
     [SerializeField] private GameObject projectile2Prefab;
+    [SerializeField] private Bullet projectile2;
     [SerializeField] private GameObject projectile3Prefab;
+    [SerializeField] private Bullet projectile3;
     [SerializeField] private GameObject projectile4Prefab;
+    [SerializeField] private Bullet projectile4;
 
     /*[Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
@@ -49,6 +54,7 @@ public class Gun : MonoBehaviour
     [Header("SpellBook Settings")]
     //[SerializeField] private GunType gunType;
     [SerializeField] private GameObject spellBookBodyPrefab;
+    [SerializeField] private int spellBookDmg = 3;
     [SerializeField] private int spellBookMagazineSize = 1;
     [SerializeField] private int spellBookAmmoCount = 30;
     [SerializeField] private int spellBookProjectailCount = 1;
@@ -61,6 +67,7 @@ public class Gun : MonoBehaviour
     [Header("SlingShot Settings")]
     [SerializeField] private bool slingShotActive = true;
     [SerializeField] private GameObject slingShotBodyPrefab;
+    [SerializeField] private int slingShotDmg= 4;
     [SerializeField] private int slingShotMagazineSize = 1;
     [SerializeField] private int slingShotAmmoCount = 30;
     [SerializeField] private int slingShotProjectailCount = 1;
@@ -73,6 +80,7 @@ public class Gun : MonoBehaviour
     [Header("Shredder Settings")]
     [SerializeField] private bool shredderActive;
     [SerializeField] private GameObject shredderBodyPrefab;
+    [SerializeField] private int shredderDmg = 2;
     [SerializeField] private int shredderMagazineSize = 30;
     [SerializeField] private int shredderAmmoCount = 120;
     [SerializeField] private int shredderProjectailCount = 1;
@@ -85,6 +93,7 @@ public class Gun : MonoBehaviour
     [Header("GoblinLauncher Settings")]
     [SerializeField] private bool gobLauncherActive;
     [SerializeField] private GameObject gobLauncherBodyPrefab;
+    [SerializeField] private int gobLauncherDmg = 10;
     [SerializeField] private int gobLauncherMagazineSize = 1;
     [SerializeField] private int gobLauncherAmmoCount = 3;
     [SerializeField] private int gobLauncherProjectailCount = 1;
@@ -139,6 +148,10 @@ public class Gun : MonoBehaviour
         slingShotBulletsInMagazine = slingShotMagazineSize;
         shredderBulletsInMagazine = shredderMagazineSize;
         gobLauncherBulletsInMagazine = gobLauncherMagazineSize;
+        projectile1.SetDmg(spellBookDmg);
+        projectile2.SetDmg(slingShotDmg);
+        projectile3.SetDmg(shredderDmg);
+        projectile4.SetDmg(gobLauncherDmg);
         if (slingShotActive) numberOfWeapons += 1;
         if (shredderActive) numberOfWeapons += 1;
         if (gobLauncherActive) numberOfWeapons += 1;
