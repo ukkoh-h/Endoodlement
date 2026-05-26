@@ -150,8 +150,8 @@ public class Gun : MonoBehaviour
         gobLauncherBulletsInMagazine = gobLauncherMagazineSize;
         projectile1.SetDmg(spellBookDmg);
         projectile2.SetDmg(slingShotDmg);
-        projectile3.SetDmg(shredderDmg);
-        projectile4.SetDmg(gobLauncherDmg);
+        //projectile3.SetDmg(shredderDmg);
+        //projectile4.SetDmg(gobLauncherDmg);
         if (slingShotActive) numberOfWeapons += 1;
         if (shredderActive) numberOfWeapons += 1;
         if (gobLauncherActive) numberOfWeapons += 1;
