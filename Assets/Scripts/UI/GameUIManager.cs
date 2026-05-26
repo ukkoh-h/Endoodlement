@@ -11,7 +11,7 @@ public class GameUIManager : MonoBehaviour
 
     public static GameUIManager instance;
     public MonoBehaviour FirstPersonController;
-
+    public MonoBehaviour Gun;
 
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
@@ -80,6 +80,7 @@ public class GameUIManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         FirstPersonController.enabled = false;
+        Gun.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -91,6 +92,7 @@ public class GameUIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         FirstPersonController.enabled = true;
+        Gun.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
