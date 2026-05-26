@@ -108,7 +108,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -167,7 +167,6 @@ MonoBehaviour:
   muzzleFlashTransform: {fileID: 3899630382787702036}
   bulletSpawnTransform: {fileID: 7844242890930608117}
   DefaultProjectilePrefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
-  DefaultProjectile: {fileID: 8108314899000391357, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
   projectile1Prefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
   projectile1: {fileID: 8108314899000391357, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
   projectile2Prefab: {fileID: 8274087345736750371, guid: 7b3fec6264b53de439f84df5925aceb5, type: 3}
@@ -338,7 +337,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -431,6 +430,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5755832986057271810, guid: 14e8fba2771968d44bd1aad4578d543c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6788225272720971870, guid: 14e8fba2771968d44bd1aad4578d543c, type: 3}
       propertyPath: m_Name
       value: GunVisuallised2
@@ -462,6 +465,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1215610407712764119}
     m_Modifications:
+    - target: {fileID: 1447652933953235271, guid: 693227225616b9b488df1c7192bc44b6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3700815355032531828, guid: 693227225616b9b488df1c7192bc44b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3

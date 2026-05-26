@@ -970,6 +970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinCopter
       objectReference: {fileID: 0}
+    - target: {fileID: 7003892598955402742, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
