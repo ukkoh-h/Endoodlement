@@ -340,7 +340,7 @@ public class Gun : MonoBehaviour
 
     private Vector3 GetRandomShotDirection()
     {
-        Vector3 forward = muzzleFlashTransform.forward * bulletSpeed;
+        Vector3 forward = bulletSpawnTransform.forward * bulletSpeed;
         
         float spreadX = Random.Range(-fireSpread, fireSpread);
         float spreadY = Random.Range(-fireSpread, fireSpread);

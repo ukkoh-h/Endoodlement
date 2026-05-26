@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -76,7 +75,7 @@ public class Enemy : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(0.5f);
-        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         sprite.Attack();
         //if(playerInAttackRange) player.TakeDmg();
         yield return new WaitForSeconds(timeBetweenAttacks);

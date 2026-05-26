@@ -216,7 +216,7 @@ MonoBehaviour:
   shredderBulletSpeed: 20
   shredderBulletAngle: 10
   shredderReloadTime: 2
-  shredderFireSpread: 0.1
+  shredderFireSpread: 1
   gobLauncherActive: 0
   gobLauncherBodyPrefab: {fileID: 0}
   gobLauncherDmg: 10
