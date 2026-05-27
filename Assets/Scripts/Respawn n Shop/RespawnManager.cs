@@ -28,14 +28,18 @@ public class RespawnManager : MonoBehaviour
 
     public void RespawnPlayer(GameObject player)
     {
-        player.transform.position = currentSpawnPoint;
+        CharacterController controller = player.GetComponent<CharacterController>();
 
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-
-        if (rb != null)
+        if (controller != null)
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            controller.enabled = false;
+        }
+
+        player.transform.position = currentSpawnPoint + Vector3.up;
+
+        if (controller != null)
+        {
+            controller.enabled = true;
         }
     }
 }

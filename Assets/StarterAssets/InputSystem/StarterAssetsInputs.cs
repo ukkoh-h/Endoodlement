@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool dash;
+		public bool respawn;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -52,6 +53,12 @@ namespace StarterAssets
             DashInput(value.isPressed);
             Debug.Log("Dashing!");
         }
+
+        public void OnRespawn(InputValue value)
+        {
+            RespawnInput(value.isPressed);
+            Debug.Log("Dashing!");
+        }
 #endif
 
 
@@ -78,6 +85,11 @@ namespace StarterAssets
         public void DashInput(bool newDashState)
         {
             dash = newDashState;
+        }
+
+        public void RespawnInput(bool newRespawnState)
+        {
+            respawn = newRespawnState;
         }
 
         private void OnApplicationFocus(bool hasFocus)
