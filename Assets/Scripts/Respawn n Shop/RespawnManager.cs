@@ -35,7 +35,7 @@ public class RespawnManager : MonoBehaviour
             controller.enabled = false;
         }
 
-        player.transform.position = currentSpawnPoint + Vector3.up;
+        player.transform.position = currentSpawnPoint + Vector3.up + Vector3.right + Vector3.right;
 
         if (controller != null)
         {

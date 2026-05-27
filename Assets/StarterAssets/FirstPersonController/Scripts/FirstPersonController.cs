@@ -14,7 +14,8 @@ namespace StarterAssets
 	public class FirstPersonController : MonoBehaviour
 	{
 
-        
+		[SerializeField] private GameObject deathScreen;
+
         [Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -369,7 +370,12 @@ namespace StarterAssets
 		public void TakeDmg(int dmg)
 		{
 			hitPoints -= dmg;
-			if (hitPoints<=0) Respawn(); //Tähän respawni toteutus
+			if (hitPoints<=0)
+			{
+				deathScreen.SetActive(true);
+			} 
+				
+					//Tähän respawni toteutus
 		} 
 	}
 }
