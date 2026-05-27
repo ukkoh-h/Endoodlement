@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyCopter : MonoBehaviour
@@ -24,7 +25,11 @@ public class EnemyCopter : MonoBehaviour
     private bool isAttacking;
     private bool escaping;
     private bool approaching;
+    private bool rotating;
+    private bool rotDirSet;
     private Vector3 escapeDirection;
+    float rotation;
+    private Vector3 rotationDirection;
 
     private void Awake()
     {
@@ -39,6 +44,12 @@ public class EnemyCopter : MonoBehaviour
         bool playerTooClose = Physics.CheckSphere(transform.position, attackRangeLower, playerLayer);
 
         bool playerInSweetSpot = Physics.CheckSphere(transform.position, (attackRangeUpper-attackRangeLower)/2+attackRangeLower, playerLayer);
+        if(rotating)
+        {
+            Debug.Log("rotating");
+            if(!rotDirSet)SetRotationDirection();
+            RotateAroundPlayer();
+        }
         if (isActive && playerTooClose)
         {
             Debug.Log("escaping");
@@ -68,7 +79,7 @@ public class EnemyCopter : MonoBehaviour
                 sprite.Approach();
             }
             TryAttackPlayer();
-            /*if (playerInSweetSpot) 
+            if (playerInSweetSpot) 
             {
                 EscapePlayer();
                 if(approaching)
@@ -82,7 +93,7 @@ public class EnemyCopter : MonoBehaviour
                     sprite.Escape();
                 }
             }
-            else if (!playerInSweetSpot)
+            /*else if (!playerInSweetSpot)
             {
                 ChasePlayer();
                 if(!approaching)
@@ -129,14 +140,32 @@ public class EnemyCopter : MonoBehaviour
         escapeDirection = Vector3.Normalize(player.position - transform.position) * -3f;
         Debug.DrawRay(transform.position, escapeDirection, Color.magenta);
     }
+    private void SetRotationDirection()
+    {
+        //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3)
+        
+        //rotationDirection = new Vector3(transform.position.x-player.position.z , transform.position.y, transform.position.z-player.position.x);
+        rotDirSet = true;
+
+        float randomZ = Random.Range(-5f, 5f);
+        float randomX = Random.Range(-5f, 5f);
+        rotationDirection = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        Debug.Log(rotationDirection);
+        
+        Debug.DrawRay(transform.position, rotationDirection, Color.orangeRed);
+    }
     private void EscapePlayer()
     {
         //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3);
         navAgent.SetDestination(transform.position + escapeDirection);
     }
+    private void RotateAroundPlayer()
+    {
+        navAgent.SetDestination(/*transform.position +*/ rotationDirection);
+    }
     private void TryAttackPlayer()
     {
-        navAgent.SetDestination(transform.position);
+        //navAgent.SetDestination(transform.position);
 
         if (!isAttacking)
         {
@@ -147,15 +176,20 @@ public class EnemyCopter : MonoBehaviour
     private IEnumerator AttackSequence()
     {
         isAttacking = true;
+        navAgent.SetDestination(transform.position);
         yield return new WaitForSeconds(0.5f);
         //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         sprite.Attack();
         Vector3 forward = slingshotTransform.forward * 20f;
         GameObject bullet = Instantiate(projectile, slingshotTransform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Setup(forward);
+        yield return new WaitForSeconds(0.5f);
+        rotating = true;
         //if(playerInAttackRange) player.TakeDmg();
         yield return new WaitForSeconds(timeBetweenAttacks);
 
+        rotDirSet = false;
+        rotating = false;
         isAttacking = false;
     }
     void OnDrawGizmosSelected()

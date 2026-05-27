@@ -1,4 +1,5 @@
 using System.Collections;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
+    [SerializeField] private FirstPersonController playerC;
     [SerializeField] private Billboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject attackHitbox;
@@ -75,9 +77,9 @@ public class Enemy : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(0.5f);
-        //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         sprite.Attack();
-        //if(playerInAttackRange) player.TakeDmg();
+        if(playerInAttackRange) playerC.TakeDmg(2);
         yield return new WaitForSeconds(timeBetweenAttacks);
 
         isAttacking = false;

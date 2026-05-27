@@ -1,4 +1,5 @@
-﻿using UnityEditor.Experimental.GraphView;
+﻿using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -23,6 +24,8 @@ namespace StarterAssets
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		[Tooltip("Players hit points")]
+		public int hitPoints = 10;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -362,5 +365,11 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
+
+		public void TakeDmg(int dmg)
+		{
+			hitPoints -= dmg;
+			if (hitPoints<=0) Respawn(); //Tähän respawni toteutus
+		} 
 	}
 }
