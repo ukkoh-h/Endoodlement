@@ -1,22 +1,26 @@
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class Billboarding : MonoBehaviour
+public class CopterBillboarding : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float rotateX;
     [SerializeField] private float rotateY;
     [SerializeField] private float rotateZ;
+    [SerializeField] private Transform backCopter;
     private float rotatedX;
     private float rotatedY;
     private float rotatedZ;
+    private float floatTime;
     private bool walking;
-    /*private bool escaping;
+    private bool escaping;
     private bool escapeStarted;
     private bool approaching;
-    private bool approachStarted;*/
-    private bool step;
-    private bool steping;
+    private bool approachStarted;
+    private bool floating;
+    /*private bool step;
+    private bool steping;*/
     private void Awake()
     {
         rotatedX = rotateX;
@@ -33,13 +37,23 @@ public class Billboarding : MonoBehaviour
 
     private void Update()
     {
+        if (floatTime < 1 && floating)
+        {
+            floatTime += Time.deltaTime*1.5f;
+        } 
+        else if (floatTime > 0 && !floating)
+        {
+            floatTime -= Time.deltaTime*1.5f;
+        }
+        if (floatTime>=1 && floating || floatTime <= 0 && !floating) floating = !floating;
+        backCopter.position = new Vector3(transform.position.x, floatTime*0.7f + 4.95f, transform.position.z);
         //Debug.Log(escaping);
-        if (walking && !steping)
+        /*if (walking && !steping)
         {
             steping = true;
             StartCoroutine(WalkingSequence());
-        }
-        /*if (escaping && !escapeStarted)
+        }*/
+        if (escaping && !escapeStarted)
         {
             escapeStarted = true;
             rotatedX -= 20f;
@@ -58,21 +72,21 @@ public class Billboarding : MonoBehaviour
         {
             approachStarted = false;
             rotatedX -= 20f;
-        }*/
+        }
     }
 
     public void Walk()
     {
         walking = !walking;
     }
-    /*public void Escape()
+    public void Escape()
     {
         escaping = !escaping;
-    }*/
-    /*public void Approach()
+    }
+    public void Approach()
     {
         approaching = !approaching;
-    }*/
+    }
     public void Hit()
     {
         StartCoroutine(HitSequence());
@@ -95,7 +109,7 @@ public class Billboarding : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         rotatedY = rotateY;
     }
-    private IEnumerator WalkingSequence()
+    /*private IEnumerator WalkingSequence()
     {
         if(step)
         {
@@ -110,5 +124,5 @@ public class Billboarding : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         rotatedZ = rotateZ;
         steping = false;
-    }
+    }*/
 }

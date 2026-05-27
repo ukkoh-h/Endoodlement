@@ -296,12 +296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5552dfd22e2be4a96d9128bfe2f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  navAgent: {fileID: 0}
+  navAgent: {fileID: 6836034840368231640}
   player: {fileID: 0}
-  sprite: {fileID: 0}
+  playerC: {fileID: 0}
+  sprite: {fileID: 3284685386048179616}
   attackHitbox: {fileID: 679480692502918344}
-  bodyHitbox: {fileID: 0}
-  headHitbox: {fileID: 0}
   attackRange: 1.8
   timeBetweenAttacks: 2
   hitPoints: 6

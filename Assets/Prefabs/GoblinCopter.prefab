@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCopter
   navAgent: {fileID: 1778028318240449307}
   player: {fileID: 0}
-  sprite: {fileID: 8384518456475803000}
+  sprite: {fileID: 1911295865194810110}
   projectile: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
   slingshotTransform: {fileID: 95585534621551504}
   attackRangeUpper: 10
@@ -174,7 +174,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  isActive: 0
+  isActive: 1
 --- !u!1 &9059070607894823188
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6085994978687132270, guid: 755cd1cdf7737e0459b4e39b193cf5f6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8384518456475803000}
+      addedObject: {fileID: 1911295865194810110}
   m_SourcePrefab: {fileID: 100100000, guid: 755cd1cdf7737e0459b4e39b193cf5f6, type: 3}
 --- !u!4 &3945991661737328854 stripped
 Transform:
@@ -294,7 +294,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6085994978687132270, guid: 755cd1cdf7737e0459b4e39b193cf5f6, type: 3}
   m_PrefabInstance: {fileID: 7637232087980095490}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8384518456475803000
+--- !u!114 &1911295865194810110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,10 +303,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4434121689176054380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34967dfada3fff245a45e8e4f0f9c387, type: 3}
+  m_Script: {fileID: 11500000, guid: f0d50c6a99b276d41b0e16864115e812, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Billboarding
+  m_EditorClassIdentifier: Assembly-CSharp::CopterBillboarding
   mainCamera: {fileID: 0}
   rotateX: 0
   rotateY: 180
   rotateZ: 0
+  backCopter: {fileID: 3945991661737328854}

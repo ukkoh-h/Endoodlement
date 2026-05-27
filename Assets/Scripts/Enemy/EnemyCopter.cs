@@ -9,7 +9,7 @@ public class EnemyCopter : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
-    [SerializeField] private Billboarding sprite;
+    [SerializeField] private CopterBillboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform slingshotTransform;
