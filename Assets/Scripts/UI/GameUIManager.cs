@@ -74,7 +74,7 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
 
         pauseMenu.SetActive(true);
@@ -149,6 +149,8 @@ public class GameUIManager : MonoBehaviour
         settingsMenu.SetActive(!value);
         Controls.SetActive(value);
     }
+
+
     public void ExitToMenu()
     {
 
