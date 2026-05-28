@@ -26,6 +26,10 @@ public class Bullet : MonoBehaviour
     {
         dmg = weaponDmg;
     }
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
 
     public int DealDmg()
     {

@@ -199,5 +199,9 @@ public class EnemyCopter : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackRangeUpper);
     }
+    public void Activate()
+    {
+        isActive = true;
+    }
 }
 

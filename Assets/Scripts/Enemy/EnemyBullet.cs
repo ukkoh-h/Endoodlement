@@ -1,3 +1,4 @@
+using StarterAssets;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
 
     /*private void OggerEnter(BoxCollider collision)
     {
-        if (collision.TryGetComponent(out Enemy target))
+        if (collision.TryGetComponent(out FirstPersonController target))
         {
             target.TakeDamage(dmg);
             Destroy(gameObject);
@@ -25,6 +26,10 @@ public class EnemyBullet : MonoBehaviour
     public void SetDmg(int weaponDmg)
     {
         dmg = weaponDmg;
+    }
+    public void Hit()
+    {
+        Destroy(gameObject);
     }
 
     public int DealDmg()

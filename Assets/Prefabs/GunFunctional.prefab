@@ -182,9 +182,9 @@ MonoBehaviour:
   projectailCount: 1
   delayBetweenBullets: 0.5
   bulletSpeed: 10
-  bulletAngle: 20
+  bulletAngle: 5
   reloadTime: 1
-  fireSpread: 1
+  fireSpread: 0.1
   spellBookBodyPrefab: {fileID: 682831244863615532}
   spellBookDmg: 3
   spellBookMagazineSize: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   spellBookProjectailCount: 1
   spellBookDelayBetweenBullets: 0.5
   spellBookBulletSpeed: 10
-  spellBookBulletAngle: 20
+  spellBookBulletAngle: 5
   spellBookReloadTime: 1
   spellBookFireSpread: 0.1
   slingShotActive: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   slingShotProjectailCount: 1
   slingShotDelayBetweenBullets: 0.5
   slingShotBulletSpeed: 20
-  slingShotBulletAngle: 10
+  slingShotBulletAngle: 2
   slingShotReloadTime: 0.8
   slingShotFireSpread: 0.1
   shredderActive: 1
@@ -213,8 +213,8 @@ MonoBehaviour:
   shredderAmmoCount: 120
   shredderProjectailCount: 1
   shredderDelayBetweenBullets: 0.3
-  shredderBulletSpeed: 20
-  shredderBulletAngle: 10
+  shredderBulletSpeed: 30
+  shredderBulletAngle: 0
   shredderReloadTime: 2
   shredderFireSpread: 1
   gobLauncherActive: 0

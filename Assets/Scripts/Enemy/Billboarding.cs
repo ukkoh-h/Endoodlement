@@ -81,6 +81,10 @@ public class Billboarding : MonoBehaviour
     {
          StartCoroutine(AttackSequence());
     }
+    public void Dying()
+    {
+        rotatedX -= 20f;
+    }
 
     private IEnumerator HitSequence()
     {
