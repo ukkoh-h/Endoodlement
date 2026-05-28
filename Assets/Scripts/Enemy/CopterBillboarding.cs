@@ -19,6 +19,7 @@ public class CopterBillboarding : MonoBehaviour
     private bool approaching;
     private bool approachStarted;
     private bool floating;
+    private bool dying;
     /*private bool step;
     private bool steping;*/
     private void Awake()
