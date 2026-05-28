@@ -250,6 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
   isHead: 0
   goblin: {fileID: 2902894835017574271}
+  goblinCopter: {fileID: 0}
 --- !u!1 &2908735517839112534
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,3 +411,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitBox
   isHead: 1
   goblin: {fileID: 2902894835017574271}
+  goblinCopter: {fileID: 0}
