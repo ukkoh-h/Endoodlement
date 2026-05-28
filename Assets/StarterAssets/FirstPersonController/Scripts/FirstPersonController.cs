@@ -14,7 +14,12 @@ namespace StarterAssets
 	public class FirstPersonController : MonoBehaviour
 	{
 
-		[SerializeField] private GameObject deathScreen;
+
+		public static FirstPersonController instance;
+
+        [SerializeField] private GameObject deathScreen;
+
+		
 
         [Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -112,12 +117,19 @@ namespace StarterAssets
 
 		private void Awake()
 		{
-			// get a reference to our main camera
-			if (_mainCamera == null)
+
+            if (instance == null)
+            {
+                instance = this;
+            }
+
+            // get a reference to our main camera
+            if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
+       
+        }
 
 		private void Start()
 		{
@@ -142,7 +154,8 @@ namespace StarterAssets
 			Move();
 			Dash();
 			Respawn();
-
+			
+			
         }
 
 
@@ -340,9 +353,10 @@ namespace StarterAssets
             if (_input.respawn)
             {
                 RespawnManager.Instance.RespawnPlayer(gameObject);
-
                 _input.respawn = false;
+
             }
+            
         }
 
 
@@ -367,13 +381,22 @@ namespace StarterAssets
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
 
-		public void TakeDmg(int dmg)
+        private void Die()
+        {
+            deathScreen.SetActive(true);
+			GameUIManager.instance.PauseGame();
+			hitPoints = 5;
+        }
+
+
+        public void TakeDmg(int dmg)
 		{
 			hitPoints -= dmg;
 			if (hitPoints<=0)
 			{
-				deathScreen.SetActive(true);
-			} 
+				Die();
+
+            } 
 				
 					//Tähän respawni toteutus
 		} 

@@ -14,6 +14,7 @@ public class HitBox : MonoBehaviour
             if (other.TryGetComponent(out Bullet bullet))
             {
                 dmg = bullet.DealDmg();
+                bullet.Hit();
                 if(isHead) dmg *= 2;
                 if(goblin != null)goblin.TakeDamage(dmg);
                 if(goblinCopter != null)goblinCopter.TakeDamage(dmg);

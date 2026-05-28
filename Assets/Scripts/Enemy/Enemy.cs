@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private FirstPersonController playerC;
     [SerializeField] private Billboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
-    [SerializeField] private GameObject attackHitbox;
     //[SerializeField] private GameObject bodyHitbox;
     //[SerializeField] private GameObject headHitbox;
     [SerializeField] private float attackRange;
@@ -41,12 +40,11 @@ public class Enemy : MonoBehaviour
         //Debug.Log(playerInAttackRange);
         if (isActive && playerInAttackRange)
         {
-            if(isWalking) sprite.Walk();
             TryAttackPlayer();
         } 
         else if (isActive)
         {
-            if(!isWalking) sprite.Walk();
+            Debug.Log("chasing");
             ChasePlayer();
         }
         
@@ -55,17 +53,34 @@ public class Enemy : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
-        if (hitPoints <= 0) Destroy(gameObject);
+        if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
+        if (hitPoints <= -5 && !isActive) Death(false);
+    }
+    public void TakeMeleeDamage(int dmg)
+    {
+        hitPoints -= dmg;
+        sprite.Hit();
+        if (hitPoints <= 0) StartCoroutine(DyingSequence());
+        if (hitPoints <= 0 && !isActive) Death(true);
     }
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-        isWalking = true;
+        Debug.Log(player.position);
+        if(!isWalking) 
+        {
+            isWalking = true;
+            sprite.Walk();
+        }
     }
     private void TryAttackPlayer()
     {
         navAgent.SetDestination(transform.position);
-        isWalking = false;
+        if(isWalking) 
+        {
+            isWalking = false;
+            sprite.Walk();
+        }
 
         if (!isAttacking)
         {
@@ -83,5 +98,29 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenAttacks);
 
         isAttacking = false;
+    }
+    private IEnumerator DyingSequence()
+    {
+        isActive = false;
+        if(isWalking) 
+        {
+            isWalking = false;
+            sprite.Walk();
+        }
+        sprite.Dying();
+        float deathTimer = Random.Range(3f, 5f);
+        yield return new WaitForSeconds(deathTimer);
+
+        Death(false);
+    }
+    private void Death(bool byMelee)
+    {
+        //Tänne loot dropit ja kuolema animaatiot
+        //if (byMelee) ;
+        Destroy(gameObject);
+    }
+    public void Activate()
+    {
+        isActive = true;
     }
 }
