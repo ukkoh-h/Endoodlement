@@ -2,12 +2,14 @@ using System.Collections;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
+    [SerializeField] private Transform slashPlacement;
     [SerializeField] private FirstPersonController playerC;
     [SerializeField] private Billboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
@@ -18,9 +20,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
+    [SerializeField] private GameObject slash;
 
     private bool isAttacking;
     private bool isWalking;
+    private int eMNum;
 
     private void Awake()
     {
@@ -94,6 +98,8 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         sprite.Attack();
+        GameObject slashing = Instantiate(slash, slashPlacement);
+        Destroy(slashing, Mathf.Min(0.03f));
         if(playerInAttackRange) playerC.TakeDmg(2);
         yield return new WaitForSeconds(timeBetweenAttacks);
 
@@ -119,8 +125,9 @@ public class Enemy : MonoBehaviour
         //if (byMelee) ;
         Destroy(gameObject);
     }
-    public void Activate()
+    public void Activate(int num)
     {
         isActive = true;
+        eMNum = num;
     }
 }

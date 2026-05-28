@@ -466,6 +466,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CopterBillboarding
   mainCamera: {fileID: 0}
   rotateX: 0
-  rotateY: 180
+  rotateY: 0
   rotateZ: 0
   backCopter: {fileID: 3945991661737328854}

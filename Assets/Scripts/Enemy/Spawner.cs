@@ -6,19 +6,20 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject goblinPrefab;
     [SerializeField] private Transform copterSpawnPoint;
     [SerializeField] private GameObject goblinCopterPrefab;
+    [SerializeField] private int managerZone;
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         
     }
     public void SpawnGoblin()
     {
         GameObject goblin = Instantiate(goblinPrefab, spawnPoint.position, Quaternion.identity);
-        goblin.GetComponent<Enemy>().Activate();
+        goblin.GetComponent<Enemy>().Activate(managerZone);
     }
     public void SpawnGoblinCopter()
     {
         GameObject goblinCopter = Instantiate(goblinCopterPrefab, copterSpawnPoint.position, Quaternion.identity);
-        goblinCopter.GetComponent<EnemyCopter>().Activate();
+        goblinCopter.GetComponent<EnemyCopter>().Activate(managerZone);
     }
 }

@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125268948612841208, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1999998
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 125268948612841208, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -579,10 +579,6 @@ PrefabInstance:
     - target: {fileID: 5158723736547757748, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
       propertyPath: m_Name
       value: BulletSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 5158723736547757748, guid: 60e736493e4e279439f988f262b9fc78, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

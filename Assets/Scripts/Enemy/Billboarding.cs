@@ -95,7 +95,7 @@ public class Billboarding : MonoBehaviour
 
     private IEnumerator AttackSequence()
     {
-        rotatedY += 10f;
+        rotatedY += 20f;
         yield return new WaitForSeconds(0.1f);
         rotatedY = rotateY;
     }

@@ -20,6 +20,8 @@ public class CopterBillboarding : MonoBehaviour
     private bool approachStarted;
     private bool floating;
     private bool dying;
+    private bool tiltDirX;
+    private bool tiltDirZ;
     /*private bool step;
     private bool steping;*/
     private void Awake()
@@ -33,18 +35,21 @@ public class CopterBillboarding : MonoBehaviour
         Vector3 cameraPosition = mainCamera.transform.position;
         //cameraPosition.y = transform.position.y;
         transform.LookAt(cameraPosition);
-        transform.Rotate(rotatedX, rotatedY + 180f, rotatedZ);
+        transform.Rotate(rotatedX, rotatedY, rotatedZ);
     }
 
     private void Update()
     {
-        if (floatTime < 1 && floating)
+        if (floatTime < 1 && floating && !dying)
         {
             floatTime += Time.deltaTime*1.5f;
         } 
-        else if (floatTime > 0 && !floating)
+        else if (floatTime > 0 && !floating && !dying)
         {
             floatTime -= Time.deltaTime*1.5f;
+        } else if (floatTime > -4.95f && dying)
+        {
+            floatTime -= Time.deltaTime*8f;
         }
         if (floatTime>=1 && floating || floatTime <= 0 && !floating) floating = !floating;
         backCopter.position = new Vector3(transform.position.x, floatTime*0.7f + 4.95f, transform.position.z);
@@ -94,22 +99,48 @@ public class CopterBillboarding : MonoBehaviour
     }
     public void Attack()
     {
-         StartCoroutine(AttackSequence());
+        StartCoroutine(AttackSequence());
     }
+    public void Dying()
+    {
+        rotatedX += 40f;
+        dying = true;
+
+    }
+    /*public void Rotating(float tiltX, float tiltZ, float rotTime)
+    {
+        if(tiltX>0) tiltDirX = true;
+        else tiltDirX = false;
+        if
+        StartCoroutine(RotationSequence(rotTime));
+    }*/
 
     private IEnumerator HitSequence()
     {
-        rotatedX += 10f;
-        yield return new WaitForSeconds(0.1f);
         rotatedX -= 10f;
+        yield return new WaitForSeconds(0.1f);
+        rotatedX += 10f;
     }
 
     private IEnumerator AttackSequence()
     {
-        rotatedY += 10f;
+        yield return new WaitForSeconds(0.1f);
+        rotatedY += 15f;
         yield return new WaitForSeconds(0.1f);
         rotatedY = rotateY;
     }
+    /*private IEnumerator RotationSequence(float rotTime)
+    {
+        if(tiltX) rotatedX += 20f;
+        else rotatedX -= 20f;
+        if(tiltZ) rotatedZ += 20f;
+        else rotatedZ -= 20f; 
+        yield return new WaitForSeconds(rotTime);
+        if(tiltX) rotatedX -= 20f;
+        else rotatedX += 20f;
+        if(tiltZ) rotatedZ -= 20f;
+        else rotatedZ += 20f; 
+    }*/
     /*private IEnumerator WalkingSequence()
     {
         if(step)

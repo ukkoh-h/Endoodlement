@@ -28,8 +28,9 @@ public class EnemyCopter : MonoBehaviour
     private bool rotating;
     private bool rotDirSet;
     private Vector3 escapeDirection;
-    float rotation;
+    //float rotation;
     private Vector3 rotationDirection;
+    private int eMNum;
 
     private void Awake()
     {
@@ -46,13 +47,13 @@ public class EnemyCopter : MonoBehaviour
         bool playerInSweetSpot = Physics.CheckSphere(transform.position, (attackRangeUpper-attackRangeLower)/2+attackRangeLower, playerLayer);
         if(rotating)
         {
-            Debug.Log("rotating");
+            //Debug.Log("rotating");
             if(!rotDirSet)SetRotationDirection();
             RotateAroundPlayer();
         }
         if (isActive && playerTooClose)
         {
-            Debug.Log("escaping");
+            //Debug.Log("escaping");
             SetEscapeDirection();
             EscapePlayer();
             if(approaching)
@@ -128,7 +129,15 @@ public class EnemyCopter : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
-        if (hitPoints <= 0) Destroy(gameObject);
+        if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
+        if (hitPoints <= -5 && !isActive) Death(false);
+    }
+    public void TakeMeleeDamage(int dmg)
+    {
+        hitPoints -= dmg;
+        sprite.Hit();
+        if (hitPoints <= 0) StartCoroutine(DyingSequence());
+        if (hitPoints <= 0 && !isActive) Death(true);
     }
     private void ChasePlayer()
     {
@@ -150,7 +159,9 @@ public class EnemyCopter : MonoBehaviour
         float randomZ = Random.Range(-5f, 5f);
         float randomX = Random.Range(-5f, 5f);
         rotationDirection = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        Debug.Log(rotationDirection);
+        //Debug.Log(rotationDirection);
+        //sprite.Rotating(randomX, randomZ, timeBetweenAttacks);
+
         
         Debug.DrawRay(transform.position, rotationDirection, Color.orangeRed);
     }
@@ -192,6 +203,21 @@ public class EnemyCopter : MonoBehaviour
         rotating = false;
         isAttacking = false;
     }
+        private IEnumerator DyingSequence()
+    {
+        isActive = false;
+        sprite.Dying();
+        float deathTimer = Random.Range(5f, 7f);
+        yield return new WaitForSeconds(deathTimer);
+
+        Death(false);
+    }
+        private void Death(bool byMelee)
+    {
+        //Tänne loot dropit ja kuolema animaatiot
+        //if (byMelee) ;
+        Destroy(gameObject);
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -199,9 +225,10 @@ public class EnemyCopter : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackRangeUpper);
     }
-    public void Activate()
+    public void Activate(int num)
     {
         isActive = true;
+        eMNum = num;
     }
 }
 
