@@ -1,3 +1,4 @@
+using StarterAssets;
 using UnityEngine;
 
 
@@ -36,6 +37,7 @@ public class RespawnManager : MonoBehaviour
         }
 
         player.transform.position = currentSpawnPoint + Vector3.up + Vector3.right + Vector3.right;
+        FirstPersonController.instance.hitPoints = 5;
 
         if (controller != null)
         {

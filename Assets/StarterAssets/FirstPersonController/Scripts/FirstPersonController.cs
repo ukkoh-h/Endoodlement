@@ -15,7 +15,7 @@ namespace StarterAssets
 	{
 
 
-        
+		public static FirstPersonController instance;
 
         [SerializeField] private GameObject deathScreen;
 
@@ -118,7 +118,10 @@ namespace StarterAssets
 		private void Awake()
 		{
 
-     
+            if (instance == null)
+            {
+                instance = this;
+            }
 
             // get a reference to our main camera
             if (_mainCamera == null)
@@ -151,7 +154,8 @@ namespace StarterAssets
 			Move();
 			Dash();
 			Respawn();
-
+			
+			
         }
 
 
@@ -349,9 +353,10 @@ namespace StarterAssets
             if (_input.respawn)
             {
                 RespawnManager.Instance.RespawnPlayer(gameObject);
-
                 _input.respawn = false;
+
             }
+            
         }
 
 
@@ -380,7 +385,7 @@ namespace StarterAssets
         {
             deathScreen.SetActive(true);
 			GameUIManager.instance.PauseGame();
-            
+			hitPoints = 5;
         }
 
 
