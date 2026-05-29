@@ -62,7 +62,7 @@ Material:
     - _HighFrequency: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.44
+    - _Smoothness: 0.22
     - _Speed: 0.01
     - _WaveAmplitude: 0.5
     - _WaveSpeed: 1
