@@ -8,7 +8,7 @@ public class CopterBillboarding : MonoBehaviour
     [SerializeField] private float rotateX;
     [SerializeField] private float rotateY;
     [SerializeField] private float rotateZ;
-    [SerializeField] private Transform backCopter;
+    [SerializeField] private Transform agentTransform;
     private float rotatedX;
     private float rotatedY;
     private float rotatedZ;
@@ -51,8 +51,9 @@ public class CopterBillboarding : MonoBehaviour
         {
             floatTime -= Time.deltaTime*8f;
         }
+        
         if (floatTime>=1 && floating || floatTime <= 0 && !floating) floating = !floating;
-        backCopter.position = new Vector3(transform.position.x, floatTime*0.7f + 4.95f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, agentTransform.position.y + floatTime * 0.7f+ 4.95f, transform.position.z);
         //Debug.Log(escaping);
         /*if (walking && !steping)
         {

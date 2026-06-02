@@ -22,11 +22,6 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
     }*/
-
-    public void SetDmg(int weaponDmg)
-    {
-        dmg = weaponDmg;
-    }
     public void Hit()
     {
         Destroy(gameObject);

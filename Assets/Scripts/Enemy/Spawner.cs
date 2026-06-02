@@ -4,13 +4,15 @@ using System.Collections;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private GameObject goblinPrefab;
     [SerializeField] private Transform copterSpawnPoint;
     [SerializeField] private GameObject goblinCopterPrefab;
-    [SerializeField] private int managerZone;
+    //[SerializeField] private int managerZone;
     [SerializeField] private bool autoSpawnerActive;
     [SerializeField] private bool copterSpawn;
     [SerializeField] private float spawnCooldown = 5f;
+    [SerializeField] private LayerMask groundLayer, playerLayer;
     private bool spawnerActivated;
     // Update is called once per frame
     void Start()
@@ -26,13 +28,21 @@ public class Spawner : MonoBehaviour
     }
     public void SpawnGoblin()
     {
-        GameObject goblin = Instantiate(goblinPrefab, spawnPoint.position, Quaternion.identity);
-        goblin.GetComponent<Enemy>().Activate(managerZone);
+        bool playerTooClose = Physics.CheckSphere(transform.position, 2, playerLayer);
+        if (!playerTooClose) {
+            GameObject goblin = Instantiate(goblinPrefab, spawnPoint.position, Quaternion.identity);
+            goblin.GetComponent<Enemy>().Activate();
+            enemyManager.GoblinSpawned();
+        }
     }
     public void SpawnGoblinCopter()
     {
-        GameObject goblinCopter = Instantiate(goblinCopterPrefab, copterSpawnPoint.position, Quaternion.identity);
-        goblinCopter.GetComponent<EnemyCopter>().Activate(managerZone);
+        bool playerTooClose = Physics.CheckSphere(transform.position, 2, playerLayer);
+        if (!playerTooClose) {
+            GameObject goblinCopter = Instantiate(goblinCopterPrefab, copterSpawnPoint.position, Quaternion.identity);
+            goblinCopter.GetComponent<EnemyCopter>().Activate();
+            enemyManager.CopterSpawned();
+        }
     }
     private IEnumerator AutoSpawnSequence() {
         SpawnGoblin();

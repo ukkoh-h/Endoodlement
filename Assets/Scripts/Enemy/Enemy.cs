@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         } 
         else if (isActive)
         {
-            Debug.Log("chasing");
+            //Debug.Log("chasing");
             ChasePlayer();
         }
         
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-        Debug.Log(player.position);
+        //Debug.Log(player.position);
         if(!isWalking) 
         {
             isWalking = true;
@@ -125,9 +125,8 @@ public class Enemy : MonoBehaviour
         //if (byMelee) ;
         Destroy(gameObject);
     }
-    public void Activate(int num)
+    public void Activate()
     {
         isActive = true;
-        eMNum = num;
     }
 }

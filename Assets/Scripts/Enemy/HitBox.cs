@@ -8,7 +8,7 @@ public class HitBox : MonoBehaviour
     private int dmg;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("got hit");
+        //Debug.Log("got hit");
         if(other.CompareTag("Bullet"))
         {
             if (other.TryGetComponent(out Bullet bullet))

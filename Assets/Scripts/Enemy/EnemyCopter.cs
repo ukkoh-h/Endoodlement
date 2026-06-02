@@ -30,7 +30,6 @@ public class EnemyCopter : MonoBehaviour
     private Vector3 escapeDirection;
     //float rotation;
     private Vector3 rotationDirection;
-    private int eMNum;
 
     private void Awake()
     {
@@ -193,7 +192,7 @@ public class EnemyCopter : MonoBehaviour
         sprite.Attack();
         Vector3 forward = slingshotTransform.forward * 20f;
         GameObject bullet = Instantiate(projectile, slingshotTransform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().Setup(forward);
+        bullet.GetComponent<EnemyBullet>().Setup(forward);
         yield return new WaitForSeconds(0.5f);
         rotating = true;
         //if(playerInAttackRange) player.TakeDmg();
@@ -225,10 +224,9 @@ public class EnemyCopter : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackRangeUpper);
     }
-    public void Activate(int num)
+    public void Activate()
     {
         isActive = true;
-        eMNum = num;
     }
 }
 

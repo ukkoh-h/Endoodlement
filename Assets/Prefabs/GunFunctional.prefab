@@ -199,7 +199,7 @@ MonoBehaviour:
   slingShotBodyPrefab: {fileID: 8153060472117869186}
   slingShotDmg: 4
   slingShotMagazineSize: 1
-  slingShotAmmoCount: 30
+  slingShotAmmoCount: 1000
   slingShotProjectailCount: 1
   slingShotDelayBetweenBullets: 0.5
   slingShotBulletSpeed: 20
@@ -209,7 +209,7 @@ MonoBehaviour:
   shredderActive: 1
   shredderBodyPrefab: {fileID: 1707037830192708737}
   shredderDmg: 2
-  shredderMagazineSize: 30
+  shredderMagazineSize: 1000
   shredderAmmoCount: 120
   shredderProjectailCount: 1
   shredderDelayBetweenBullets: 0.3

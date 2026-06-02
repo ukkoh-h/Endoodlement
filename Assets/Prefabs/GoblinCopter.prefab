@@ -320,7 +320,7 @@ MonoBehaviour:
   navAgent: {fileID: 1778028318240449307}
   player: {fileID: 0}
   sprite: {fileID: 1911295865194810110}
-  projectile: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
+  projectile: {fileID: 5029038234569843076, guid: 41fb49534cf7f95438114aa928116b75, type: 3}
   slingshotTransform: {fileID: 95585534621551504}
   attackRangeUpper: 25
   attackRangeLower: 10
@@ -468,4 +468,4 @@ MonoBehaviour:
   rotateX: 0
   rotateY: 0
   rotateZ: 0
-  backCopter: {fileID: 3945991661737328854}
+  agentTransform: {fileID: 3996772121633105300}
