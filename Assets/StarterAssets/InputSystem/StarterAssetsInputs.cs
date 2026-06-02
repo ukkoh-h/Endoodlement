@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool dash;
 		public bool respawn;
+		public bool interract;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -63,6 +64,12 @@ namespace StarterAssets
             RespawnInput(value.isPressed);
             Debug.Log("Dashing!");
         }
+
+		public void OnInterract(InputValue value)
+		{
+			InterractInput(value.isPressed);
+			Debug.Log("Interract");
+		}
 #endif
 
 
@@ -95,6 +102,11 @@ namespace StarterAssets
         {
             respawn = newRespawnState;
         }
+
+		public void InterractInput(bool newInterractState)
+		{
+			interract = newInterractState;
+		}
 
         private void OnApplicationFocus(bool hasFocus)
 		{
