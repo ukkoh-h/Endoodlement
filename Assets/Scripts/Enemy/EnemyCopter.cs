@@ -21,6 +21,8 @@ public class EnemyCopter : MonoBehaviour
     [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
+    
+
 
     private bool isAttacking;
     private bool escaping;
@@ -30,7 +32,7 @@ public class EnemyCopter : MonoBehaviour
     private Vector3 escapeDirection;
     //float rotation;
     private Vector3 rotationDirection;
-
+    
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -141,8 +143,31 @@ public class EnemyCopter : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-        AudioManager.Instance.PlaySFX("GobFly");
+       
     }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+
+            AudioManager.Instance.PlayAmb("Chopper");
+            
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            AudioManager.Instance.StopAmb();
+            return;
+        }
+    }
+
+
     private void SetEscapeDirection()
     {
         //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3);

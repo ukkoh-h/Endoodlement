@@ -120,7 +120,8 @@ public class AudioManager : MonoBehaviour
             return;
 
         }
-        if (ambSource.clip == s.clip) return; // prevent restart
+        if (ambSource.clip == s.clip && ambSource.isPlaying)
+            return;
 
         ambSource.clip = s.clip;
         ambSource.loop = true;
@@ -141,6 +142,14 @@ public class AudioManager : MonoBehaviour
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
+        }
+    }
+
+    public void StopAmb()
+    {
+        if (ambSource.isPlaying)
+        {
+            ambSource.Stop();
         }
     }
 }
