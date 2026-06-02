@@ -142,6 +142,7 @@ public class EnemyCopter : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
+        AudioManager.Instance.PlaySFX("GobFly");
     }
     private void SetEscapeDirection()
     {

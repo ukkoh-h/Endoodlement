@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource, sfxSource, ambSource;
     [SerializeField] float pitchVariance = 0.5f;
     private AudioClip activeSound;
+    public AudioClip[] FootGravel;
+    public AudioClip[] Swing;
 
     [SerializeField] private AudioMixer audioMixer;
 
@@ -82,6 +84,29 @@ public class AudioManager : MonoBehaviour
 
 
         }
+    }
+
+    public void PlayGravel()
+    {
+        activeSound = FootGravel[Random.Range(0, FootGravel.Length)];
+
+        float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
+        sfxSource.PlayOneShot(activeSound);
+        sfxSource.pitch = randomPitch;
+        sfxSource.Play();
+        Debug.Log(activeSound);
+    }
+
+
+    public void PlaySwing()
+    {
+        activeSound = Swing[Random.Range(0, Swing.Length)];
+
+        float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
+        sfxSource.PlayOneShot(activeSound);
+        sfxSource.pitch = randomPitch;
+        sfxSource.Play();
+        Debug.Log(activeSound);
     }
 
     public void PlayAmb(string name)
