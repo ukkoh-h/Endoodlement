@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 4455598545765225382}
   - component: {fileID: 7174436722026010868}
   - component: {fileID: 4727075443796935140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Talo 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d11d190101986c4408649f0e311b97cd, type: 2}
-  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -280,6 +280,9 @@ public class Gun : MonoBehaviour
         reloadCanceled = false;
     }
 
+
+    
+
     private void InitialiseInputActions()
     {
         InputActionMap gunActionMap = actionMap.FindActionMap("Gun");
@@ -363,6 +366,20 @@ public class Gun : MonoBehaviour
     {
         isReloading = true;
 
+
+        switch (gunType)
+        {
+            
+                
+            case GunType.Slingshot:
+                AudioManager.Instance.PlaySFX("SlingReload");
+                break;
+            case GunType.Shredder:
+                AudioManager.Instance.PlaySFX("ShredderReload");
+                break;
+
+        }
+
         yield return new WaitForSeconds(reloadTime/4);
         timeReloaded = 0;
         reloadStarted = true;
@@ -388,6 +405,7 @@ public class Gun : MonoBehaviour
         {
             currentBulletsInMagazine = magazineSize;
         }
+
         isReloading = false;
     }
     private void AmmoManager()
@@ -576,7 +594,21 @@ public class Gun : MonoBehaviour
 
     private void ShootGun()
     {
-        //audioSource.PlayOneShot(bulletsound);
+
+        switch (gunType)
+        {
+            case GunType.SpellBook:
+                AudioManager.Instance.PlaySFX("PaperThrow");
+                break;
+            case GunType.Slingshot:
+                AudioManager.Instance.PlaySFX("SlingShoot");
+                break;
+            case GunType.Shredder:
+                AudioManager.Instance.PlaySFX("ShredderShoot");
+                break;
+
+        }
+        
         PlayMuzzleFlash();
         currentBulletsInMagazine--;
 

@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
         Destroy(slashing, Mathf.Min(0.03f));
         if(playerInAttackRange) playerC.TakeDmg(2);
         yield return new WaitForSeconds(timeBetweenAttacks);
-
+        AudioManager.Instance.PlaySwing();
         isAttacking = false;
     }
     private IEnumerator DyingSequence()
