@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7094527131942550401}
   - component: {fileID: 5012547751819251531}
   - component: {fileID: 4387635564767456246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Iso Teltta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5195771e56677d941b77f6710f73180e, type: 2}
-  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

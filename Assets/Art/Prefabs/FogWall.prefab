@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2348066606439615072}
   - component: {fileID: 2815253773735868974}
   - component: {fileID: 728828328709046539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FogWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
