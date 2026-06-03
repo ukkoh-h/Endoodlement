@@ -11,6 +11,7 @@ public class EnemyCopter : MonoBehaviour
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
     [SerializeField] private CopterBillboarding sprite;
+    [SerializeField] private EnemyManager enemyManager;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform slingshotTransform;
@@ -230,7 +231,7 @@ public class EnemyCopter : MonoBehaviour
         rotating = false;
         isAttacking = false;
     }
-        private IEnumerator DyingSequence()
+    private IEnumerator DyingSequence()
     {
         isActive = false;
         sprite.Dying();
@@ -239,10 +240,11 @@ public class EnemyCopter : MonoBehaviour
 
         Death(false);
     }
-        private void Death(bool byMelee)
+    private void Death(bool byMelee)
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
+        enemyManager.CopterDead();
         Destroy(gameObject);
         AudioManager.Instance.StopAmb();
     }
