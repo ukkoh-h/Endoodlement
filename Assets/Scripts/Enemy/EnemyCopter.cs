@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -165,6 +166,7 @@ public class EnemyCopter : MonoBehaviour
             AudioManager.Instance.StopAmb();
             return;
         }
+        
     }
 
 
@@ -242,6 +244,7 @@ public class EnemyCopter : MonoBehaviour
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
         Destroy(gameObject);
+        AudioManager.Instance.StopAmb();
     }
     void OnDrawGizmosSelected()
     {
