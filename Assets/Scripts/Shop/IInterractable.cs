@@ -1,11 +1,10 @@
-using UnityEngine;
 
-public class IInterractable : MonoBehaviour
-{
+
+
   public interface IInteractable
     {
-        public string InterractMessage { get; }
-        public void Interact();
+    public bool CanInteract();
+    public bool Interact(Interactor interactor);
     }
     
-}
+

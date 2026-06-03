@@ -101,7 +101,7 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 		
-		private const float _threshold = 0.01f;
+		private const float _threshold = 0.00f;
 
 		
 		private bool IsCurrentDeviceMouse
@@ -361,7 +361,19 @@ namespace StarterAssets
             
         }
 
-	
+	/*  private void Interact()
+		{
+			if(_input.interract)
+			{
+				if(Interactor.instance.DoInteractionTest(out IInteractable interactable))
+				{
+					if(interactable.CanInteract())
+					{
+						interactable.Interact(this);
+					}
+				}
+			}
+		} */
 
 
 
@@ -387,7 +399,7 @@ namespace StarterAssets
         private void Die()
         {
             deathScreen.SetActive(true);
-			GameUIManager.instance.PauseGame();
+			GameUIManager.instance.DeathPause();
 			hitPoints = 5;
         }
 

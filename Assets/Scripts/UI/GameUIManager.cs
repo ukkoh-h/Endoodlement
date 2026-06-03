@@ -45,7 +45,7 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-   /* private void Start()
+    private void Start()
     {
 
         var data = AudioSaveManager.instance.Data;
@@ -55,7 +55,7 @@ public class GameUIManager : MonoBehaviour
         sfxSlider.value = data.sfxVolume;
         ambientSlider.value = data.ambVolume;
 
-    } */
+    }
     private void Update()
     {
 
@@ -86,6 +86,16 @@ public class GameUIManager : MonoBehaviour
 
     }
 
+    public void DeathPause()
+    {
+        Time.timeScale = 0f;
+        FirstPersonController.enabled = false;
+        Gun.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+
     public void ResumeGame()
     {
 
@@ -96,6 +106,15 @@ public class GameUIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+    }
+
+    public void DeathResume()
+    {
+        Time.timeScale = 1f;
+        FirstPersonController.enabled = true;
+        Gun.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
