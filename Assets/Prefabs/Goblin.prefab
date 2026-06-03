@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7894274106382292150}
   - component: {fileID: 1846321707209628283}
   - component: {fileID: 3284685386048179616}
+  - component: {fileID: 7682911381060586261}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -111,6 +112,21 @@ MonoBehaviour:
   rotateX: 0
   rotateY: 0
   rotateZ: 0
+--- !u!114 &7682911381060586261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435395696987243392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashColor
+  color: {fileID: 1846321707209628283}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!1 &847060072298215520
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +255,9 @@ MonoBehaviour:
   player: {fileID: 0}
   slashPlacement: {fileID: 4835900524373329250}
   playerC: {fileID: 0}
+  enemyManager: {fileID: 0}
   sprite: {fileID: 3284685386048179616}
+  flash: {fileID: 0}
   attackRange: 3
   timeBetweenAttacks: 2
   hitPoints: 20

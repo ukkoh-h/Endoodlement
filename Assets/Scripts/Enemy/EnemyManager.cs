@@ -303,7 +303,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void GoblinDead()
     {
-        currentGoblins--;
+        currentGoblins-=1;
         goblinsKilled++;
     }
     public void CopterSpawned()

@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 3893665294330516462, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
       propertyPath: bulletSpawnTransform
       value: 
-      objectReference: {fileID: 444488437895760561}
+      objectReference: {fileID: 7111834800912454070}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -370,6 +370,11 @@ Transform:
 --- !u!1 &6751080886884275851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6043444802568196296, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
+  m_PrefabInstance: {fileID: 1039778781770319427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7111834800912454070 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7844242890930608117, guid: 8507234a2571b0548a89c8de93c82177, type: 3}
   m_PrefabInstance: {fileID: 1039778781770319427}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1054330004017599217

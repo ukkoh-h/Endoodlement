@@ -388,11 +388,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &906930795 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7111834800912454070, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
-  m_PrefabInstance: {fileID: 1870230489}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &920732002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5707795821674324437, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
@@ -707,10 +702,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
-      propertyPath: bulletSpawnTransform
-      value: 
-      objectReference: {fileID: 906930795}
     - target: {fileID: 7111834800912454070, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.2

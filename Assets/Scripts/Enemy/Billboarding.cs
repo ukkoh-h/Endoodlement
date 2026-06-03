@@ -7,6 +7,10 @@ public class Billboarding : MonoBehaviour
     [SerializeField] private float rotateX;
     [SerializeField] private float rotateY;
     [SerializeField] private float rotateZ;
+    /*public Renderer rend;
+    public Color flashColor = Color.red;
+    private Color originalColor;
+    public float flashDuration = 0.1f;*/
     private float rotatedX;
     private float rotatedY;
     private float rotatedZ;
@@ -17,12 +21,17 @@ public class Billboarding : MonoBehaviour
     private bool approachStarted;*/
     private bool step;
     private bool steping;
+
     private void Awake()
     {
         rotatedX = rotateX;
         rotatedY = rotateY;
         rotatedZ = rotateZ;
     }
+    /*void Start()
+    {
+        originalColor = rend.material.color;
+    }*/
     private void LateUpdate()
     {
         Vector3 cameraPosition = mainCamera.transform.position;
@@ -115,4 +124,16 @@ public class Billboarding : MonoBehaviour
         rotatedZ = rotateZ;
         steping = false;
     }
+    /*private IEnumerator DoFlash()
+    {
+        rend.material.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        rend.material.color = originalColor;
+    }
+    public void Flash()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DoFlash());
+    }*/
+    
 }

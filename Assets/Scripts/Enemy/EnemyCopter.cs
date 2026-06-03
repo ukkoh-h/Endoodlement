@@ -10,6 +10,7 @@ public class EnemyCopter : MonoBehaviour
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
     [SerializeField] private CopterBillboarding sprite;
+    [SerializeField] private FlashColor flash;
     [SerializeField] private EnemyManager enemyManager;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject projectile;
@@ -131,6 +132,7 @@ public class EnemyCopter : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
+        flash.Flash();
         if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
         if (hitPoints <= -5 && !isActive) Death(false);
     }
@@ -138,6 +140,7 @@ public class EnemyCopter : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
+        flash.Flash();
         if (hitPoints <= 0) StartCoroutine(DyingSequence());
         if (hitPoints <= 0 && !isActive) Death(true);
     }

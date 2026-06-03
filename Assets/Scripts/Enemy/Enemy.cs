@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private FirstPersonController playerC;
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Billboarding sprite;
+    [SerializeField] private FlashColor flash;
     //[SerializeField] public GobAttack gobAttack;
     //[SerializeField] private GameObject bodyHitbox;
     //[SerializeField] private GameObject headHitbox;
@@ -22,10 +23,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
     [SerializeField] private GameObject slash;
-    public Renderer rend;
+    /*public Renderer rend;
     public Color flashColor = Color.red;
     private Color originalColor;
-    public float flashDuration = 0.1f;
+    public float flashDuration = 0.1f;*/
 
     private bool isAttacking;
     private bool isWalking;
@@ -37,10 +38,10 @@ public class Enemy : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /*void Start()
     {
         originalColor = rend.material.color;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
-        Flash();
+        flash.Flash();
         if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
         if (hitPoints <= -5 && !isActive) Death(false);
     }
@@ -70,7 +71,7 @@ public class Enemy : MonoBehaviour
     {
         hitPoints -= dmg;
         sprite.Hit();
-        Flash();
+        flash.Flash();
         if (hitPoints <= 0) StartCoroutine(DyingSequence());
         if (hitPoints <= 0 && !isActive) Death(true);
     }
@@ -126,17 +127,17 @@ public class Enemy : MonoBehaviour
 
         Death(false);
     }
-        private IEnumerator DoFlash()
+    /*private IEnumerator DoFlash()
     {
         rend.material.color = flashColor;
         yield return new WaitForSeconds(flashDuration);
         rend.material.color = originalColor;
     }
-        public void Flash()
+    /*public void Flash()
     {
         StopAllCoroutines();
         StartCoroutine(DoFlash());
-    }
+    }*/
     private void Death(bool byMelee)
     {
         //Tänne loot dropit ja kuolema animaatiot

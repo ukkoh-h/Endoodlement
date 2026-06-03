@@ -5,26 +5,30 @@ using UnityEngine.XR.WSA;
 
 public class FlashColor : MonoBehaviour
 {
-    public Renderer rend;
+    public SpriteRenderer color;
     public Color flashColor = Color.red;
     public float flashDuration = 0.1f;
 
     private Color originalColor;
+    private Material rend;
 
     private void Start()
     {
-        originalColor = rend.material.color;
+        rend = color.material;
+        //rend = gameObject.GetComponent(SpriteRenderer);
+        originalColor = rend/*.material*/.color;
     }
 
     private IEnumerator DoFlash()
     {
-        rend.material.color = flashColor;
+        rend/*.material*/.color = flashColor;
         yield return new WaitForSeconds(flashDuration);
-        rend.material.color = originalColor;
+        rend/*.material*/.color = originalColor;
     }
 
     public void Flash()
     {
+        Debug.Log("Flashing");
         StopAllCoroutines();
         StartCoroutine(DoFlash());
     }

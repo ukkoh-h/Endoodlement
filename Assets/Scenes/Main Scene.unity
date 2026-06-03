@@ -1270,6 +1270,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41553bfbfbd4e53458ebe104640abdb8, type: 3}
+--- !u!1 &145422063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 435395696987243392, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+  m_PrefabInstance: {fileID: 289884870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &145422065 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1846321707209628283, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+  m_PrefabInstance: {fileID: 289884870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &145422067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145422063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashColor
+  color: {fileID: 145422065}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!1001 &151632964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2202,6 +2227,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1846321707209628283, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846321707209628283, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846321707209628283, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846321707209628283, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a3b7c3b08fcca14380f4d44cefb6845, type: 2}
+    - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 230927203}
+    - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: flash
+      value: 
+      objectReference: {fileID: 145422067}
     - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
       propertyPath: player
       value: 
@@ -2210,10 +2259,18 @@ PrefabInstance:
       propertyPath: playerC
       value: 
       objectReference: {fileID: 683931879}
+    - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: enemyManager
+      value: 
+      objectReference: {fileID: 42308684}
     - target: {fileID: 2908735517839112534, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
       propertyPath: m_Name
       value: Goblin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3284685386048179616, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 230927203}
     - target: {fileID: 3284685386048179616, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
       propertyPath: mainCamera
       value: 
@@ -2222,10 +2279,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7682911381060586261, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 435395696987243392, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145422067}
   m_SourcePrefab: {fileID: 100100000, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
 --- !u!1001 &293097671
 PrefabInstance:
@@ -10282,7 +10343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlashColor
-  rend: {fileID: 1151224953}
+  color: {fileID: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
 --- !u!135 &1151224952
@@ -11648,6 +11709,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 683931880}
+    - target: {fileID: 195127695083038534, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
+      propertyPath: enemyManager
+      value: 
+      objectReference: {fileID: 42308684}
     - target: {fileID: 671184195001231713, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
       propertyPath: m_Layer
       value: 7

@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068231967202001080}
   - component: {fileID: 3152767420116040187}
+  - component: {fileID: 8566400255632382379}
   m_Layer: 0
   m_Name: Goblin_Copter
   m_TagString: Untagged
@@ -138,7 +139,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 4a3b7c3b08fcca14380f4d44cefb6845, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,6 +172,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &8566400255632382379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671184195001231713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashColor
+  color: {fileID: 3152767420116040187}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!1 &2525482867898265127
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +337,8 @@ MonoBehaviour:
   navAgent: {fileID: 1778028318240449307}
   player: {fileID: 0}
   sprite: {fileID: 1911295865194810110}
+  flash: {fileID: 8566400255632382379}
+  enemyManager: {fileID: 0}
   projectile: {fileID: 5029038234569843076, guid: 41fb49534cf7f95438114aa928116b75, type: 3}
   slingshotTransform: {fileID: 95585534621551504}
   attackRangeUpper: 25
