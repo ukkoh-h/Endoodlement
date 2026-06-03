@@ -7,9 +7,9 @@ public class PlayerHitBox : MonoBehaviour
     private int dmg;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("I got hit");
         if(other.CompareTag("EnemyBullet"))
         {
+            Debug.Log("I got hit");
             if (other.TryGetComponent(out EnemyBullet bullet))
             {
                 dmg = bullet.DealDmg();

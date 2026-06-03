@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private int dmg = 3;
+    [SerializeField] private float destructionAfterCollision = 0.2f;
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Setup(Vector3 direction)
@@ -13,14 +15,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    /*private void OggerEnter(BoxCollider collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.TryGetComponent(out Enemy target))
-        {
-            target.TakeDamage(dmg);
-            Destroy(gameObject);
-        }
-    }*/
+        StartCoroutine(CollisionSequence());
+    }
 
     public void SetDmg(int weaponDmg)
     {
@@ -34,5 +32,10 @@ public class Bullet : MonoBehaviour
     public int DealDmg()
     {
         return dmg;
+    }
+    private IEnumerator CollisionSequence()
+    {
+        yield return new WaitForSeconds(destructionAfterCollision);
+        Destroy(gameObject);
     }
 }

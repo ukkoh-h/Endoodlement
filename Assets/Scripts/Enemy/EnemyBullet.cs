@@ -1,10 +1,11 @@
-using StarterAssets;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private int dmg = 3;
+    [SerializeField] private float destructionAfterCollision = 0.01f;
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Setup(Vector3 direction)
@@ -13,15 +14,10 @@ public class EnemyBullet : MonoBehaviour
         rb.AddForce(direction, ForceMode.Impulse);
         Destroy(gameObject, 3f);
     }
-
-    /*private void OggerEnter(BoxCollider collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.TryGetComponent(out FirstPersonController target))
-        {
-            target.TakeDamage(dmg);
-            Destroy(gameObject);
-        }
-    }*/
+        StartCoroutine(CollisionSequence());
+    }
     public void Hit()
     {
         Destroy(gameObject);
@@ -30,5 +26,10 @@ public class EnemyBullet : MonoBehaviour
     public int DealDmg()
     {
         return dmg;
+    }
+    private IEnumerator CollisionSequence()
+    {
+        yield return new WaitForSeconds(destructionAfterCollision);
+        Destroy(gameObject);
     }
 }

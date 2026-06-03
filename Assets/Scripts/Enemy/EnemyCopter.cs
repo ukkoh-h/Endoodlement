@@ -24,6 +24,10 @@ public class EnemyCopter : MonoBehaviour
     [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
+    [SerializeField] private GameObject body;
+    [SerializeField] private GameObject ball;
+    [SerializeField] private GameObject shot;
+    [SerializeField] private GameObject poof;
     
 
 
@@ -32,6 +36,7 @@ public class EnemyCopter : MonoBehaviour
     private bool approaching;
     private bool rotating;
     private bool rotDirSet;
+    private bool isDying;
     private Vector3 escapeDirection;
     //float rotation;
     private Vector3 rotationDirection;
@@ -225,6 +230,8 @@ public class EnemyCopter : MonoBehaviour
         Vector3 forward = slingshotTransform.forward * 20f;
         GameObject bullet = Instantiate(projectile, slingshotTransform.position, Quaternion.identity);
         bullet.GetComponent<EnemyBullet>().Setup(forward);
+        GameObject shooting = Instantiate(shot, slingshotTransform.position, slingshotTransform.rotation);
+        Destroy(shooting, 1f);
         yield return new WaitForSeconds(0.5f);
         rotating = true;
         //if(playerInAttackRange) player.TakeDmg();
@@ -243,13 +250,23 @@ public class EnemyCopter : MonoBehaviour
 
         Death(false);
     }
+    private IEnumerator DeathSequence()
+    {
+        isDying = true;
+        GameObject poofing = Instantiate(poof, body.transform.position, Quaternion.identity);
+        Destroy(poofing, 0.5f);
+        body.SetActive(false);
+        ball.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
+    }
     private void Death(bool byMelee)
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
         if (enemyManager != null)enemyManager.CopterDead();
         AudioManager.Instance.StopAmb();
-        Destroy(gameObject);
+        if(!isDying)StartCoroutine(DeathSequence());
         
     }
     void OnDrawGizmosSelected()

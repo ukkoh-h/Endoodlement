@@ -58,7 +58,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UnityEngine.Debug.Log(isSpawning);
+        //UnityEngine.Debug.Log(isSpawning);
         if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill)
         {
             isActive = false;

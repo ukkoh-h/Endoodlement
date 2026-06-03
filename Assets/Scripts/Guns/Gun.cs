@@ -588,8 +588,9 @@ public class Gun : MonoBehaviour
 
     private void PlayMuzzleFlash()
     {
-        GameObject flashInstance = Instantiate(muzzleFlashPrefab, muzzleFlashTransform);
-        Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.03f));
+        UnityEngine.Debug.Log("Shoteffect");
+        GameObject flashInstance = Instantiate(muzzleFlashPrefab, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
+        Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.5f));
     }
 
     private void ShootGun()
@@ -609,7 +610,6 @@ public class Gun : MonoBehaviour
 
         }
         
-        PlayMuzzleFlash();
         currentBulletsInMagazine--;
 
         TryAutoReload();
@@ -617,6 +617,7 @@ public class Gun : MonoBehaviour
         for(int i = 0; i < projectailCount; i++)
         {
             PerformRaycastShot();
+            PlayMuzzleFlash();
         }
     }
 

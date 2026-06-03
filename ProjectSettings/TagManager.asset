@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Respawn Point
   - Bullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

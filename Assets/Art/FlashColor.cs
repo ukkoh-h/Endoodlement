@@ -28,7 +28,7 @@ public class FlashColor : MonoBehaviour
 
     public void Flash()
     {
-        Debug.Log("Flashing");
+        //Debug.Log("Flashing");
         StopAllCoroutines();
         StartCoroutine(DoFlash());
     }

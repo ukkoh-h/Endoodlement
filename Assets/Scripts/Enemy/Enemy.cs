@@ -22,7 +22,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
+    [SerializeField] private GameObject body;
+    [SerializeField] private GameObject ball;
     [SerializeField] private GameObject slash;
+    [SerializeField] private GameObject poof;
     /*public Renderer rend;
     public Color flashColor = Color.red;
     private Color originalColor;
@@ -30,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     private bool isAttacking;
     private bool isWalking;
-    private int eMNum;
+    private bool isDying;
 
     private void Awake()
     {
@@ -106,9 +109,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         sprite.Attack();
-        GameObject slashing = Instantiate(slash, slashPlacement);
-        Destroy(slashing, Mathf.Min(0.03f));
-        if(playerInAttackRange) playerC.TakeDmg(2);
+        GameObject slashing = Instantiate(slash, slashPlacement.position, slashPlacement.rotation);
+        Destroy(slashing, 1f);
+        if(playerInAttackRange) playerC.TakeDmg(0);
         yield return new WaitForSeconds(timeBetweenAttacks);
         AudioManager.Instance.PlaySwing();
         isAttacking = false;
@@ -123,9 +126,21 @@ public class Enemy : MonoBehaviour
         }
         sprite.Dying();
         float deathTimer = Random.Range(3f, 5f);
+
+
         yield return new WaitForSeconds(deathTimer);
 
         Death(false);
+    }
+        private IEnumerator DeathSequence()
+    {
+        isDying = true;
+        GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
+        Destroy(poofing, 1f);
+        body.SetActive(false);
+        ball.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
     /*private IEnumerator DoFlash()
     {
@@ -143,7 +158,7 @@ public class Enemy : MonoBehaviour
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
         if (enemyManager != null)enemyManager.GoblinDead();
-        Destroy(gameObject);
+        if(!isDying)StartCoroutine(DeathSequence());
     }
     public void Activate()
     {

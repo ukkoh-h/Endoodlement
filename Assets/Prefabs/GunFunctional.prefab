@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   actionMap: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  muzzleFlashPrefab: {fileID: 6043444802568196296}
+  muzzleFlashPrefab: {fileID: 2679684263130140860, guid: fb5d83b5736764349b086ba3b8bbe0b1, type: 3}
   muzzleFlashTransform: {fileID: 3899630382787702036}
   bulletSpawnTransform: {fileID: 7844242890930608117}
   DefaultProjectilePrefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
