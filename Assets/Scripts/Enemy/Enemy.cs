@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
-        enemyManager.GoblinDead();
+        if (enemyManager != null)enemyManager.GoblinDead();
         Destroy(gameObject);
     }
     public void Activate()

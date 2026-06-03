@@ -247,7 +247,7 @@ public class EnemyCopter : MonoBehaviour
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
-        enemyManager.CopterDead();
+        if (enemyManager != null)enemyManager.CopterDead();
         Destroy(gameObject);
         AudioManager.Instance.StopAmb();
     }
