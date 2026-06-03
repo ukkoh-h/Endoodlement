@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -169,6 +170,7 @@ public class EnemyCopter : MonoBehaviour
             AudioManager.Instance.StopAmb();
             return;
         }
+        
     }
 
 
@@ -247,6 +249,7 @@ public class EnemyCopter : MonoBehaviour
         //if (byMelee) ;
         enemyManager.CopterDead();
         Destroy(gameObject);
+        AudioManager.Instance.StopAmb();
     }
     void OnDrawGizmosSelected()
     {
