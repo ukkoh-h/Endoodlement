@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform slashPlacement;
     [SerializeField] private FirstPersonController playerC;
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Billboarding sprite;
     //[SerializeField] public GobAttack gobAttack;
     //[SerializeField] private GameObject bodyHitbox;
@@ -140,6 +141,7 @@ public class Enemy : MonoBehaviour
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
+        enemyManager.GoblinDead();
         Destroy(gameObject);
     }
     public void Activate()

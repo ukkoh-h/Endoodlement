@@ -301,9 +301,19 @@ public class EnemyManager : MonoBehaviour
     {
         currentGoblins++;
     }
+    public void GoblinDead()
+    {
+        currentGoblins--;
+        goblinsKilled++;
+    }
     public void CopterSpawned()
     {
         currentCopters++;
+    }
+    public void CopterDead()
+    {
+        currentCopters--;
+        coptersKilled++;
     }
     public void ActivateCamp()
     {
