@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3099783151816835358}
   - component: {fileID: 3610205180383034929}
   - component: {fileID: 5884295958526790821}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +67,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0d05d316f4860ed4b9e228d6bcff8b2b, type: 2}
+  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +102,7 @@ GameObject:
   - component: {fileID: 6314241682559810478}
   - component: {fileID: 7643207719185026721}
   - component: {fileID: 357006212244643897}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +158,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0d05d316f4860ed4b9e228d6bcff8b2b, type: 2}
+  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +274,7 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5884295958526790821}
     - renderer: {fileID: 357006212244643897}
-  - screenRelativeHeight: 0.09872298
+  - screenRelativeHeight: 0.046446327
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5884295958526790821}

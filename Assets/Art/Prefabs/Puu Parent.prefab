@@ -56,7 +56,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 127412305078819271}
-  - screenRelativeHeight: 0.09525462
+  - screenRelativeHeight: 0.050857667
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 127412305078819271}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7072361791044384998}
   - component: {fileID: 2453777036652348348}
   - component: {fileID: 127412305078819271}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Puu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +151,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4b141b46a0c23d84e99d0ae0b47b2a84, type: 2}
+  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
