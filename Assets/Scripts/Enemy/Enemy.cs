@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
         sprite.Attack();
         GameObject slashing = Instantiate(slash, slashPlacement.position, slashPlacement.rotation);
         Destroy(slashing, 1f);
-        if(playerInAttackRange) playerC.TakeDmg(0);
+        if(playerInAttackRange) playerC.TakeDmg(3);
         yield return new WaitForSeconds(timeBetweenAttacks);
         AudioManager.Instance.PlaySwing();
         isAttacking = false;
@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
 
         Death(false);
     }
-        private IEnumerator DeathSequence()
+    private IEnumerator DeathSequence()
     {
         isDying = true;
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
@@ -185,7 +185,7 @@ public class Enemy : MonoBehaviour
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
         Instantiate(health, GetRandomPosition(), Quaternion.identity);
         Instantiate(money, GetRandomPosition(), Quaternion.identity);
-        
+
         if(!isDying)StartCoroutine(DeathSequence());
     }
     private Vector3 GetRandomPosition()

@@ -288,7 +288,7 @@ public class EnemyCopter : MonoBehaviour
         float spreadX = Random.Range(-3f, 3f);
         float spreadz = Random.Range(-3f, 3f);
 
-        return new Vector3(transform.position.x + spreadX, transform.position.y, transform.position.z + spreadz);
+        return new Vector3(transform.position.x + spreadX, transform.position.y+1f, transform.position.z + spreadz);
     }
     void OnDrawGizmosSelected()
     {
