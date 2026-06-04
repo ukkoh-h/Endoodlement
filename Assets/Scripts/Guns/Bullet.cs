@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private int dmg = 3;
     [SerializeField] private float destructionAfterCollision = 0.2f;
+    [SerializeField] private GameObject poof;
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Setup(Vector3 direction)
@@ -26,6 +27,8 @@ public class Bullet : MonoBehaviour
     }
     public void Hit()
     {
+        /*GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
+        Destroy(poofing, 1f);*/
         Destroy(gameObject);
     }
 
@@ -36,6 +39,8 @@ public class Bullet : MonoBehaviour
     private IEnumerator CollisionSequence()
     {
         yield return new WaitForSeconds(destructionAfterCollision);
+        GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
+        Destroy(poofing, 1f);
         Destroy(gameObject);
     }
 }

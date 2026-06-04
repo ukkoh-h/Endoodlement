@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
 
     [Header("Muzzle Flash Settings")]
     [SerializeField] private GameObject muzzleFlashPrefab;
+    [SerializeField] private GameObject shredderMuzzleFlashPrefab;
     [SerializeField] private Transform muzzleFlashTransform;
     [SerializeField] private Transform bulletSpawnTransform;
 
@@ -150,7 +151,7 @@ public class Gun : MonoBehaviour
         gobLauncherBulletsInMagazine = gobLauncherMagazineSize;
         projectile1.SetDmg(spellBookDmg);
         projectile2.SetDmg(slingShotDmg);
-        //projectile3.SetDmg(shredderDmg);
+        projectile3.SetDmg(shredderDmg);
         //projectile4.SetDmg(gobLauncherDmg);
         if (slingShotActive) numberOfWeapons += 1;
         if (shredderActive) numberOfWeapons += 1;
@@ -588,9 +589,16 @@ public class Gun : MonoBehaviour
 
     private void PlayMuzzleFlash()
     {
-        UnityEngine.Debug.Log("Shoteffect");
-        GameObject flashInstance = Instantiate(muzzleFlashPrefab, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
-        Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.5f));
+        //UnityEngine.Debug.Log("Shoteffect");
+        if(gunType != GunType.SpellBook && gunType != GunType.Shredder)
+        {
+            GameObject flashInstance = Instantiate(muzzleFlashPrefab, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
+            Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.5f));
+        } else if (gunType == GunType.Shredder)
+        {
+            GameObject flashInstance = Instantiate(shredderMuzzleFlashPrefab, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
+            Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.5f));
+        }
     }
 
     private void ShootGun()

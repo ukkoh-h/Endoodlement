@@ -164,15 +164,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   actionMap: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   muzzleFlashPrefab: {fileID: 2679684263130140860, guid: fb5d83b5736764349b086ba3b8bbe0b1, type: 3}
+  shredderMuzzleFlashPrefab: {fileID: 7234985059409848990, guid: c94e5f5f417f3f8439a5298251fb16d1, type: 3}
   muzzleFlashTransform: {fileID: 3899630382787702036}
   bulletSpawnTransform: {fileID: 7844242890930608117}
-  DefaultProjectilePrefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
-  projectile1Prefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
-  projectile1: {fileID: 8108314899000391357, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
-  projectile2Prefab: {fileID: 8274087345736750371, guid: 7b3fec6264b53de439f84df5925aceb5, type: 3}
-  projectile2: {fileID: 3901552908041269403, guid: 7b3fec6264b53de439f84df5925aceb5, type: 3}
-  projectile3Prefab: {fileID: 2407308176949478225, guid: 85e9fed2f0327d941a1602b5acd8cb20, type: 3}
-  projectile3: {fileID: 0}
+  DefaultProjectilePrefab: {fileID: 3411657802035866495, guid: 339d336772befe348b64ae9940c31351, type: 3}
+  projectile1Prefab: {fileID: 3411657802035866495, guid: 339d336772befe348b64ae9940c31351, type: 3}
+  projectile1: {fileID: -6144098223717277931, guid: 339d336772befe348b64ae9940c31351, type: 3}
+  projectile2Prefab: {fileID: 5057770467555987800, guid: 200aad2d7ac65754598ff5f6b9523422, type: 3}
+  projectile2: {fileID: 6343867969420882354, guid: 200aad2d7ac65754598ff5f6b9523422, type: 3}
+  projectile3Prefab: {fileID: 8784254349417565159, guid: 795493f0a35a51e45afa5524b8374ca7, type: 3}
+  projectile3: {fileID: 6708000236352808111, guid: 795493f0a35a51e45afa5524b8374ca7, type: 3}
   projectile4Prefab: {fileID: 0}
   projectile4: {fileID: 0}
   gunType: 0

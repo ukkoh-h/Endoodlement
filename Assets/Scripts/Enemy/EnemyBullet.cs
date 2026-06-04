@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private int dmg = 3;
     [SerializeField] private float destructionAfterCollision = 0.01f;
+    [SerializeField] private GameObject poof;
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Setup(Vector3 direction)
@@ -30,6 +31,8 @@ public class EnemyBullet : MonoBehaviour
     private IEnumerator CollisionSequence()
     {
         yield return new WaitForSeconds(destructionAfterCollision);
+        GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
+        Destroy(poofing, 0.5f);
         Destroy(gameObject);
     }
 }

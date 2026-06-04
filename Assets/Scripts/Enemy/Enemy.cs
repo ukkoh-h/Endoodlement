@@ -138,10 +138,25 @@ public class Enemy : MonoBehaviour
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(poofing, 1f);
         body.SetActive(false);
-        ball.SetActive(true);
+        GameObject balling = Instantiate(ball, transform.position, Quaternion.identity);
+        //ball.GetComponent<Rigidbody>().AddForce(GetRandomDirection(), ForceMode.Impulse);
+        Destroy(balling, 3f);
+        //ball.SetActive(true);
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
+        /*private Vector3 GetRandomDirection()
+    {
+        Vector3 forward = transform.forward * 50f;
+        
+        float spreadX = Random.Range(-1, 1);
+        float spreadY = Random.Range(-1, 1);
+        float spreadz = Random.Range(-1, 1);
+
+        Quaternion spreadRotation = Quaternion.Euler(spreadX , spreadY, spreadz);
+
+        return spreadRotation * forward;
+    }*/
     /*private IEnumerator DoFlash()
     {
         rend.material.color = flashColor;
