@@ -142,8 +142,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15801647, y: 2.7052727, z: 1.4772147}
-  m_Center: {x: -0.033668675, y: 1.3526368, z: 0.64051574}
+  m_Size: {x: 0.15801647, y: 3.7867408, z: 1.4772147}
+  m_Center: {x: -0.033668675, y: 1.8933711, z: 0.6405157}
 --- !u!23 &3862981152920568688 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: 850eab1349862054b916033d7d139257, type: 3}
@@ -208,8 +208,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15708454, y: 2.670061, z: 1.4957623}
-  m_Center: {x: -0.034213398, y: 1.3350306, z: 0.6150313}
+  m_Size: {x: 0.15708454, y: 3.7975912, z: 1.4957623}
+  m_Center: {x: -0.034213394, y: 1.8987956, z: 0.6150313}
 --- !u!23 &6999778724976752558 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 850eab1349862054b916033d7d139257, type: 3}
