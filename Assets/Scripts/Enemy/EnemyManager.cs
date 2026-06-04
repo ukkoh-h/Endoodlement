@@ -16,9 +16,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Spawner spawn10;
     //[SerializeField] private EnemyManager nextCombat;
     [SerializeField] private CampActivationTrigger nextCombatTrigger;
+    [SerializeField] private CampActivationTrigger nextWallTrigger;
     [SerializeField] private int goblinsToKill;
     [SerializeField] private int coptersToKill;
     [SerializeField] private int mechasToKill;
+    [SerializeField] private int initialGoblins;
+    [SerializeField] private int initialCopters;
+    [SerializeField] private int initialMechas;
     [SerializeField] private float goblinCoolDown;
     [SerializeField] private float copterCoolDown;
     //[SerializeField] private int mechaCoolDown;
@@ -63,6 +67,7 @@ public class EnemyManager : MonoBehaviour
         {
             isActive = false;
             nextCombatTrigger.ActivateTrigger();
+            nextWallTrigger.ActivateTrigger();
         }
         else if (isActive && !isSpawning && combatStarted)
         {

@@ -31,12 +31,12 @@ public class Dissolver : MonoBehaviour
 
         Destroy(gameObject);
     }
-    private void Update()
+    /*private void Update()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             //Debug.Log("was Pressed");
             StartDissolver();
         }
-    }
+    }*/
 }

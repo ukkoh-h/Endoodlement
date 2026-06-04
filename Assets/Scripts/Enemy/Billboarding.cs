@@ -35,7 +35,7 @@ public class Billboarding : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 cameraPosition = mainCamera.transform.position;
-        //cameraPosition.y = transform.position.y;
+        cameraPosition.y = transform.position.y;
         transform.LookAt(cameraPosition);
         transform.Rotate(rotatedX, rotatedY + 180f, rotatedZ);
     }
