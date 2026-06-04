@@ -188,7 +188,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 5.5, z: 1}
+  m_Size: {x: 6, y: 5.5, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8902053635189681804
 MonoBehaviour:
@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 149518821528334540}
   - component: {fileID: 2902894835017574271}
   - component: {fileID: 6836034840368231640}
+  - component: {fileID: 3255053275201059095}
   m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
@@ -297,6 +298,29 @@ NavMeshAgent:
   m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &3255053275201059095
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908735517839112534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &4122507169943202036
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +413,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 4, z: 1}
+  m_Size: {x: 5, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8909729607627353201
 MonoBehaviour:

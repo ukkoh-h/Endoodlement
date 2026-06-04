@@ -66,7 +66,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float spellBookFireSpread = 0.1f;
 
     [Header("SlingShot Settings")]
-    [SerializeField] private bool slingShotActive = true;
+    [SerializeField] private bool slingShotActive;
     [SerializeField] private GameObject slingShotBodyPrefab;
     [SerializeField] private int slingShotDmg= 4;
     [SerializeField] private int slingShotMagazineSize = 1;
@@ -672,7 +672,8 @@ public class Gun : MonoBehaviour
     }
     public void GetRandomAmmo()
     {
-        float coinFlip = Random.Range(-1, 1);
+        float coinFlip = -1;
+        if (shredderActive) coinFlip = Random.Range(-1, 1);
         if (coinFlip>=0)
         {
             GetSlingShotAmmo(5);
