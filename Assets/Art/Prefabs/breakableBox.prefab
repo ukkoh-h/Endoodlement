@@ -73,6 +73,9 @@ MonoBehaviour:
   boxBroken: {fileID: 3138783983965427268}
   poofSpot: {fileID: 5335793011944536129}
   poof: {fileID: 8415639793730644988, guid: 4b47d7a55085cc84fad39d3dd0a69ea6, type: 3}
+  ammo: {fileID: 8540618874090044665, guid: 1f0e0a300cc8e6f48b57e0ac8b9a3cfd, type: 3}
+  health: {fileID: 6883367556667231634, guid: 18b864ffc33d8e042afb224cbf6b69c9, type: 3}
+  money: {fileID: 7134301354132346372, guid: fa2cfefa0d0e8d8419ec32c7bcb31a6d, type: 3}
 --- !u!1 &1005332883277953826
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +197,9 @@ MonoBehaviour:
   boxBroken: {fileID: 3138783983965427268}
   poofSpot: {fileID: 0}
   poof: {fileID: 0}
+  ammo: {fileID: 0}
+  health: {fileID: 0}
+  money: {fileID: 0}
 --- !u!1001 &7094688788125659693
 PrefabInstance:
   m_ObjectHideFlags: 0

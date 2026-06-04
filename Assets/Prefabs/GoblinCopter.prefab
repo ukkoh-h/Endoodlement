@@ -356,6 +356,9 @@ MonoBehaviour:
   ball: {fileID: 4811153203009679755, guid: 5497ff544c0b87f438c1a89abba6e1f6, type: 3}
   shot: {fileID: 2679684263130140860, guid: fb5d83b5736764349b086ba3b8bbe0b1, type: 3}
   poof: {fileID: 3424670810854366355, guid: 7ec2ecd69f6bbf24a82b335a7a212a04, type: 3}
+  ammo: {fileID: 8540618874090044665, guid: 1f0e0a300cc8e6f48b57e0ac8b9a3cfd, type: 3}
+  health: {fileID: 6883367556667231634, guid: 18b864ffc33d8e042afb224cbf6b69c9, type: 3}
+  money: {fileID: 7134301354132346372, guid: fa2cfefa0d0e8d8419ec32c7bcb31a6d, type: 3}
 --- !u!135 &6987042474897631689
 SphereCollider:
   m_ObjectHideFlags: 0

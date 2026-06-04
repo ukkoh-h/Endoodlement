@@ -28,6 +28,9 @@ public class EnemyCopter : MonoBehaviour
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject shot;
     [SerializeField] private GameObject poof;
+    [SerializeField] private GameObject ammo;
+    [SerializeField] private GameObject health;
+    [SerializeField] private GameObject money;
     
 
 
@@ -267,8 +270,25 @@ public class EnemyCopter : MonoBehaviour
         //if (byMelee) ;
         if (enemyManager != null)enemyManager.CopterDead();
         AudioManager.Instance.StopAmb();
+        if(byMelee)
+        {
+            Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
+            Instantiate(health, GetRandomPosition(), Quaternion.identity);
+            Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        }
+        Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
+        Instantiate(health, GetRandomPosition(), Quaternion.identity);
+        Instantiate(money, GetRandomPosition(), Quaternion.identity);
+
         if(!isDying)StartCoroutine(DeathSequence());
         
+    }
+    private Vector3 GetRandomPosition()
+    {   
+        float spreadX = Random.Range(-3f, 3f);
+        float spreadz = Random.Range(-3f, 3f);
+
+        return new Vector3(transform.position.x + spreadX, transform.position.y, transform.position.z + spreadz);
     }
     void OnDrawGizmosSelected()
     {

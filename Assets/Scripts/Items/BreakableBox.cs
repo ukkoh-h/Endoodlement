@@ -7,6 +7,9 @@ public class BreakableBox : MonoBehaviour
     [SerializeField] private GameObject boxBroken;
     [SerializeField] private Transform poofSpot;
     [SerializeField] private GameObject poof;
+    [SerializeField] private GameObject ammo;
+    [SerializeField] private GameObject health;
+    [SerializeField] private GameObject money;
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("got hit");
@@ -31,12 +34,22 @@ public class BreakableBox : MonoBehaviour
         boxBroken.SetActive(true);
         StartCoroutine(CleanUpSequence());
     }
+    private Vector3 GetRandomPosition()
+    {   
+        float spreadX = Random.Range(-3f, 3f);
+        float spreadz = Random.Range(-3f, 3f);
+
+        return new Vector3(poofSpot.position.x + spreadX, poofSpot.position.y, poofSpot.position.z + spreadz);
+    }
     private IEnumerator CleanUpSequence()
     {
         yield return new WaitForSeconds(0.5f);
         wholeBox.SetActive(false);
         boxBroken.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
+        Instantiate(health, GetRandomPosition(), Quaternion.identity);
+        Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

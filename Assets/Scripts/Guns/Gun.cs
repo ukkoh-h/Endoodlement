@@ -660,5 +660,26 @@ public class Gun : MonoBehaviour
 
             return 0;
     }
+    public void GetShredderAmmo(int bullets)
+    {
+        shredderAmmoCount += bullets;
+        if (gunType == GunType.Shredder) ammoCount += bullets;
+    }
+    public void GetSlingShotAmmo(int bullets)
+    {
+        slingShotAmmoCount += bullets;
+        if (gunType == GunType.Slingshot) ammoCount += bullets;
+    }
+    public void GetRandomAmmo()
+    {
+        float coinFlip = Random.Range(-1, 1);
+        if (coinFlip>=0)
+        {
+            GetSlingShotAmmo(5);
+        } else
+        {
+            GetShredderAmmo(10);
+        }
+    }
 
 }

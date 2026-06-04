@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject slash;
     [SerializeField] private GameObject poof;
+    [SerializeField] private GameObject ammo;
+    [SerializeField] private GameObject health;
+    [SerializeField] private GameObject money;
     /*public Renderer rend;
     public Color flashColor = Color.red;
     private Color originalColor;
@@ -173,7 +176,24 @@ public class Enemy : MonoBehaviour
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
         if (enemyManager != null)enemyManager.GoblinDead();
+        if (byMelee)
+        {
+            Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
+            Instantiate(health, GetRandomPosition(), Quaternion.identity);
+            Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        }
+        Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
+        Instantiate(health, GetRandomPosition(), Quaternion.identity);
+        Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        
         if(!isDying)StartCoroutine(DeathSequence());
+    }
+    private Vector3 GetRandomPosition()
+    {   
+        float spreadX = Random.Range(-3f, 3f);
+        float spreadz = Random.Range(-3f, 3f);
+
+        return new Vector3(transform.position.x + spreadX, transform.position.y, transform.position.z + spreadz);
     }
     public void Activate()
     {
