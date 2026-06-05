@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3083481254362600970}
   - component: {fileID: 6756424184433036781}
   - component: {fileID: 6270714368872606226}
-  - component: {fileID: 2269335696684568101}
   m_Layer: 9
   m_Name: Talo 3
   m_TagString: Untagged
@@ -33,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 671953413289961253}
+  - {fileID: 6567838912464636498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -103.425, z: 0}
 --- !u!33 &6756424184433036781
@@ -92,13 +92,45 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2269335696684568101
+--- !u!1 &6747543479923077499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6567838912464636498}
+  - component: {fileID: 2370696453386216832}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6567838912464636498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747543479923077499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3083481254362600970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2370696453386216832
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3398785463266250372}
+  m_GameObject: {fileID: 6747543479923077499}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
