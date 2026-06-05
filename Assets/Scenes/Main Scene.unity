@@ -2338,6 +2338,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 683931879}
     - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902894835017574271, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
       propertyPath: enemyManager
       value: 
       objectReference: {fileID: 42308684}
@@ -12120,6 +12124,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 683931880}
+    - target: {fileID: 195127695083038534, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 195127695083038534, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
       propertyPath: enemyManager
       value: 

@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int hitPoints;
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
+    [SerializeField] private bool isExecutableFromStart;
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject slash;
@@ -80,6 +81,7 @@ public class Enemy : MonoBehaviour
         flash.Flash();
         if (hitPoints <= 0) StartCoroutine(DyingSequence());
         if (hitPoints <= 0 && !isActive) Death(true);
+        if (isExecutableFromStart) Death(true);
     }
     private void ChasePlayer()
     {
