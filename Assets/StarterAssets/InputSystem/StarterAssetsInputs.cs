@@ -43,7 +43,7 @@ namespace StarterAssets
 		{
 			JumpInput(value.isPressed);
             Debug.Log("Jumping!");
-            AudioManager.Instance.PlaySFX("Jump");
+           
         }
 
 		public void OnSprint(InputValue value)
@@ -56,7 +56,7 @@ namespace StarterAssets
         {
             DashInput(value.isPressed);
             Debug.Log("Dashing!");
-			AudioManager.Instance.PlaySFX("Dash");
+			
         }
 
         public void OnRespawn(InputValue value)

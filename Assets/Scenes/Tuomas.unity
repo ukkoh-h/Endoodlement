@@ -2319,8 +2319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684673a2e2933bd4a8b82afc197c200d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shop
-  ShopWindow: {fileID: 1157987292}
-  _isOpen: 0
 --- !u!1 &717378600
 GameObject:
   m_ObjectHideFlags: 0
@@ -6648,7 +6646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: pitchVariance
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: Swing.Array.size
@@ -6718,6 +6716,10 @@ PrefabInstance:
       propertyPath: 'FootGravel.Array.data[9]'
       value: 
       objectReference: {fileID: 8300000, guid: 744c386af6cce784da735ebe88793037, type: 3}
+    - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
+      propertyPath: sfxSounds.Array.data[6].name
+      value: PaperCrum3
+      objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[8].clip
       value: 
@@ -7088,6 +7090,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 16842526}
     - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: DashCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: DashEase.m_Curve.Array.data[0].time
       value: -0.13819504
       objectReference: {fileID: 0}
@@ -7128,9 +7134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13dcfc881bbf4c44846e49a528d5672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
-  _input: {fileID: 0}
-  _CastDistance: 5
-  _raycastOffset: {x: 0, y: 1, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

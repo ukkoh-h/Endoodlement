@@ -5,6 +5,8 @@ using System.Collections;
 using Random = UnityEngine.Random;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.Rendering;
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
@@ -77,9 +79,8 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-            float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
-            sfxSource.PlayOneShot(s.clip);
-            sfxSource.pitch = randomPitch;
+            
+            sfxSource.PlayOneShot(s.clip);        
             sfxSource.Play();
 
 

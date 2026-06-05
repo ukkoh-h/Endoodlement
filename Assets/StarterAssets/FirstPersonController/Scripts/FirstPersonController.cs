@@ -265,8 +265,9 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-					
-				}
+                    AudioManager.Instance.PlaySFX("Jump");
+
+                }
 
 				// jump timeout
 				if (_jumpTimeoutDelta >= 0.0f)
@@ -303,6 +304,7 @@ namespace StarterAssets
             if (_dashCooldownTimer > 0f)
             {
                 _dashCooldownTimer -= Time.deltaTime;
+				_input.dash = false;
             }
 
             // Start dash
@@ -312,7 +314,7 @@ namespace StarterAssets
 
                 _dashTimer = DashDuration;
                 _dashCooldownTimer = DashCooldown;
-
+                AudioManager.Instance.PlaySFX("Dash");
                 // Dash in movement direction
                 Vector3 moveDir = transform.right * _input.move.x + transform.forward * _input.move.y;
 
