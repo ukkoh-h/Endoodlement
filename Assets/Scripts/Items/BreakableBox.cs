@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class BreakableBox : MonoBehaviour
@@ -10,11 +11,13 @@ public class BreakableBox : MonoBehaviour
     [SerializeField] private GameObject ammo;
     [SerializeField] private GameObject health;
     [SerializeField] private GameObject money;
+    private bool hit;
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("got hit");
-        if(other.CompareTag("Bullet"))
+        if(!hit && other.CompareTag("Bullet"))
         {
+            hit = true;
             BreakBox();
             if (other.TryGetComponent(out Bullet bullet))
             {
