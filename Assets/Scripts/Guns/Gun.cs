@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,6 +53,7 @@ public class Gun : MonoBehaviour
     [Header("SpellBook Settings")]
     //[SerializeField] private GunType gunType;
     [SerializeField] private GameObject spellBookBodyPrefab;
+    [SerializeField] private Animator spellBookAnimation;
     [SerializeField] private int spellBookDmg = 3;
     [SerializeField] private int spellBookMagazineSize = 1;
     [SerializeField] private int spellBookAmmoCount = 30;
@@ -68,6 +67,7 @@ public class Gun : MonoBehaviour
     [Header("SlingShot Settings")]
     [SerializeField] private bool slingShotActive;
     [SerializeField] private GameObject slingShotBodyPrefab;
+    [SerializeField] private GameObject slingShotUpgradedBodyPrefab;
     [SerializeField] private int slingShotDmg= 4;
     [SerializeField] private int slingShotMagazineSize = 1;
     [SerializeField] private int slingShotAmmoCount = 30;
@@ -81,6 +81,7 @@ public class Gun : MonoBehaviour
     [Header("Shredder Settings")]
     [SerializeField] private bool shredderActive;
     [SerializeField] private GameObject shredderBodyPrefab;
+    [SerializeField] private GameObject shredderBodyUpGradedPrefab;
     [SerializeField] private int shredderDmg = 2;
     [SerializeField] private int shredderMagazineSize = 30;
     [SerializeField] private int shredderAmmoCount = 120;
@@ -139,7 +140,7 @@ public class Gun : MonoBehaviour
     private float timeReloaded;
     private float defaultRotationAngle;
     private float currentRotationAngle;
-    private float beingReloadedAngle = 30.0f;
+    private float beingReloadedAngle = 55.0f;
 
     private void Awake()
     {
@@ -598,6 +599,9 @@ public class Gun : MonoBehaviour
         {
             GameObject flashInstance = Instantiate(shredderMuzzleFlashPrefab, muzzleFlashTransform.position, muzzleFlashTransform.rotation);
             Destroy(flashInstance, Mathf.Min(delayBetweenBullets, 0.5f));
+        } else if (gunType == GunType.SpellBook)
+        {
+            spellBookAnimation.Play("Arms_Throw");
         }
     }
 
@@ -618,14 +622,15 @@ public class Gun : MonoBehaviour
 
         }
         
-        currentBulletsInMagazine--;
-
-        TryAutoReload();
-        
+        if (gunType != GunType.SpellBook)
+        {
+            currentBulletsInMagazine--;
+            TryAutoReload();
+            PlayMuzzleFlash();
+        }
         for(int i = 0; i < projectailCount; i++)
         {
             PerformRaycastShot();
-            PlayMuzzleFlash();
         }
     }
 
@@ -637,11 +642,35 @@ public class Gun : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenBullets);
         }
     }
+    private IEnumerator AbnormalShootRoutine()
+    {
+        if (CheckIfGunCanShoot())
+        {
+            PlayMuzzleFlash();
+            yield return new WaitForSeconds(delayBetweenBullets/5*3);
+            ShootGun();
+            yield return new WaitForSeconds(delayBetweenBullets/5*2);
+            //yield return new WaitForSeconds(delayBetweenBullets);
+        }
+    }
 
     private IEnumerator ShootSequence()
     {
         canShoot = false;
-        yield return NormalShootRoutine();
+        switch (gunType)
+        {
+            case GunType.SpellBook:
+                yield return AbnormalShootRoutine();
+                break;
+            case GunType.Slingshot:
+                yield return NormalShootRoutine();
+                break;
+            case GunType.Shredder:
+                yield return NormalShootRoutine();
+                break;
+
+        }
+        //yield return NormalShootRoutine();
         canShoot = true;
     }
     public int GetSwitchWeaponInput()
@@ -669,6 +698,10 @@ public class Gun : MonoBehaviour
     {
         slingShotAmmoCount += bullets;
         if (gunType == GunType.Slingshot) ammoCount += bullets;
+    }
+    public void UpgradeSlingShot(int dmg, int projectiles, float reload)
+    {
+        
     }
     public void GetRandomAmmo()
     {

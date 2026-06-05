@@ -8,12 +8,13 @@ public class EnemyMecha : MonoBehaviour
 [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private Transform player;
     //[SerializeField] private CopterBillboarding sprite;
+    [SerializeField] private Animator mechaAnimator;
     [SerializeField] private FlashColor flash;
     [SerializeField] private EnemyManager enemyManager;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform canonTransform1;
-    [SerializeField] private Transform canonTransform12;
+    [SerializeField] private Transform canonTransform2;
     [SerializeField] private float attackRangeUpper;
     [SerializeField] private float attackRangeLower;
     [SerializeField] private float timeBetweenAttacks;
@@ -49,6 +50,9 @@ public class EnemyMecha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 relativePos = player.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.1f);
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         bool playerTooClose = Physics.CheckSphere(transform.position, attackRangeLower, playerLayer);
 
@@ -63,7 +67,7 @@ public class EnemyMecha : MonoBehaviour
         {
             //Debug.Log("escaping");
             SetEscapeDirection();
-            EscapePlayer();
+            Retreat();
             if(approaching)
             {
                 approaching = false;
@@ -86,7 +90,7 @@ public class EnemyMecha : MonoBehaviour
             TryAttackPlayer();
             if (playerInSweetSpot) 
             {
-                EscapePlayer();
+                Retreat();
                 if(approaching)
                 {
                     approaching = false;
@@ -176,7 +180,7 @@ public class EnemyMecha : MonoBehaviour
         
         Debug.DrawRay(transform.position, rotationDirection, Color.orangeRed);
     }*/
-    private void EscapePlayer()
+    private void Retreat()
     {
         //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3);
         navAgent.SetDestination(transform.position + escapeDirection);
@@ -199,17 +203,19 @@ public class EnemyMecha : MonoBehaviour
     {
         isAttacking = true;
         navAgent.SetDestination(transform.position);
+        mechaAnimator.Play("Armature|shoot");
         yield return new WaitForSeconds(0.5f);
         //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
-        Vector3 forward = canonTransform1.forward * 20f;
+        Vector3 forward1 = canonTransform1.forward * 20f;
         GameObject bullet1 = Instantiate(projectile, canonTransform1.position, Quaternion.identity);
-        bullet1.GetComponent<EnemyBullet>().Setup(forward);
+        bullet1.GetComponent<EnemyBullet>().Setup(forward1);
         GameObject shooting1 = Instantiate(shot, canonTransform1.position, canonTransform1.rotation);
         Destroy(shooting1, 1f);
-        yield return new WaitForSeconds(0.5f);
-        GameObject bullet2 = Instantiate(projectile, canonTransform1.position, Quaternion.identity);
-        bullet2.GetComponent<EnemyBullet>().Setup(forward);
-        GameObject shooting2 = Instantiate(shot, canonTransform1.position, canonTransform1.rotation);
+
+        Vector3 forward2 = canonTransform2.forward * 20f;
+        GameObject bullet2 = Instantiate(projectile, canonTransform2.position, Quaternion.identity);
+        bullet2.GetComponent<EnemyBullet>().Setup(forward2);
+        GameObject shooting2 = Instantiate(shot, canonTransform2.position, canonTransform2.rotation);
         Destroy(shooting2, 1f);
         rotating = true;
         //if(playerInAttackRange) player.TakeDmg();

@@ -7294,9 +7294,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2679684263130140860, guid: fb5d83b5736764349b086ba3b8bbe0b1, type: 3}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderAmmoCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderReloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: slingShotAmmoCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: slingShotReloadTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: bulletSpawnTransform
       value: 
       objectReference: {fileID: 909608824}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderMagazineSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderDelayBetweenBullets
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4815726764916300649, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_Layer
       value: 6
