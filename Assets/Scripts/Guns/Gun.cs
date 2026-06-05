@@ -703,6 +703,10 @@ public class Gun : MonoBehaviour
     {
         
     }
+    public void UpgradeSlingShot(int dmg, int projectiles, float reload, float shotDelay)
+    {
+        
+    }
     public void GetRandomAmmo()
     {
         float coinFlip = -1;
