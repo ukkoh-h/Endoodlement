@@ -50,9 +50,10 @@ public class EnemyMecha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 relativePos = player.position - transform.position;
+        Vector3 relativePos = Vector3.Normalize(player.position - transform.position);
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.1f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.05f);
+
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         bool playerTooClose = Physics.CheckSphere(transform.position, attackRangeLower, playerLayer);
 
