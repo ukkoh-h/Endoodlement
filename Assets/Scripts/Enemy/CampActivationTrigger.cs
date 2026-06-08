@@ -14,6 +14,7 @@ public class CampActivationTrigger : MonoBehaviour
     {
         if(isActive && other.CompareTag("Player"))
         {
+            isActive = false;
             if(isWall) dissolver.StartDissolver();
             else nextCombat.ActivateCamp();
         }

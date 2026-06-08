@@ -32,6 +32,7 @@ public class EnemyMecha : MonoBehaviour
 
 
     private bool isAttacking;
+    private bool doneAiming;
     private bool retreating;
     private bool approaching;
     private bool rotating;
@@ -50,9 +51,12 @@ public class EnemyMecha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 relativePos = Vector3.Normalize(player.position - transform.position);
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.05f);
+        if (!isAttacking) 
+        {
+            Vector3 relativePos = Vector3.Normalize(player.position - transform.position);
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.05f);
+        }
 
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         bool playerTooClose = Physics.CheckSphere(transform.position, attackRangeLower, playerLayer);
@@ -88,8 +92,8 @@ public class EnemyMecha : MonoBehaviour
             {
                 approaching = false;
             }
-            TryAttackPlayer();
-            if (playerInSweetSpot) 
+            /*if (doneAiming)*/ TryAttackPlayer();
+            /*if (playerInSweetSpot) 
             {
                 Retreat();
                 if(approaching)
@@ -100,7 +104,7 @@ public class EnemyMecha : MonoBehaviour
                 {
                     retreating = true;
                 }
-            }
+            }*/
         }
         else if (isActive)
         {
@@ -133,7 +137,6 @@ public class EnemyMecha : MonoBehaviour
     private void ChasePlayer()
     {
         navAgent.SetDestination(player.position);
-       
     }
 
 
@@ -165,22 +168,6 @@ public class EnemyMecha : MonoBehaviour
         escapeDirection = Vector3.Normalize(player.position - transform.position) * -3f;
         Debug.DrawRay(transform.position, escapeDirection, Color.magenta);
     }
-    /*private void SetRotationDirection()
-    {
-        //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3)
-        
-        //rotationDirection = new Vector3(transform.position.x-player.position.z , transform.position.y, transform.position.z-player.position.x);
-        rotDirSet = true;
-
-        float randomZ = Random.Range(-5f, 5f);
-        float randomX = Random.Range(-5f, 5f);
-        rotationDirection = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        //Debug.Log(rotationDirection);
-        //sprite.Rotating(randomX, randomZ, timeBetweenAttacks);
-
-        
-        Debug.DrawRay(transform.position, rotationDirection, Color.orangeRed);
-    }*/
     private void Retreat()
     {
         //escapeDirection = new Vector3(player.position.x + transform.position.x * 3, transform.position.y, player.position.z + transform.position.z * 3);
@@ -232,6 +219,12 @@ public class EnemyMecha : MonoBehaviour
         yield return new WaitForSeconds(deathTimer);
 
         Death(false);
+    }
+    private IEnumerator FirstAimSequence()
+    {
+        yield return new WaitForSeconds(5f);
+
+        doneAiming = true;
     }
     private IEnumerator DeathSequence()
     {

@@ -216,7 +216,7 @@ public class Gun : MonoBehaviour
     {
         if (isReloading) reloadCanceled = true;
         if (isSwitching) switchCanceled = true;
-        StartCoroutine(MeleeSequence());
+        if (!isMeleing) StartCoroutine(MeleeSequence());
     }
     private void OnSwitch1Performed(InputAction.CallbackContext context)
     {
@@ -488,7 +488,7 @@ public class Gun : MonoBehaviour
             timeReloaded = 0;
             reloadStarted = true;
             currentRotationAngle = transform.localEulerAngles.y;
-            yield return new WaitForSeconds(1f/3);
+            yield return new WaitForSeconds(0.2f);
             weaponLowered = true;
         }
         melee.MeleeAttack();
@@ -496,7 +496,7 @@ public class Gun : MonoBehaviour
         if(!isSwitching)
         {
             timeReloaded = 0;
-            reloadStarted = true;
+            reloadStarted = false;
             currentRotationAngle = transform.localEulerAngles.y;
             yield return new WaitForSeconds(1f/3);
             weaponLowered = false;

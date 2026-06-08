@@ -7,9 +7,10 @@ public class MeleeBullet : MonoBehaviour
 
     public void Setup(Vector3 direction)
     {
+        //Debug.Log("melee shot");
         rb = GetComponent<Rigidbody>();
         rb.AddForce(direction, ForceMode.Impulse);
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.15f);
     }
 
     public void Hit()

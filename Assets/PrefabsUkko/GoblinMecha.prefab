@@ -1,59 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &298806454860860161
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3412836696358375756}
-  - component: {fileID: 4421047847424265122}
-  m_Layer: 0
-  m_Name: NavAgent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3412836696358375756
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298806454860860161}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7818620686488778344}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &4421047847424265122
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298806454860860161}
-  m_Enabled: 1
-  m_AgentTypeID: -334000983
-  m_Radius: 3
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 4.3
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &616326876523933230
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616326876523933230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -2.366, y: 3.43, z: 2.719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4240600852699779016}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &769637345970597052
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +687,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5614365565398165045}
   - component: {fileID: 6324486484813876873}
+  - component: {fileID: 9215726779288672155}
+  - component: {fileID: 592710012970633335}
   m_Layer: 9
   m_Name: weakspot
   m_TagString: Untagged
@@ -839,6 +787,43 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.011303055, y: 0.0033202497, z: -0.0039062696}
     m_Extent: {x: 0.01039029, y: 0.0119515965, z: 0.010259236}
   m_DirtyAABB: 0
+--- !u!114 &9215726779288672155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925621591990102243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7950be91658c0c6498c1dca80cdc003e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBox
+  isHead: 1
+  goblin: {fileID: 0}
+  goblinCopter: {fileID: 0}
+  goblinMecha: {fileID: 3203257029484582480}
+--- !u!65 &592710012970633335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925621591990102243}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0518482, y: 2.3903203, z: 2.0780592}
+  m_Center: {x: -0.39612022, y: 3.255705, z: -0.97191906}
 --- !u!1 &3974643983540118451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1734,12 @@ GameObject:
   - component: {fileID: 7818620686488778344}
   - component: {fileID: 7016063095234882542}
   - component: {fileID: 3203257029484582480}
+  - component: {fileID: 452725824852937193}
+  - component: {fileID: 868225217025195376}
+  - component: {fileID: 2125084462948188688}
+  - component: {fileID: 2821282971430373694}
+  - component: {fileID: 8635338314208532556}
+  - component: {fileID: 3094415136790363541}
   m_Layer: 0
   m_Name: GoblinMecha
   m_TagString: Untagged
@@ -1781,7 +1772,6 @@ Transform:
   - {fileID: 1888362212104666752}
   - {fileID: 4240600852699779016}
   - {fileID: 5614365565398165045}
-  - {fileID: 3412836696358375756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7016063095234882542
@@ -1818,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d692bfc5ce5409c43bfa6022b89a4676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMecha
-  navAgent: {fileID: 4421047847424265122}
+  navAgent: {fileID: 452725824852937193}
   player: {fileID: 0}
   mechaAnimator: {fileID: 7016063095234882542}
   flash: {fileID: 0}
@@ -1828,7 +1818,7 @@ MonoBehaviour:
   canonTransform2: {fileID: 8808119760597441319}
   attackRangeUpper: 20
   attackRangeLower: 5
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 5
   hitPoints: 20
   groundLayer:
     serializedVersion: 2
@@ -1844,6 +1834,128 @@ MonoBehaviour:
   ammoDrop: {fileID: 8540618874090044665, guid: 1f0e0a300cc8e6f48b57e0ac8b9a3cfd, type: 3}
   healthDrop: {fileID: 6883367556667231634, guid: 18b864ffc33d8e042afb224cbf6b69c9, type: 3}
   moneyDrop: {fileID: 7134301354132346372, guid: fa2cfefa0d0e8d8419ec32c7bcb31a6d, type: 3}
+--- !u!195 &452725824852937193
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 3
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.3
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &868225217025195376
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  serializedVersion: 5
+  m_Mass: 20
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2125084462948188688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7, y: 4.2, z: 3.7}
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!65 &2821282971430373694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7, y: 4.2, z: 3}
+  m_Center: {x: 0, y: 2, z: 0.4}
+--- !u!114 &8635338314208532556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7950be91658c0c6498c1dca80cdc003e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBox
+  isHead: 0
+  goblin: {fileID: 0}
+  goblinCopter: {fileID: 0}
+  goblinMecha: {fileID: 3203257029484582480}
+--- !u!114 &3094415136790363541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478933868475542738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashColor
+  color: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
 --- !u!1 &8209046021615863879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,13 +2076,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8848125768710129796}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 2.39, y: 3.43, z: 2.719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4240600852699779016}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8868139064250622539
 GameObject:
   m_ObjectHideFlags: 0
