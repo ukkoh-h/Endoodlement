@@ -295,6 +295,7 @@ MonoBehaviour:
   spellBookFireSpread: 0.1
   slingShotActive: 1
   slingShotBodyPrefab: {fileID: 3280356976815280020}
+  slingShotUpgradedBodyPrefab: {fileID: 7390333160061484236}
   slingShotDmg: 4
   slingShotMagazineSize: 1
   slingShotAmmoCount: 1000
@@ -306,6 +307,7 @@ MonoBehaviour:
   slingShotFireSpread: 0.1
   shredderActive: 1
   shredderBodyPrefab: {fileID: 435534360718508683}
+  shredderBodyUpgradedPrefab: {fileID: 2966277727794129753}
   shredderDmg: 2
   shredderMagazineSize: 1000
   shredderAmmoCount: 120
@@ -317,7 +319,6 @@ MonoBehaviour:
   shredderFireSpread: 1
   gobLauncherActive: 0
   gobLauncherBodyPrefab: {fileID: 0}
-  gobLauncherDmg: 10
   gobLauncherMagazineSize: 1
   gobLauncherAmmoCount: 3
   gobLauncherProjectailCount: 1
@@ -327,6 +328,7 @@ MonoBehaviour:
   gobLauncherReloadTime: 0.5
   gobLauncherFireSpread: 0.1
   autoReload: 1
+  melee: {fileID: 0}
 --- !u!1 &2185614352091291479
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +468,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2966277727794129753}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.5372997, z: 0, w: 0.8433914}
+  m_LocalPosition: {x: 0.19, y: -0.2, z: 0.5}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1215610407712764119}
@@ -679,9 +681,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7390333160061484236}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.1736483, z: 0, w: -0.9848077}
+  m_LocalPosition: {x: 0.12, y: -0.19, z: 0.5}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1215610407712764119}

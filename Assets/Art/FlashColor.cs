@@ -25,12 +25,32 @@ public class FlashColor : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
         rend/*.material*/.color = originalColor;
     }
+    private IEnumerator DoFlashing()
+    {
+        for(int i = 0; i < 50; i++)
+        {
+            rend/*.material*/.color = flashColor;
+            yield return new WaitForSeconds(flashDuration);
+            rend/*.material*/.color = originalColor;
+            yield return new WaitForSeconds(flashDuration);
+        }
+    }
 
     public void Flash()
     {
         //Debug.Log("Flashing");
         StopAllCoroutines();
         StartCoroutine(DoFlash());
+    }
+    public void Flashing()
+    {
+        //Debug.Log("Flashing");
+        StopAllCoroutines();
+        StartCoroutine(DoFlashing());
+    }
+    public void StopFlashing()
+    {
+        StopAllCoroutines();
     }
 
     private void Update()
