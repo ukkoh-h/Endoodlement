@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using StarterAssets;
 
 public class ExplosiveEnemyBullet : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class ExplosiveEnemyBullet : MonoBehaviour
     private IEnumerator CollisionSequence()
     {
         bool playerInAttackRange = Physics.CheckSphere(transform.position, 3f, playerLayer);
+        if(playerInAttackRange) player.GetComponent<FirstPersonController>().TakeDmg(dmg);
         yield return new WaitForSeconds(destructionAfterCollision);
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(poofing, 0.5f);

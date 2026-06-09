@@ -51,12 +51,9 @@ public class EnemyMecha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAttacking) 
-        {
-            Vector3 relativePos = Vector3.Normalize(player.position - transform.position);
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.05f);
-        }
+
+            Vector3 relativePos;
+            Quaternion rotation;
 
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         bool playerTooClose = Physics.CheckSphere(transform.position, attackRangeLower, playerLayer);
@@ -73,6 +70,11 @@ public class EnemyMecha : MonoBehaviour
             //Debug.Log("escaping");
             SetEscapeDirection();
             Retreat();
+            navAgent.speed = 3.5f;
+            navAgent.updateRotation = false;
+            relativePos = Vector3.Normalize(player.position - transform.position);
+            rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * 75f);
             if(approaching)
             {
                 approaching = false;
@@ -105,10 +107,18 @@ public class EnemyMecha : MonoBehaviour
                     retreating = true;
                 }
             }*/
+            ChasePlayer();
+            navAgent.speed = 0.05f;
+            navAgent.updateRotation = false;
+            relativePos = Vector3.Normalize(player.position - transform.position);
+            rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * 75f);
         }
         else if (isActive)
         {
             ChasePlayer();
+            navAgent.speed = 3.5f;
+            navAgent.updateRotation = true;
             if(!approaching)
             {
                 approaching = true;

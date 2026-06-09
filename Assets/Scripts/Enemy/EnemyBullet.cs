@@ -18,10 +18,12 @@ public class EnemyBullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(CollisionSequence());
+        Debug.Log($"{gameObject} collided with {collision.collider.gameObject}");
     }
     public void Hit()
     {
         Destroy(gameObject);
+        Debug.Log("Bullet Hit");
     }
 
     public int DealDmg()
@@ -32,6 +34,7 @@ public class EnemyBullet : MonoBehaviour
     {
         yield return new WaitForSeconds(destructionAfterCollision);
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
+        Debug.Log("Bullet collision sequence done");
         Destroy(poofing, 0.5f);
         Destroy(gameObject);
     }

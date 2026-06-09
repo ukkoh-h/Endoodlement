@@ -1,12 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7234833424352642802
+--- !u!1001 &2871691592104818182
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 9100483016981108352}
+    m_TransformParent: {fileID: 3543187049413291140}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_LocalScale.x
@@ -81,12 +81,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
---- !u!4 &7200679486479982873 stripped
+--- !u!4 &2328630614214791661 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
-  m_PrefabInstance: {fileID: 7234833424352642802}
+  m_PrefabInstance: {fileID: 2871691592104818182}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8773522707495989611
+--- !u!1001 &3936520613517478767
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -108,15 +108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 639.7628
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 391.55182
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_Name
-      value: Enemypaperipallo
+      value: ExplosiveEnemypaperipallo
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       propertyPath: m_Layer
@@ -167,30 +167,35 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7200679486479982873}
+      addedObject: {fileID: 2328630614214791661}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7432586702858517950}
+      addedObject: {fileID: 3272195118394321330}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 759831136296570984}
+      addedObject: {fileID: 2925239804778536307}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4684024396634438476}
+      addedObject: {fileID: 8270177288272466238}
   m_SourcePrefab: {fileID: 100100000, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
---- !u!1 &8430942715198442554 stripped
+--- !u!4 &3543187049413291140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
+  m_PrefabInstance: {fileID: 3936520613517478767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4206429628303898174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
-  m_PrefabInstance: {fileID: 8773522707495989611}
+  m_PrefabInstance: {fileID: 3936520613517478767}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &7432586702858517950
+--- !u!54 &3272195118394321330
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430942715198442554}
+  m_GameObject: {fileID: 4206429628303898174}
   serializedVersion: 5
   m_Mass: 0.5
   m_LinearDamping: 0
@@ -211,13 +216,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!135 &759831136296570984
+--- !u!135 &2925239804778536307
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430942715198442554}
+  m_GameObject: {fileID: 4206429628303898174}
   m_Material: {fileID: 13400000, guid: 4840f952257199c4a91fa4c76a94bdad, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -232,23 +237,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.15
   m_Center: {x: 0.000103766564, y: 0.00009409826, z: -0.00012990748}
---- !u!114 &4684024396634438476
+--- !u!114 &8270177288272466238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430942715198442554}
+  m_GameObject: {fileID: 4206429628303898174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d173d9141148f8843a5c5db3d5fb800e, type: 3}
+  m_Script: {fileID: 11500000, guid: e88ef84e0b0fb9648863d30495094d99, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
+  m_EditorClassIdentifier: Assembly-CSharp::ExplosiveEnemyBullet
   dmg: 3
   destructionAfterCollision: 0.01
-  poof: {fileID: 8329130852021132774, guid: 158ec4fda078c2641b96a4fa2af35133, type: 3}
---- !u!4 &9100483016981108352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0f0569a4d795924d86341f0238db0f1, type: 3}
-  m_PrefabInstance: {fileID: 8773522707495989611}
-  m_PrefabAsset: {fileID: 0}
+  poof: {fileID: 8415639793730644988, guid: 4b47d7a55085cc84fad39d3dd0a69ea6, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 9
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
