@@ -248,7 +248,8 @@ public class EnemyCopter : MonoBehaviour
     {
         isActive = false;
         sprite.Dying();
-        float deathTimer = Random.Range(5f, 7f);
+        flash.Flashing();
+        float deathTimer = Random.Range(5f, 6f);
         yield return new WaitForSeconds(deathTimer);
 
         Death(false);
@@ -256,6 +257,7 @@ public class EnemyCopter : MonoBehaviour
     private IEnumerator DeathSequence()
     {
         isDying = true;
+        flash.StopFlashing();
         GameObject poofing = Instantiate(poof, body.transform.position, Quaternion.identity);
         Destroy(poofing, 0.5f);
         body.SetActive(false);

@@ -130,7 +130,8 @@ public class Enemy : MonoBehaviour
             sprite.Walk();
         }
         sprite.Dying();
-        float deathTimer = Random.Range(3f, 5f);
+        flash.Flashing();
+        float deathTimer = Random.Range(4f, 5f);
 
 
         yield return new WaitForSeconds(deathTimer);
@@ -140,6 +141,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator DeathSequence()
     {
         isDying = true;
+        flash.StopFlashing();
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(poofing, 1f);
         body.SetActive(false);

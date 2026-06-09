@@ -91,7 +91,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void CombatStart()
     {
-        for(int i = 0; i < goblinsToKill; i++)
+        for(int i = 0; i < initialGoblins; i++)
         {
             if(spawnRotation==0) spawnRotation = numberOfSpawns;
             switch(spawnRotation)
@@ -138,7 +138,7 @@ public class EnemyManager : MonoBehaviour
                 break;
             }
         }
-        for(int i = 0; i < coptersToKill; i++)
+        for(int i = 0; i < initialCopters; i++)
         {
             if(spawnRotation==0) spawnRotation = numberOfSpawns;
             switch(spawnRotation)

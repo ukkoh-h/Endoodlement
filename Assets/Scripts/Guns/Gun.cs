@@ -81,7 +81,7 @@ public class Gun : MonoBehaviour
     [Header("Shredder Settings")]
     [SerializeField] private bool shredderActive;
     [SerializeField] private GameObject shredderBodyPrefab;
-    [SerializeField] private GameObject shredderBodyUpGradedPrefab;
+    [SerializeField] private GameObject shredderBodyUpgradedPrefab;
     [SerializeField] private int shredderDmg = 2;
     [SerializeField] private int shredderMagazineSize = 30;
     [SerializeField] private int shredderAmmoCount = 120;
@@ -95,7 +95,7 @@ public class Gun : MonoBehaviour
     [Header("GoblinLauncher Settings")]
     [SerializeField] private bool gobLauncherActive;
     [SerializeField] private GameObject gobLauncherBodyPrefab;
-    [SerializeField] private int gobLauncherDmg = 10;
+    //[SerializeField] private int gobLauncherDmg = 10;
     [SerializeField] private int gobLauncherMagazineSize = 1;
     [SerializeField] private int gobLauncherAmmoCount = 3;
     [SerializeField] private int gobLauncherProjectailCount = 1;
@@ -108,12 +108,16 @@ public class Gun : MonoBehaviour
     [Header("Reload Settings")]
     [SerializeField] private bool autoReload = true;
 
+    [Header("Melee")]
+    [SerializeField] private Melee melee;
+
     /*[Header("Shooting Raycast Settings")]
     [SerializeField] private float fireDistance = 100f;
     [SerializeField] private float fireSpread = 0.1f;
     [SerializeField] private LayerMask hitLayers;*/
 
     private InputAction shootAction;
+    private InputAction meleeAction;
     private InputAction reloadAction;
     private InputAction switchAction1;
     private InputAction switchAction2;
@@ -128,8 +132,11 @@ public class Gun : MonoBehaviour
     private int gobLauncherBulletsInMagazine;
     private int currentWeapon;
     private int numberOfWeapons = 1;
+    private int slingshotUpgradeLevel;
+    private int shredderUpgradeLevel;
     private bool isTryingToShoot;
     private bool canShoot = true;
+    private bool isMeleing;
     private bool isReloading;
     private bool isSwitching;
     private bool reloadCanceled;
@@ -162,7 +169,7 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         //UnityEngine.Debug.Log(currentBulletsInMagazine);
-        if (isTryingToShoot && canShoot && !isReloading && !isSwitching)
+        if (isTryingToShoot && canShoot && !isReloading && !isSwitching && !isMeleing)
         {
             StartCoroutine(ShootSequence());
         }
@@ -173,6 +180,10 @@ public class Gun : MonoBehaviour
         if (timeReloaded < 1 && isSwitching)
         {
             timeReloaded += Time.deltaTime * 7 * (reloadTime/(reloadTime*reloadTime));
+        }
+        if (timeReloaded < 1 && isMeleing && !isSwitching)
+        {
+            timeReloaded += Time.deltaTime * 14;
         }
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.y, Mathf.LerpAngle(currentRotationAngle, defaultRotationAngle + (reloadStarted ? beingReloadedAngle : 0), timeReloaded), transform.localEulerAngles.z);
         if (isSwitching && weaponLowered && !switchListening)
@@ -200,6 +211,12 @@ public class Gun : MonoBehaviour
     private void OnReloadPerformed(InputAction.CallbackContext context)
     {
         AttemptReload();
+    }
+    private void OnMeleePerformed(InputAction.CallbackContext context)
+    {
+        if (isReloading) reloadCanceled = true;
+        if (isSwitching) switchCanceled = true;
+        if (!isMeleing) StartCoroutine(MeleeSequence());
     }
     private void OnSwitch1Performed(InputAction.CallbackContext context)
     {
@@ -289,6 +306,7 @@ public class Gun : MonoBehaviour
     {
         InputActionMap gunActionMap = actionMap.FindActionMap("Gun");
         shootAction = gunActionMap.FindAction("Shoot");
+        meleeAction = gunActionMap.FindAction("Melee");
         reloadAction = gunActionMap.FindAction("Reload");
         switchAction1 = gunActionMap.FindAction("Switch1");
         switchAction2 = gunActionMap.FindAction("Switch2");
@@ -298,6 +316,7 @@ public class Gun : MonoBehaviour
 
 
         shootAction.performed += OnShootPerformed;
+        meleeAction.performed += OnMeleePerformed;
         shootAction.canceled += OnShootCanceled;
         reloadAction.performed += OnReloadPerformed;
         switchAction1.performed += OnSwitch1Performed;
@@ -307,6 +326,7 @@ public class Gun : MonoBehaviour
         switchScrollAction.performed += OnSwitchScrollPerformed;
 
         shootAction.Enable();
+        meleeAction.Enable();
         reloadAction.Enable();
         switchAction1.Enable();
         switchAction2.Enable();
@@ -319,6 +339,7 @@ public class Gun : MonoBehaviour
     {
         shootAction.performed -= OnShootPerformed;
         shootAction.canceled -= OnShootCanceled;
+        meleeAction.performed -= OnMeleePerformed;
         reloadAction.performed -= OnReloadPerformed;
         switchAction1.performed -= OnSwitch1Performed;
         switchAction2.performed -= OnSwitch2Performed;
@@ -339,7 +360,7 @@ public class Gun : MonoBehaviour
             TryAutoReload();
             return false;
         }
-        if(isReloading || isSwitching) return false;
+        if(isReloading || isSwitching || isMeleing) return false;
         return true;
     }
 
@@ -363,6 +384,7 @@ public class Gun : MonoBehaviour
 
         bullet.GetComponent<Bullet>().Setup(direction);
     }
+    
 
     private IEnumerator ReloadSequence()
     {
@@ -459,15 +481,41 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(reloadTime/4);
         weaponLowered = true;
     }
+    private IEnumerator MeleeSequence()
+    {
+        isMeleing = true;
+        if(!weaponLowered){
+            timeReloaded = 0;
+            reloadStarted = true;
+            currentRotationAngle = transform.localEulerAngles.y;
+            yield return new WaitForSeconds(0.2f);
+            weaponLowered = true;
+        }
+        melee.MeleeAttack();
+        yield return new WaitForSeconds(1f/3);
+        if(!isSwitching)
+        {
+            timeReloaded = 0;
+            reloadStarted = false;
+            currentRotationAngle = transform.localEulerAngles.y;
+            yield return new WaitForSeconds(1f/3);
+            weaponLowered = false;
+        }
+        isMeleing = false;
+    }
     private IEnumerator SwitchListenerSequence()
     {
         switchListening = true;
         yield return new WaitForSeconds(0.5f);
-        if(switchCanceled)
+        if(switchCanceled && !isMeleing)
         {
             switchCanceled = false;
             switchListening = false;
-        } else
+        } else if (isMeleing) 
+        {
+            switchListening = false;
+        }
+        else
         {
             StartCoroutine(EndGunSwitchSequence());
         }
@@ -573,7 +621,7 @@ public class Gun : MonoBehaviour
 
     private void AttemptReload()
     {
-        if (isReloading || isSwitching || currentBulletsInMagazine >= magazineSize)
+        if (isReloading || isSwitching || isMeleing || currentBulletsInMagazine >= magazineSize)
         {
             return;
         }
@@ -582,7 +630,7 @@ public class Gun : MonoBehaviour
 
     private void TryAutoReload()
     {
-        if (currentBulletsInMagazine <= 0 && autoReload && ammoCount > 0 && !isReloading && !isSwitching)
+        if (currentBulletsInMagazine <= 0 && autoReload && ammoCount > 0 && !isReloading && !isSwitching && !isSwitching)
         {
             StartCoroutine(ReloadSequence());
         }
@@ -699,13 +747,42 @@ public class Gun : MonoBehaviour
         slingShotAmmoCount += bullets;
         if (gunType == GunType.Slingshot) ammoCount += bullets;
     }
+    //dmg = the aditional damage. projectiles = number of extra projectiles. reload = reduced time spend reloading.
     public void UpgradeSlingShot(int dmg, int projectiles, float reload)
     {
-        
+        slingshotUpgradeLevel +=1;
+        if (slingshotUpgradeLevel == 4)
+        {
+            slingShotBodyPrefab = slingShotUpgradedBodyPrefab;
+        }
+        slingShotDmg += dmg;
+        projectile2.SetDmg(slingShotDmg);
+        slingShotProjectailCount += projectiles;
+        slingShotReloadTime -= reload;
+        if (gunType == GunType.Slingshot)
+        {
+            projectailCount = slingShotProjectailCount;
+            reloadTime = slingShotReloadTime;
+        }
     }
+    //dmg = the aditional damage. projectiles = number of extra projectiles. reload = reduced time spend reloading. shotDelay = rduced time between shots.
     public void UpgradeSlingShot(int dmg, int projectiles, float reload, float shotDelay)
     {
-        
+        shredderUpgradeLevel +=1;
+        if (shredderUpgradeLevel == 4)
+        {
+            shredderBodyPrefab = shredderBodyUpgradedPrefab;
+        }
+        shredderDmg += dmg;
+        projectile3.SetDmg(shredderDmg);
+        shredderProjectailCount += projectiles;
+        shredderReloadTime -= reload;
+        shredderDelayBetweenBullets -= shotDelay;
+        if (gunType == GunType.Shredder)
+        {
+            projectailCount = shredderProjectailCount;
+            reloadTime = shredderReloadTime;
+        }
     }
     public void GetRandomAmmo()
     {
@@ -713,10 +790,10 @@ public class Gun : MonoBehaviour
         if (shredderActive) coinFlip = Random.Range(-1, 1);
         if (coinFlip>=0)
         {
-            GetSlingShotAmmo(5);
+            GetSlingShotAmmo(2);
         } else
         {
-            GetShredderAmmo(10);
+            GetShredderAmmo(4);
         }
     }
 
