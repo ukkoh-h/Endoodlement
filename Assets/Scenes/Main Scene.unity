@@ -14968,6 +14968,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6382908996932413300, guid: 19fc973a46c90bb4f8eb54f2d4e14f93, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 959
+      objectReference: {fileID: 0}
     - target: {fileID: 1388644829933158880, guid: 19fc973a46c90bb4f8eb54f2d4e14f93, type: 3}
       propertyPath: m_Name
       value: Water

@@ -1703,8 +1703,6 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 5f08083cc73936740a67d9edad0f4d93, type: 2}
   - {fileID: 2100000, guid: 1d06fc2bb1a53b542966dd277ad2936b, type: 2}
-  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
-  - {fileID: 2100000, guid: 8e0e516eaa19f2a419eaa96f18b79f04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1771,7 +1769,7 @@ GameObject:
   - component: {fileID: 2125084462948188688}
   - component: {fileID: 2821282971430373694}
   - component: {fileID: 8635338314208532556}
-  - component: {fileID: 3094415136790363541}
+  - component: {fileID: 1333723360303734543}
   m_Layer: 7
   m_Name: GoblinMecha
   m_TagString: Untagged
@@ -1973,7 +1971,7 @@ MonoBehaviour:
   goblin: {fileID: 0}
   goblinCopter: {fileID: 0}
   goblinMecha: {fileID: 3203257029484582480}
---- !u!114 &3094415136790363541
+--- !u!114 &1333723360303734543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1982,10 +1980,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7478933868475542738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2afff5a367c2e49971b231258b621e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fb6549ab59636346a860050ca40499b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlashColor
-  color: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::MechaFlash
+  meshes:
+  - {fileID: 2902517445191830907}
+  - {fileID: 4500591581169040801}
+  - {fileID: 3144430737713984573}
+  - {fileID: 7608718835917919334}
+  - {fileID: 9210716837323109496}
+  - {fileID: 4961054009192513914}
+  - {fileID: 6350345769631990971}
+  - {fileID: 236693234015145045}
+  materials: []
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
 --- !u!1 &8209046021615863879

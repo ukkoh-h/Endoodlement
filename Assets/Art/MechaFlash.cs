@@ -1,39 +1,38 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.WSA;
 
-public class FlashColor : MonoBehaviour
+public class MechaFlash : MonoBehaviour
 {
-    public SpriteRenderer color;
-    //public Render meshColor;
+    public Renderer[] meshes;
+    public List<Material> materials;
     public Color flashColor = Color.red;
     public float flashDuration = 0.1f;
 
-    private Color originalColor;
-    private Material rend;
-
-    private void Start()
+    void Start()
     {
-        /*if(color != null)*/rend = color.material;
-        //else if(meshColor != null)rend = meshColor.material;
-        //rend = gameObject.GetComponent(SpriteRenderer);
-        originalColor = rend/*.material*/.color;
+        foreach (Renderer rend in meshes)
+        {
+            foreach (Material mat in rend.materials)
+            {
+                materials.Add(mat);
+            }
+        }
     }
-
     private IEnumerator DoFlash()
     {
-        rend/*.material*/.color = flashColor;
+        FlashMaterialColor(flashColor);
         yield return new WaitForSeconds(flashDuration);
-        rend/*.material*/.color = originalColor;
+        FlashMaterialColor(Color.white);
     }
     private IEnumerator DoFlashing()
     {
         for(int i = 0; i < 1000; i++)
         {
-            rend/*.material*/.color = flashColor;
+            FlashMaterialColor(flashColor);
             yield return new WaitForSeconds(flashDuration);
-            rend/*.material*/.color = originalColor;
+            FlashMaterialColor(Color.white);
             yield return new WaitForSeconds(flashDuration);
         }
     }
@@ -55,6 +54,14 @@ public class FlashColor : MonoBehaviour
         StopAllCoroutines();
     }
 
+    void FlashMaterialColor(Color col)
+    {
+        foreach (Material mat in materials)
+        {
+            mat.color = col;
+        }
+    }
+
     private void Update()
     {
         if(Keyboard.current.digit1Key.wasPressedThisFrame)
@@ -62,5 +69,5 @@ public class FlashColor : MonoBehaviour
             //Debug.Log("was Pressed");
             Flash();
         }
-    }
+    } 
 }
