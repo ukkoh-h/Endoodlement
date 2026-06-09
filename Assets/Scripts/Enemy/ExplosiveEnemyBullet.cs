@@ -12,7 +12,7 @@ public class ExplosiveEnemyBullet : MonoBehaviour
     private Transform player;
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("PlayerCapsule").transform;
     }
     public void Setup(Vector3 direction)
     {

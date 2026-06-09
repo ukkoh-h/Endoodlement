@@ -6,10 +6,11 @@ public class Water : MonoBehaviour
     private Transform player;
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("PlayerCapsule").transform;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("entered");
         player.GetComponent<FirstPersonController>().TakeDmg(100);
     }
 }
