@@ -118,6 +118,8 @@ Transform:
   - {fileID: 3542252040058908329}
   - {fileID: 481823871126563670}
   - {fileID: 1100753730620238507}
+  - {fileID: 8955364675507920806}
+  - {fileID: 4528959972549897568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &16074019070669226
@@ -3233,6 +3235,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6462330392219174538, guid: 832d8a324e4d702409110c0257d128d4, type: 3}
   m_PrefabInstance: {fileID: 2310372538746424700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2353899269630907396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4157900909542216812}
+    m_Modifications:
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12120.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7384.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31283.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9987613
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.049757797
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 5.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397934572140043208, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_Name
+      value: Ontto Puu Loot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+--- !u!4 &8955364675507920806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+  m_PrefabInstance: {fileID: 2353899269630907396}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2379831010358130401
 PrefabInstance:
@@ -7882,6 +7954,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 398258158909980063, guid: 1633cf96b75cc1b48b96bd5c4ddc52e8, type: 3}
   m_PrefabInstance: {fileID: 6939073093116914493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7077260901406041794
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4157900909542216812}
+    m_Modifications:
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12042.612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7380.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31454.488
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.96955556
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.24487148
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 28.348
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397934572140043208, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+      propertyPath: m_Name
+      value: Ontto Puu Loot (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+--- !u!4 &4528959972549897568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6696116331854285730, guid: 26cd9f40030bdcc4597911a75e9e48c5, type: 3}
+  m_PrefabInstance: {fileID: 7077260901406041794}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7103706419263745048
 PrefabInstance:
