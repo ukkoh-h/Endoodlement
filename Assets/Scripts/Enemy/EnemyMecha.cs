@@ -86,7 +86,7 @@ public class EnemyMecha : MonoBehaviour
         }
         else if (isActive && playerInAttackRange)
         {
-            if (!isAttacking)mechaAnimator.Play("Armature|stand");
+            if (!doneAiming)mechaAnimator.Play("Armature|stand");
             if (retreating)
             {
                 retreating = false;
@@ -202,6 +202,7 @@ public class EnemyMecha : MonoBehaviour
     private IEnumerator AttackSequence()
     {
         isAttacking = true;
+        doneAiming = true;
         navAgent.SetDestination(transform.position);
         mechaAnimator.Play("Armature|shoot");
         yield return new WaitForSeconds(0.5f);
@@ -217,11 +218,12 @@ public class EnemyMecha : MonoBehaviour
         bullet2.GetComponent<EnemyBullet>().Setup(forward2);
         GameObject shooting2 = Instantiate(shot, canonTransform2.position, canonTransform2.rotation);
         Destroy(shooting2, 1f);
-        rotating = true;
+        //rotating = true;
+        doneAiming = false;
         //if(playerInAttackRange) player.TakeDmg();
         yield return new WaitForSeconds(timeBetweenAttacks);
 
-        rotating = false;
+        //rotating = false;
         isAttacking = false;
     }
     private IEnumerator DyingSequence()
