@@ -63,11 +63,11 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //UnityEngine.Debug.Log(isSpawning);
-        if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled > mechasToKill)
+        if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
             isActive = false;
-            nextCombatTrigger.ActivateTrigger();
-            nextWallTrigger.ActivateTrigger();
+            if(nextCombatTrigger != null)nextCombatTrigger.ActivateTrigger();
+            if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
         }
         else if (isActive && !isSpawning && combatStarted)
         {

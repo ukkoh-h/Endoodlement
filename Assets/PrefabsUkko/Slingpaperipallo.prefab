@@ -135,7 +135,7 @@ SphereCollider:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -155,6 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4c6a984e1b2cf40a6040817f490137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  dmg: 3
+  dmg: 4
   destructionAfterCollision: 0.01
   poof: {fileID: 8329130852021132774, guid: 158ec4fda078c2641b96a4fa2af35133, type: 3}

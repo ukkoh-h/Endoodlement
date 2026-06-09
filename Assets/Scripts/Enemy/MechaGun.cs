@@ -16,12 +16,12 @@ public class MechaGun : MonoBehaviour
         rotatedZ = rotateZ;
         player = GameObject.Find("Player").transform;
     }
-        private void LateUpdate()
+    private void FixedUpdate()
     {
         Vector3 cameraPosition = player.transform.position;
         cameraPosition.y = transform.position.y;
         transform.LookAt(cameraPosition);
-        transform.Rotate(rotatedX + 4f, rotatedY, rotatedZ);
+        transform.Rotate(rotatedX + 3f, rotatedY, rotatedZ);
     }
 
 }

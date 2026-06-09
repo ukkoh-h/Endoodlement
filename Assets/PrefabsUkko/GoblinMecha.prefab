@@ -1896,8 +1896,8 @@ MonoBehaviour:
   canonTransform2: {fileID: 8808119760597441319}
   attackRangeUpper: 25
   attackRangeLower: 5
-  timeBetweenAttacks: 3
-  hitPoints: 20
+  timeBetweenAttacks: 2
+  hitPoints: 40
   groundLayer:
     serializedVersion: 2
     m_Bits: 9

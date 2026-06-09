@@ -209,12 +209,14 @@ public class EnemyMecha : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         Vector3 forward1 = canonTransform1.forward * 20f;
+        Debug.DrawRay(canonTransform1.position, canonTransform1.forward * 20f, Color.magenta, 2f);
         GameObject bullet1 = Instantiate(projectile, canonTransform1.position, Quaternion.identity);
         bullet1.GetComponent<EnemyBullet>().Setup(forward1);
         GameObject shooting1 = Instantiate(shot, canonTransform1.position, canonTransform1.rotation);
         Destroy(shooting1, 1f);
 
         Vector3 forward2 = canonTransform2.forward * 20f;
+        Debug.DrawRay(canonTransform2.position, canonTransform2.forward * 20f, Color.magenta, 2f);
         GameObject bullet2 = Instantiate(projectile, canonTransform2.position, Quaternion.identity);
         bullet2.GetComponent<EnemyBullet>().Setup(forward2);
         GameObject shooting2 = Instantiate(shot, canonTransform2.position, canonTransform2.rotation);
