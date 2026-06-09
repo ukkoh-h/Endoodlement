@@ -16,6 +16,12 @@ public class PlayerHitBox : MonoBehaviour
                 bullet.Hit();
                 player.TakeDmg(dmg);
             }
+            if (other.TryGetComponent(out ExplosiveEnemyBullet explosiveBullet))
+            {
+                dmg = bullet.DealDmg();
+                bullet.Hit();
+                player.TakeDmg(dmg);
+            }
         }
     }
 }
