@@ -4794,6 +4794,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderBulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: slingShotReloadTime
       value: 0.8
       objectReference: {fileID: 0}
@@ -13345,7 +13349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6363173044336859276, guid: 65faeac0a0688ee49b4107dbc138f5f5, type: 3}
       propertyPath: m_Name
-      value: triggerZone
+      value: walltriggerZone2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511538107781538562, guid: 65faeac0a0688ee49b4107dbc138f5f5, type: 3}
+      propertyPath: isWall
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7511538107781538562, guid: 65faeac0a0688ee49b4107dbc138f5f5, type: 3}
       propertyPath: dissolver
