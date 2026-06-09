@@ -10,7 +10,7 @@ public class Water : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("entered");
+        //Debug.Log("entered");
         player.GetComponent<FirstPersonController>().TakeDmg(100);
     }
 }

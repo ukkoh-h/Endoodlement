@@ -9,7 +9,7 @@ public class EnemyMecha : MonoBehaviour
     [SerializeField] private Transform player;
     //[SerializeField] private CopterBillboarding sprite;
     [SerializeField] private Animator mechaAnimator;
-    [SerializeField] private FlashColor flash;
+    [SerializeField] private MechaFlash flash;
     [SerializeField] private EnemyManager enemyManager;
     //[SerializeField] public GobAttack gobAttack;
     [SerializeField] private GameObject projectile;
@@ -86,6 +86,7 @@ public class EnemyMecha : MonoBehaviour
         }
         else if (isActive && playerInAttackRange)
         {
+            if (!isAttacking)mechaAnimator.Play("Armature|stand");
             if (retreating)
             {
                 retreating = false;
@@ -132,6 +133,7 @@ public class EnemyMecha : MonoBehaviour
     }
     public void TakeDamage(int dmg)
     {
+        Debug.Log("gothit");
         hitPoints -= dmg;
         flash.Flash();
         if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
