@@ -242,7 +242,7 @@ public class EnemyMecha : MonoBehaviour
 
         doneAiming = true;
     }
-    private IEnumerator DeathSequence()
+    private void DeathSequence()
     {
         isActive = false;
         isDying = true;
@@ -252,7 +252,6 @@ public class EnemyMecha : MonoBehaviour
         gobody.SetActive(false);
         GameObject balling = Instantiate(ball, transform.position, Quaternion.identity);
         Destroy(balling, 3f);
-        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
     private void Death(bool byMelee)
@@ -272,7 +271,7 @@ public class EnemyMecha : MonoBehaviour
         Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
 
-        if(!isDying)StartCoroutine(DeathSequence());
+        if(!isDying)DeathSequence();
         
     }
     private Vector3 GetRandomPosition()
