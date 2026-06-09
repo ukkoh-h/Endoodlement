@@ -790,11 +790,33 @@ public class Gun : MonoBehaviour
         if (shredderActive) coinFlip = Random.Range(-1, 1);
         if (coinFlip>=0)
         {
-            GetSlingShotAmmo(2);
+            GetShredderAmmo(4);
         } else
         {
-            GetShredderAmmo(4);
+            GetSlingShotAmmo(2);
         }
+    }
+    public void GetSlingShot()
+    {
+        slingShotActive = true;
+        numberOfWeapons += 1;
+        gunType = GunType.Slingshot;
+        if (isSwitching) switchCanceled = true;
+        else StartCoroutine(GunSwitchSequence());
+    }
+
+    public void GetShredder()
+    {
+        shredderActive = true;
+        numberOfWeapons += 1;
+        gunType = GunType.Shredder;
+        if (isSwitching) switchCanceled = true;
+        else StartCoroutine(GunSwitchSequence());
+    }
+
+    public void GetWeapon() {
+        if(!slingShotActive) GetSlingShot();
+        else if(!shredderActive) GetShredder();
     }
 
 }

@@ -254,7 +254,7 @@ public class EnemyCopter : MonoBehaviour
 
         Death(false);
     }
-    private IEnumerator DeathSequence()
+    private void DeathSequence()
     {
         isDying = true;
         flash.StopFlashing();
@@ -263,7 +263,6 @@ public class EnemyCopter : MonoBehaviour
         body.SetActive(false);
         GameObject balling = Instantiate(ball, transform.position, Quaternion.identity);
         Destroy(balling, 3f);
-        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
     private void Death(bool byMelee)
@@ -276,13 +275,13 @@ public class EnemyCopter : MonoBehaviour
         {
             Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
             Instantiate(health, GetRandomPosition(), Quaternion.identity);
-            Instantiate(money, GetRandomPosition(), Quaternion.identity);
+            //Instantiate(money, GetRandomPosition(), Quaternion.identity);
         }
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
         Instantiate(health, GetRandomPosition(), Quaternion.identity);
-        Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        //Instantiate(money, GetRandomPosition(), Quaternion.identity);
 
-        if(!isDying)StartCoroutine(DeathSequence());
+        if(!isDying)DeathSequence();
         
     }
     private Vector3 GetRandomPosition()

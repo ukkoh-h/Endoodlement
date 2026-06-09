@@ -14,6 +14,10 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Spawner spawn8;
     [SerializeField] private Spawner spawn9;
     [SerializeField] private Spawner spawn10;
+    [SerializeField] private MechaSpawner mechaSpawn1;
+    [SerializeField] private MechaSpawner mechaSpawn2;
+    [SerializeField] private MechaSpawner mechaSpawn3;
+    [SerializeField] private EnemyMecha mecha;
     //[SerializeField] private EnemyManager nextCombat;
     [SerializeField] private CampActivationTrigger nextCombatTrigger;
     [SerializeField] private CampActivationTrigger nextWallTrigger;
@@ -25,11 +29,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int initialMechas;
     [SerializeField] private float goblinCoolDown;
     [SerializeField] private float copterCoolDown;
-    //[SerializeField] private int mechaCoolDown;
+    [SerializeField] private int mechaCoolDown;
     [SerializeField] private bool isActive;
     
     private int numberOfSpawns;
+    private int numberOfMechaSpawns;
     private int spawnRotation;
+    private int mechaSpawnRotation;
     private int currentGoblins;
     private int currentCopters;
     private int currentMechas;
@@ -39,9 +45,12 @@ public class EnemyManager : MonoBehaviour
     private bool isSpawning;
     private bool isSpawningGoblin;
     private bool isSpawningCopter;
+    private bool isSpawningMecha;
     private bool combatStarted;
     private bool goblinSpawnActivated;
     private bool copterSpawnActivated;
+    private bool mechaSpawnActivated;
+    private bool mechaChecked;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,6 +66,10 @@ public class EnemyManager : MonoBehaviour
         if (spawn8 != null) numberOfSpawns ++;
         if (spawn9 != null) numberOfSpawns ++;
         if (spawn10 != null) numberOfSpawns ++;
+        if (mechaSpawn1 != null) numberOfMechaSpawns ++;
+        if (mechaSpawn2 != null) numberOfMechaSpawns ++;
+        if (mechaSpawn3 != null) numberOfMechaSpawns ++;
+        if (mecha != null) mechasToKill ++;
     }
 
     // Update is called once per frame
@@ -71,6 +84,12 @@ public class EnemyManager : MonoBehaviour
         }
         else if (isActive && !isSpawning && combatStarted)
         {
+            if(mecha != null && !mechaChecked)
+            {
+                mechaChecked = true;
+                mecha.Activate();
+                currentMechas = 1;
+            }
             if (currentGoblins < initialGoblins && goblinsToKill > goblinsKilled && !isSpawningGoblin) 
             {
                 isSpawningGoblin = true;
@@ -79,6 +98,11 @@ public class EnemyManager : MonoBehaviour
             if (currentCopters < initialCopters && coptersToKill > coptersKilled && !isSpawningCopter) 
             {
                 isSpawningCopter = true;
+                SpawnActivartor();
+            }
+            if (currentMechas < initialMechas && mechasToKill > mechasKilled && !isSpawningMecha) 
+            {
+                isSpawningMecha = true;
                 SpawnActivartor();
             }
         } 
@@ -185,6 +209,25 @@ public class EnemyManager : MonoBehaviour
                 break;
             }
         }
+        for(int i = 0; i < initialMechas; i++)
+        {
+            if(mechaSpawnRotation==0) mechaSpawnRotation = numberOfMechaSpawns;
+            switch(mechaSpawnRotation)
+            {
+                case 1:
+                mechaSpawn1.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+                case 2:
+                mechaSpawn2.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+                case 3:
+                mechaSpawn3.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+            }
+        }
         isSpawning = false;
     }
     private void SpawnActivartor()
@@ -285,6 +328,26 @@ public class EnemyManager : MonoBehaviour
             }
             copterSpawnActivated = true;
         }
+        if (currentMechas < initialMechas && mechasToKill > mechasKilled)
+        {
+            if(mechaSpawnRotation==0) mechaSpawnRotation = numberOfMechaSpawns;
+            switch(mechaSpawnRotation)
+            {
+                case 1:
+                mechaSpawn1.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+                case 2:
+                mechaSpawn2.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+                case 3:
+                mechaSpawn3.SpawnMecha();
+                mechaSpawnRotation-=1;
+                break;
+            }
+            mechaSpawnActivated = true;
+        }
         if (goblinSpawnActivated)
         {
             goblinSpawnActivated = false;
@@ -295,12 +358,18 @@ public class EnemyManager : MonoBehaviour
             copterSpawnActivated = false;
             StartCoroutine(SpawnCooldownSequence(copterCoolDown));
         }
+        if (mechaSpawnActivated)
+        {
+            mechaSpawnActivated = false;
+            StartCoroutine(SpawnCooldownSequence(mechaCoolDown));
+        }
     }
     private IEnumerator SpawnCooldownSequence(float coolDown)
     {
         yield return new WaitForSeconds(coolDown);
         if (coolDown == goblinCoolDown) isSpawningGoblin = false;
         else if (coolDown == copterCoolDown) isSpawningCopter = false;
+        else if (coolDown == mechaCoolDown) isSpawningMecha = false;
     }
     public void GoblinSpawned()
     {
@@ -319,6 +388,10 @@ public class EnemyManager : MonoBehaviour
     {
         currentCopters--;
         coptersKilled++;
+    }
+    public void MechaSpawned()
+    {
+        currentMechas++;
     }
     public void MechaDead()
     {

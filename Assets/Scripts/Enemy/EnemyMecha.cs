@@ -265,13 +265,13 @@ public class EnemyMecha : MonoBehaviour
 
         Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
-        Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
+        //Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
-        Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
+        //Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
-        Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
+        //Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
 
         if(!isDying)DeathSequence();
         

@@ -205,6 +205,7 @@ MonoBehaviour:
   isHead: 0
   goblin: {fileID: 2902894835017574271}
   goblinCopter: {fileID: 0}
+  goblinMecha: {fileID: 0}
 --- !u!1 &2908735517839112534
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +270,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isActive: 1
+  isExecutableFromStart: 0
   body: {fileID: 435395696987243392}
   ball: {fileID: 4811153203009679755, guid: 5497ff544c0b87f438c1a89abba6e1f6, type: 3}
   slash: {fileID: 3682510083355614906, guid: f311797a11012e94a9a226ccc21b6ba9, type: 3}
@@ -286,7 +288,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -430,3 +432,4 @@ MonoBehaviour:
   isHead: 1
   goblin: {fileID: 2902894835017574271}
   goblinCopter: {fileID: 0}
+  goblinMecha: {fileID: 0}

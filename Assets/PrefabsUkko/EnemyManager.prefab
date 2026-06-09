@@ -54,10 +54,19 @@ MonoBehaviour:
   spawn8: {fileID: 0}
   spawn9: {fileID: 0}
   spawn10: {fileID: 0}
+  mechaSpawn1: {fileID: 0}
+  mechaSpawn2: {fileID: 0}
+  mechaSpawn3: {fileID: 0}
+  mecha: {fileID: 0}
   nextCombatTrigger: {fileID: 0}
+  nextWallTrigger: {fileID: 0}
   goblinsToKill: 10
   coptersToKill: 5
   mechasToKill: 0
+  initialGoblins: 0
+  initialCopters: 0
+  initialMechas: 0
   goblinCoolDown: 5
   copterCoolDown: 8
+  mechaCoolDown: 12
   isActive: 1

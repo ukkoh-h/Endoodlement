@@ -6,10 +6,6 @@ public class CampActivationTrigger : MonoBehaviour
     [SerializeField] private bool isWall;
     [SerializeField] private EnemyManager nextCombat;
     [SerializeField] private Dissolver dissolver;
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(isActive && other.CompareTag("Player"))

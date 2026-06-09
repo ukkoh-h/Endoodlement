@@ -275,7 +275,7 @@ MonoBehaviour:
   gunType: 0
   gunBodyPrefab: {fileID: 3799322171116336293}
   magazineSize: 1
-  ammoCount: 30
+  ammoCount: 1
   projectailCount: 1
   delayBetweenBullets: 1
   bulletSpeed: 13
@@ -286,7 +286,7 @@ MonoBehaviour:
   spellBookAnimation: {fileID: 855611619643265705}
   spellBookDmg: 3
   spellBookMagazineSize: 1
-  spellBookAmmoCount: 30
+  spellBookAmmoCount: 1
   spellBookProjectailCount: 1
   spellBookDelayBetweenBullets: 1
   spellBookBulletSpeed: 13
@@ -298,25 +298,25 @@ MonoBehaviour:
   slingShotUpgradedBodyPrefab: {fileID: 7390333160061484236}
   slingShotDmg: 4
   slingShotMagazineSize: 1
-  slingShotAmmoCount: 1000
+  slingShotAmmoCount: 15
   slingShotProjectailCount: 1
   slingShotDelayBetweenBullets: 0.5
   slingShotBulletSpeed: 20
   slingShotBulletAngle: 2
-  slingShotReloadTime: 0.8
+  slingShotReloadTime: 0.6
   slingShotFireSpread: 0.1
   shredderActive: 1
   shredderBodyPrefab: {fileID: 435534360718508683}
   shredderBodyUpgradedPrefab: {fileID: 2966277727794129753}
   shredderDmg: 2
-  shredderMagazineSize: 1000
-  shredderAmmoCount: 120
+  shredderMagazineSize: 30
+  shredderAmmoCount: 30
   shredderProjectailCount: 1
-  shredderDelayBetweenBullets: 0.3
+  shredderDelayBetweenBullets: 0.2
   shredderBulletSpeed: 30
   shredderBulletAngle: 0
-  shredderReloadTime: 2
-  shredderFireSpread: 1
+  shredderReloadTime: 1.8
+  shredderFireSpread: 2
   gobLauncherActive: 0
   gobLauncherBodyPrefab: {fileID: 0}
   gobLauncherMagazineSize: 1

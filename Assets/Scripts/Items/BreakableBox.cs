@@ -47,12 +47,9 @@ public class BreakableBox : MonoBehaviour
     private IEnumerator CleanUpSequence()
     {
         yield return new WaitForSeconds(0.5f);
-        wholeBox.SetActive(false);
-        boxBroken.SetActive(true);
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
         Instantiate(health, GetRandomPosition(), Quaternion.identity);
-        Instantiate(money, GetRandomPosition(), Quaternion.identity);
-        yield return new WaitForSeconds(1f);
+        //Instantiate(money, GetRandomPosition(), Quaternion.identity);
         Destroy(gameObject);
     }
 }

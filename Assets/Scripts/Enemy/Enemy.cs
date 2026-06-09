@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
 
         Death(false);
     }
-    private IEnumerator DeathSequence()
+    private void DeathSequence()
     {
         isDying = true;
         flash.StopFlashing();
@@ -149,7 +149,6 @@ public class Enemy : MonoBehaviour
         //ball.GetComponent<Rigidbody>().AddForce(GetRandomDirection(), ForceMode.Impulse);
         Destroy(balling, 3f);
         //ball.SetActive(true);
-        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
         /*private Vector3 GetRandomDirection()
@@ -184,13 +183,13 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
             Instantiate(health, GetRandomPosition(), Quaternion.identity);
-            Instantiate(money, GetRandomPosition(), Quaternion.identity);
+            //Instantiate(money, GetRandomPosition(), Quaternion.identity);
         }
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
         Instantiate(health, GetRandomPosition(), Quaternion.identity);
-        Instantiate(money, GetRandomPosition(), Quaternion.identity);
+        //Instantiate(money, GetRandomPosition(), Quaternion.identity);
 
-        if(!isDying)StartCoroutine(DeathSequence());
+        if(!isDying)DeathSequence();
     }
     private Vector3 GetRandomPosition()
     {   
