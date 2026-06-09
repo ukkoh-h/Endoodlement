@@ -2881,6 +2881,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1902089026535623453}
     m_Modifications:
+    - target: {fileID: 1242376598625845044, guid: cf45387fd7997714e81fa2e874360356, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045962252502121330, guid: cf45387fd7997714e81fa2e874360356, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932780062956865834, guid: cf45387fd7997714e81fa2e874360356, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8150402728045049929, guid: cf45387fd7997714e81fa2e874360356, type: 3}
       propertyPath: m_Name
       value: Nuotio (1)
