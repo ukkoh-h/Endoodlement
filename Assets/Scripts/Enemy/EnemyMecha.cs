@@ -22,6 +22,7 @@ public class EnemyMecha : MonoBehaviour
     [SerializeField] private LayerMask groundLayer, playerLayer;
     [SerializeField] private bool isActive;
     [SerializeField] private GameObject body;
+    [SerializeField] private GameObject gobody;
     [SerializeField] private GameObject ball;
     [SerializeField] private GameObject shot;
     [SerializeField] private GameObject poof;
@@ -133,18 +134,18 @@ public class EnemyMecha : MonoBehaviour
     }
     public void TakeDamage(int dmg)
     {
-        Debug.Log("gothit");
+        Debug.Log("gothit"+ hitPoints);
         hitPoints -= dmg;
         flash.Flash();
-        if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
-        if (hitPoints <= -5 && !isActive) Death(false);
+        if (hitPoints <= 0 /*&& isActive*/) Death(false);
+        //if (hitPoints <= -5 && !isActive) Death(false);
     }
     public void TakeMeleeDamage(int dmg)
     {
         hitPoints -= dmg;
         flash.Flash();
-        if (hitPoints <= 0) StartCoroutine(DyingSequence());
-        if (hitPoints <= 0 && !isActive) Death(true);
+        if (hitPoints <= 0) Death(false);
+        //if (hitPoints <= 0 && !isActive) Death(true);
     }
     private void ChasePlayer()
     {
@@ -205,7 +206,7 @@ public class EnemyMecha : MonoBehaviour
         doneAiming = true;
         navAgent.SetDestination(transform.position);
         mechaAnimator.Play("Armature|shoot");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         //bool playerInAttackRange = Physics.CheckSphere(transform.position, attackRangeUpper, playerLayer);
         Vector3 forward1 = canonTransform1.forward * 20f;
         GameObject bullet1 = Instantiate(projectile, canonTransform1.position, Quaternion.identity);
@@ -219,6 +220,7 @@ public class EnemyMecha : MonoBehaviour
         GameObject shooting2 = Instantiate(shot, canonTransform2.position, canonTransform2.rotation);
         Destroy(shooting2, 1f);
         //rotating = true;
+        yield return new WaitForSeconds(1f);
         doneAiming = false;
         //if(playerInAttackRange) player.TakeDmg();
         yield return new WaitForSeconds(timeBetweenAttacks);
@@ -226,14 +228,14 @@ public class EnemyMecha : MonoBehaviour
         //rotating = false;
         isAttacking = false;
     }
-    private IEnumerator DyingSequence()
+    /*private IEnumerator DyingSequence()
     {
         isActive = false;
         float deathTimer = Random.Range(5f, 7f);
         yield return new WaitForSeconds(deathTimer);
 
         Death(false);
-    }
+    }*/
     private IEnumerator FirstAimSequence()
     {
         yield return new WaitForSeconds(5f);
@@ -242,10 +244,12 @@ public class EnemyMecha : MonoBehaviour
     }
     private IEnumerator DeathSequence()
     {
+        isActive = false;
         isDying = true;
         GameObject poofing = Instantiate(poof, body.transform.position, Quaternion.identity);
         Destroy(poofing, 0.5f);
         body.SetActive(false);
+        gobody.SetActive(false);
         GameObject balling = Instantiate(ball, transform.position, Quaternion.identity);
         Destroy(balling, 3f);
         yield return new WaitForSeconds(3f);
@@ -255,14 +259,15 @@ public class EnemyMecha : MonoBehaviour
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
-        if (enemyManager != null)enemyManager.CopterDead();
+        if (enemyManager != null)enemyManager.MechaDead();
         AudioManager.Instance.StopAmb();
-        if(byMelee)
-        {
-            Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
-            Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
-            Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
-        }
+
+        Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
+        Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
+        Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
+        Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
+        Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
+        Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(ammoDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(healthDrop, GetRandomPosition(), Quaternion.identity);
         Instantiate(moneyDrop, GetRandomPosition(), Quaternion.identity);

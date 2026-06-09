@@ -63,7 +63,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         //UnityEngine.Debug.Log(isSpawning);
-        if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill)
+        if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled > mechasToKill)
         {
             isActive = false;
             nextCombatTrigger.ActivateTrigger();
@@ -71,12 +71,12 @@ public class EnemyManager : MonoBehaviour
         }
         else if (isActive && !isSpawning && combatStarted)
         {
-            if (currentGoblins < goblinsToKill && goblinsToKill > goblinsKilled && !isSpawningGoblin) 
+            if (currentGoblins < initialGoblins && goblinsToKill > goblinsKilled && !isSpawningGoblin) 
             {
                 isSpawningGoblin = true;
                 SpawnActivartor();
             }
-            if (currentCopters < coptersToKill && coptersToKill > coptersKilled && !isSpawningCopter) 
+            if (currentCopters < initialCopters && coptersToKill > coptersKilled && !isSpawningCopter) 
             {
                 isSpawningCopter = true;
                 SpawnActivartor();
@@ -189,7 +189,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void SpawnActivartor()
     {
-        if (currentGoblins < goblinsToKill && goblinsToKill > goblinsKilled)
+        if (currentGoblins < initialGoblins && goblinsToKill > goblinsKilled)
         {
             if(spawnRotation==0) spawnRotation = numberOfSpawns;
             switch(spawnRotation)
@@ -237,7 +237,7 @@ public class EnemyManager : MonoBehaviour
             }
             goblinSpawnActivated = true;
         }
-        if (currentCopters < coptersToKill && coptersToKill > coptersKilled)
+        if (currentCopters < initialCopters && coptersToKill > coptersKilled)
         {
             if(spawnRotation==0) spawnRotation = numberOfSpawns;
             switch(spawnRotation)
@@ -319,6 +319,11 @@ public class EnemyManager : MonoBehaviour
     {
         currentCopters--;
         coptersKilled++;
+    }
+    public void MechaDead()
+    {
+        currentMechas--;
+        mechasKilled++;
     }
     public void ActivateCamp()
     {
