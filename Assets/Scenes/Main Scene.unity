@@ -7565,15 +7565,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109043745924578982, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 643.8715
+      value: -70.94
       objectReference: {fileID: 0}
     - target: {fileID: 1109043745924578982, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.7
+      value: 29.27
       objectReference: {fileID: 0}
     - target: {fileID: 1109043745924578982, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 423.27902
+      value: 610.27
       objectReference: {fileID: 0}
     - target: {fileID: 1109043745924578982, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7629,11 +7629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: slingShotActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: muzzleFlashPrefab
@@ -7724,6 +7724,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 1318496360}
+    - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: Gravity
       value: -50
       objectReference: {fileID: 0}
@@ -7734,6 +7738,10 @@ PrefabInstance:
     - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: MoveSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: hitPoints
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: deathScreen

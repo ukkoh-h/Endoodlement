@@ -111,7 +111,7 @@ public class EnemyManager : MonoBehaviour
             isSpawning = true;
             CombatStart();
         }
-        if (!isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill && currentGoblins == 0 && currentCopters == 0 && currentMechas == 0)
+        else if (!isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
             if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
             if(nextCombat != null)nextCombat.ActivateCamp();

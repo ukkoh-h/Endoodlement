@@ -3,6 +3,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 #endif
 
 namespace StarterAssets
@@ -32,7 +33,7 @@ namespace StarterAssets
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("Players hit points")]
 		public int hitPoints = 100;
-		public GameObject fill;
+		public Image fill;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -156,8 +157,8 @@ namespace StarterAssets
 			Move();
 			Dash();
 			Respawn();
-			//fill.Image.
 			
+			fill.fillAmount = hitPoints/100;
         }
 
 
@@ -403,7 +404,7 @@ namespace StarterAssets
         {
             deathScreen.SetActive(true);
 			GameUIManager.instance.DeathPause();
-			hitPoints = 5;
+			hitPoints = 50;
         }
 
 
