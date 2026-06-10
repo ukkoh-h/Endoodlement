@@ -363,7 +363,7 @@ public class EnemyManager : MonoBehaviour
             copterSpawnActivated = false;
             StartCoroutine(SpawnCooldownSequence(copterCoolDown));
         }
-        if (mechaSpawnActivated)
+        else if (mechaSpawnActivated)
         {
             mechaSpawnActivated = false;
             StartCoroutine(SpawnCooldownSequence(mechaCoolDown));
