@@ -312,7 +312,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
+  m_Speed: 10
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -346,7 +346,7 @@ MonoBehaviour:
   attackRangeUpper: 25
   attackRangeLower: 10
   timeBetweenAttacks: 2
-  hitPoints: 5
+  hitPoints: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -1897,7 +1897,7 @@ MonoBehaviour:
   attackRangeUpper: 30
   attackRangeLower: 5
   timeBetweenAttacks: 2
-  hitPoints: 40
+  hitPoints: 50
   groundLayer:
     serializedVersion: 2
     m_Bits: 9

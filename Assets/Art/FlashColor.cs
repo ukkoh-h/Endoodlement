@@ -55,12 +55,12 @@ public class FlashColor : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if(Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             //Debug.Log("was Pressed");
             Flash();
         }
-    }
+    }*/
 }

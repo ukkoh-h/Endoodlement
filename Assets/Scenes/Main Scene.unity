@@ -4897,7 +4897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3203257029484582480, guid: bf3af42336f4cc54c8365e7364594286, type: 3}
       propertyPath: hitPoints
-      value: 120
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3203257029484582480, guid: bf3af42336f4cc54c8365e7364594286, type: 3}
       propertyPath: projectile
@@ -7892,12 +7892,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: shredderDmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: slingShotDmg
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: spellBookDmg
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: ammoCountText
       value: 
       objectReference: {fileID: 987458211}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: slingShotActive
@@ -7909,7 +7921,7 @@ PrefabInstance:
       objectReference: {fileID: 2679684263130140860, guid: fb5d83b5736764349b086ba3b8bbe0b1, type: 3}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderAmmoCount
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderReloadTime
@@ -7933,11 +7945,11 @@ PrefabInstance:
       objectReference: {fileID: 909608824}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderMagazineSize
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderDelayBetweenBullets
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4815726764916300649, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_Layer
