@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88ef84e0b0fb9648863d30495094d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveEnemyBullet
-  dmg: 4
+  dmg: 20
   destructionAfterCollision: 0.01
   poof: {fileID: 8415639793730644988, guid: 4b47d7a55085cc84fad39d3dd0a69ea6, type: 3}
   groundLayer:

@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         sprite.Attack();
         GameObject slashing = Instantiate(slash, slashPlacement.position, slashPlacement.rotation);
         Destroy(slashing, 1f);
-        if(playerInAttackRange) playerC.TakeDmg(3);
+        if(playerInAttackRange) playerC.TakeDmg(13);
         yield return new WaitForSeconds(timeBetweenAttacks);
         AudioManager.Instance.PlaySwing();
         isAttacking = false;

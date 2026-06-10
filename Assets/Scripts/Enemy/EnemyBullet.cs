@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyBullet : MonoBehaviour
 {
-    [SerializeField] private int dmg = 3;
+    [SerializeField] private int dmg = 17;
     [SerializeField] private float destructionAfterCollision = 0.01f;
     [SerializeField] private GameObject poof;
     private Rigidbody rb;

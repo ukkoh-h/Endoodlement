@@ -31,7 +31,8 @@ namespace StarterAssets
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("Players hit points")]
-		public int hitPoints = 10;
+		public int hitPoints = 100;
+		public GameObject fill;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -155,7 +156,7 @@ namespace StarterAssets
 			Move();
 			Dash();
 			Respawn();
-			
+			//fill.Image.
 			
         }
 
@@ -416,6 +417,22 @@ namespace StarterAssets
             } 
 				
 					//Tähän respawni toteutus
+		} 
+
+		public void PickUpHeal()
+		{
+			if (hitPoints >= 100)
+			{
+				hitPoints = 100;
+            } else if (hitPoints > 95)
+			{
+				hitPoints = 100;
+			}
+			else
+			{
+				hitPoints += 5;
+			}
+				
 		} 
 	}
 }

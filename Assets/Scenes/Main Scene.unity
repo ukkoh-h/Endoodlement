@@ -4520,7 +4520,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2940674920027565669, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8902109321237938852, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       insertIndex: -1
@@ -6163,6 +6164,10 @@ PrefabInstance:
       propertyPath: isActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3203257029484582480, guid: bf3af42336f4cc54c8365e7364594286, type: 3}
+      propertyPath: enemyManager
+      value: 
+      objectReference: {fileID: 776727827}
     - target: {fileID: 7478933868475542738, guid: bf3af42336f4cc54c8365e7364594286, type: 3}
       propertyPath: m_Name
       value: GoblinMecha (1)

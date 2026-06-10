@@ -21,8 +21,7 @@ public class Drops : MonoBehaviour
         {
             if (!ammo && other.TryGetComponent(out FirstPersonController player))
             {
-                /*if(heal) player.Heal();
-                else player.GetMoney();*/
+                if(heal) player.PickUpHeal();
             }
             else if (ammo)
             {
