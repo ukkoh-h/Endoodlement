@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int initialMechas;
     [SerializeField] private float goblinCoolDown;
     [SerializeField] private float copterCoolDown;
-    [SerializeField] private int mechaCoolDown;
+    [SerializeField] private float mechaCoolDown;
     [SerializeField] private bool isActive;
     
     private int numberOfSpawns;
@@ -75,7 +75,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UnityEngine.Debug.Log(isSpawning);
+        UnityEngine.Debug.Log(mechaSpawnRotation);
         if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
             isActive = false;
