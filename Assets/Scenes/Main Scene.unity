@@ -3306,7 +3306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2341090002728778983, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6.1001587
+      value: -6.1002197
       objectReference: {fileID: 0}
     - target: {fileID: 2714104730272643537, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -6521,7 +6521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2944169703663985936, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: m_Antialiasing
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderActive
