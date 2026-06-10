@@ -1891,7 +1891,7 @@ MonoBehaviour:
   mechaAnimator: {fileID: 7016063095234882542}
   flash: {fileID: 1333723360303734543}
   enemyManager: {fileID: 0}
-  projectile: {fileID: 8430942715198442554, guid: 9deb414d74dc83c41aca477023142cc5, type: 3}
+  projectile: {fileID: 4206429628303898174, guid: 988609a49e0f9504aa331ba10880a35a, type: 3}
   canonTransform1: {fileID: 574362241245686995}
   canonTransform2: {fileID: 8808119760597441319}
   attackRangeUpper: 30

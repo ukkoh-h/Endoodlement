@@ -80,7 +80,6 @@ public class EnemyManager : MonoBehaviour
         {
             isActive = false;
             if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
-            if(nextCombat != null)nextCombat.ActivateCamp();
         }
         else if (isActive && !isSpawning && combatStarted)
         {
@@ -111,6 +110,11 @@ public class EnemyManager : MonoBehaviour
             combatStarted = true;
             isSpawning = true;
             CombatStart();
+        }
+        if (!isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill && currentGoblins == 0 && currentCopters == 0 && currentMechas == 0)
+        {
+            if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
+            if(nextCombat != null)nextCombat.ActivateCamp();
         }
     }
     private void CombatStart()
