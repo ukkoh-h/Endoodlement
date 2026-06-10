@@ -35,6 +35,7 @@ namespace StarterAssets
 		public float hitPoints = 100f;
 		public float healPickup = 10f;
 		public Image fill;
+		public RawImage dashImage;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -160,6 +161,8 @@ namespace StarterAssets
 			Respawn();
 			
 			fill.fillAmount = hitPoints/100;
+			if(_dashCooldownTimer > 0f) dashImage.color = new Color(164,164,164,164);
+			else dashImage.color = Color.white;
         }
 
 

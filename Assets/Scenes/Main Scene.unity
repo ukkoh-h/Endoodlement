@@ -1672,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: mechaPrefab
       value: 
-      objectReference: {fileID: 1604129642}
+      objectReference: {fileID: 1223262241}
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: enemyManager
       value: 
@@ -1727,6 +1727,17 @@ MonoBehaviour:
   color: {fileID: 145422065}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+--- !u!114 &146487316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+  m_PrefabInstance: {fileID: 375150210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
 --- !u!1001 &150952539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2186,7 +2197,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -3240,7 +3251,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -4135,6 +4146,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 398258158909980063, guid: 1633cf96b75cc1b48b96bd5c4ddc52e8, type: 3}
   m_PrefabInstance: {fileID: 1885831621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &372999012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2908735517839112534, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+  m_PrefabInstance: {fileID: 1849506669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &375150210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4286,6 +4302,22 @@ PrefabInstance:
     - target: {fileID: 3172134723695172230, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557414704299151558, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4462,6 +4494,10 @@ PrefabInstance:
     - target: {fileID: 8791625342855666067, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860266107622428907, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9035681871823573455, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -5281,11 +5317,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (17)1
@@ -6102,11 +6138,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (14)1 (1)2
@@ -6509,6 +6545,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ace910b57215846b74af757809e854, type: 3}
+--- !u!1 &561171864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2908735517839112534, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+  m_PrefabInstance: {fileID: 937015459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &561324283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7452,6 +7493,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1633cf96b75cc1b48b96bd5c4ddc52e8, type: 3}
+--- !u!1 &629543843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7003892598955402742, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
+  m_PrefabInstance: {fileID: 539769682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &636105166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7955,6 +8001,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
+      propertyPath: dashImage
+      value: 
+      objectReference: {fileID: 146487316}
+    - target: {fileID: 9056745942698223565, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: hitPoints
       value: 100
       objectReference: {fileID: 0}
@@ -8275,7 +8325,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -9095,6 +9145,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8582967967561170129, guid: 1b1f73e37b33bfb4481b254559af6c13, type: 3}
   m_PrefabInstance: {fileID: 776727826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &784553852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7003892598955402742, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
+  m_PrefabInstance: {fileID: 1566092031}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &789611818 stripped
 Transform:
@@ -10219,11 +10274,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (15)12
@@ -11693,7 +11748,7 @@ PrefabInstance:
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: mechaPrefab
       value: 
-      objectReference: {fileID: 1604129642}
+      objectReference: {fileID: 1223262241}
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: enemyManager
       value: 
@@ -12258,7 +12313,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -12404,7 +12459,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -12670,11 +12725,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (14)1 (1)
@@ -13135,11 +13190,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (14)1
@@ -13427,11 +13482,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (16)2
@@ -13901,6 +13956,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3996772121633105300, guid: 47c5f2d78d40bef49ae2dace3ba1e7a7, type: 3}
   m_PrefabInstance: {fileID: 1164491312}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1172224120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2908735517839112534, guid: 9f055b0db75b6a448bdc2fcf6e45374e, type: 3}
+  m_PrefabInstance: {fileID: 1662074712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1176520097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13978,11 +14038,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (16)1
@@ -14724,6 +14784,11 @@ MonoBehaviour:
   color: {fileID: 1220661797}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+--- !u!1 &1223262241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7478933868475542738, guid: bf3af42336f4cc54c8365e7364594286, type: 3}
+  m_PrefabInstance: {fileID: 485876853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1224101400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 398258158909980063, guid: 1633cf96b75cc1b48b96bd5c4ddc52e8, type: 3}
@@ -15210,7 +15275,7 @@ PrefabInstance:
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: mechaPrefab
       value: 
-      objectReference: {fileID: 1604129642}
+      objectReference: {fileID: 1223262241}
     - target: {fileID: 2923019205765426667, guid: acb37f266957abe40acf4b09169e6e4d, type: 3}
       propertyPath: enemyManager
       value: 
@@ -15255,11 +15320,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (15)1
@@ -17050,11 +17115,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (121)1
@@ -17519,7 +17584,7 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 1172224120}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
@@ -18793,11 +18858,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 372999012}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 784553852}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (121)
@@ -20440,11 +20505,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (17)12
@@ -22777,11 +22842,11 @@ PrefabInstance:
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinPrefab
       value: 
-      objectReference: {fileID: 800807245}
+      objectReference: {fileID: 561171864}
     - target: {fileID: 3301739465016471821, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: goblinCopterPrefab
       value: 
-      objectReference: {fileID: 1751117342}
+      objectReference: {fileID: 629543843}
     - target: {fileID: 4117226375988390086, guid: 11bf35f02e00a1049a4785e765b52a25, type: 3}
       propertyPath: m_Name
       value: Spawner (14)12
