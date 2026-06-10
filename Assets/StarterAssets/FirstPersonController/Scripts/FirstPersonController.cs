@@ -32,7 +32,7 @@ namespace StarterAssets
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("Players hit points")]
-		public int hitPoints = 100;
+		public float hitPoints = 100f;
 		public Image fill;
 
 		[Space(10)]
