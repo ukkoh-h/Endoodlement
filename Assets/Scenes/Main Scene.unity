@@ -1197,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 1255590231}
     - target: {fileID: 6060930090865948526, guid: 1b1f73e37b33bfb4481b254559af6c13, type: 3}
       propertyPath: mechasToKill
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6060930090865948526, guid: 1b1f73e37b33bfb4481b254559af6c13, type: 3}
       propertyPath: coptersToKill

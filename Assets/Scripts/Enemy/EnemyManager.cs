@@ -51,6 +51,7 @@ public class EnemyManager : MonoBehaviour
     private bool copterSpawnActivated;
     private bool mechaSpawnActivated;
     private bool mechaChecked;
+    private bool nextCombatReady;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,6 +80,7 @@ public class EnemyManager : MonoBehaviour
         if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
             isActive = false;
+            nextCombatReady = true;
             if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
             if(nextCombat != null)nextCombat.ActivateCamp();
         }
@@ -111,6 +113,10 @@ public class EnemyManager : MonoBehaviour
             combatStarted = true;
             isSpawning = true;
             CombatStart();
+        }
+        if(nextCombat != null&&nextCombatReady)
+        {
+            nextCombat.ActivateCamp();
         }
         /*else if (!isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
