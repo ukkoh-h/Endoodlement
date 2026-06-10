@@ -194,6 +194,7 @@ public class Gun : MonoBehaviour
         {
             StartCoroutine(SwitchListenerSequence());
         }
+        
         ammoCountText.text = currentBulletsInMagazine + "/" + ammoCount;
     }
 
