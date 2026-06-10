@@ -76,14 +76,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  SprintSpeed: 6
+  deathScreen: {fileID: 0}
+  MoveSpeed: 100
+  SprintSpeed: 100
   RotationSpeed: 3
   SpeedChangeRate: 10
+  hitPoints: 10
   JumpHeight: 1.8
-  Gravity: -15
+  Gravity: -40
   JumpTimeout: 0.1
-  FallTimeout: 0.15
+  FallTimeout: 0.1
   Grounded: 1
   GroundedOffset: 0.08
   GroundedRadius: 0.7
@@ -92,14 +94,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   DashSpeed: 85
-  DashDuration: 0.6
+  DashDuration: 0.2
   DashCooldown: 1
   DashEase:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.095832825
-      value: 0.0071411133
+      time: 0.23881531
+      value: 0.014923096
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -107,8 +109,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.3833313
-      value: 1.0047607
+      time: 0.27319336
+      value: 0.99697876
       inSlope: 0.4353727
       outSlope: 0.4353727
       tangentMode: 0
@@ -116,8 +118,8 @@ MonoBehaviour:
       inWeight: 0.45651886
       outWeight: 0.10429718
     - serializedVersion: 3
-      time: 1.1749878
-      value: -0.009521484
+      time: 1.1156921
+      value: 0.7374573
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -164,6 +166,8 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   dash: 0
+  respawn: 0
+  interract: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
