@@ -113,7 +113,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Melee melee;
 
     [Header("Ammo Count")]
-    [SerializeField] private TextMeshPro ammoCountText;
+    [SerializeField] private TMP_Text ammoCountText;
 
     /*[Header("Shooting Raycast Settings")]
     [SerializeField] private float fireDistance = 100f;
@@ -194,6 +194,7 @@ public class Gun : MonoBehaviour
         {
             StartCoroutine(SwitchListenerSequence());
         }
+        ammoCountText.text = currentBulletsInMagazine + "/" + ammoCount;
     }
 
     public bool CanProcessInput()
