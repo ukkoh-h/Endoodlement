@@ -248,6 +248,7 @@ public class EnemyMecha : MonoBehaviour
     {
         isActive = false;
         isDying = true;
+        AudioManager.Instance.PlaySFX("PaperCrum2");
         GameObject poofing = Instantiate(poof, body.transform.position, Quaternion.identity);
         Destroy(poofing, 0.5f);
         body.SetActive(false);

@@ -258,12 +258,14 @@ public class EnemyCopter : MonoBehaviour
     {
         isDying = true;
         flash.StopFlashing();
+        AudioManager.Instance.PlaySFX("PaperCrum");
         GameObject poofing = Instantiate(poof, body.transform.position, Quaternion.identity);
         Destroy(poofing, 0.5f);
         body.SetActive(false);
         GameObject balling = Instantiate(ball, transform.position, Quaternion.identity);
         Destroy(balling, 3f);
         Destroy(gameObject);
+        
     }
     private void Death(bool byMelee)
     {

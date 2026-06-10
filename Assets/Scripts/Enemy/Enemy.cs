@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour
         hitPoints -= dmg;
         sprite.Hit();
         flash.Flash();
+        AudioManager.Instance.PlayGobDmg();
         if (hitPoints <= 0 && isActive) StartCoroutine(DyingSequence());
         if (hitPoints <= -5 && !isActive) Death(false);
     }
@@ -142,6 +143,7 @@ public class Enemy : MonoBehaviour
     {
         isDying = true;
         flash.StopFlashing();
+        AudioManager.Instance.PlaySFX("PaperCrum");
         GameObject poofing = Instantiate(poof, transform.position, Quaternion.identity);
         Destroy(poofing, 1f);
         body.SetActive(false);

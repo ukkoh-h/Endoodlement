@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     private AudioClip activeSound;
     public AudioClip[] FootGravel;
     public AudioClip[] Swing;
+    public AudioClip[] GobDmg;
 
     [SerializeField] private AudioMixer audioMixer;
 
@@ -109,6 +110,20 @@ public class AudioManager : MonoBehaviour
         sfxSource.Play();
         Debug.Log(activeSound);
     }
+
+
+    public void PlayGobDmg()
+    {
+        activeSound = GobDmg[Random.Range(0, GobDmg.Length)];
+
+        float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
+        sfxSource.PlayOneShot(activeSound);
+        sfxSource.pitch = randomPitch;
+        sfxSource.Play();
+        Debug.Log(activeSound);
+    }
+
+
 
     public void PlayAmb(string name)
     {
