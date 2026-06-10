@@ -7897,11 +7897,11 @@ PrefabInstance:
       objectReference: {fileID: 987458211}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: shredderActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: slingShotActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4064246599096653229, guid: b02a2c9adee34024880d5f940e5a7ead, type: 3}
       propertyPath: muzzleFlashPrefab
