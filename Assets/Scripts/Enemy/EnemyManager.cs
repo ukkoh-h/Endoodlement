@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     //[SerializeField] private EnemyManager nextCombat;
     [SerializeField] private CampActivationTrigger nextCombatTrigger;
     [SerializeField] private CampActivationTrigger nextWallTrigger;
+    [SerializeField] private EnemyManager nextCombat;
     [SerializeField] private int goblinsToKill;
     [SerializeField] private int coptersToKill;
     [SerializeField] private int mechasToKill;
@@ -81,6 +82,7 @@ public class EnemyManager : MonoBehaviour
             isActive = false;
             if(nextCombatTrigger != null)nextCombatTrigger.ActivateTrigger();
             if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
+            if(nextCombat != null)nextCombat.ActivateCamp();
         }
         else if (isActive && !isSpawning && combatStarted)
         {
