@@ -13930,7 +13930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6363173044336859276, guid: 65faeac0a0688ee49b4107dbc138f5f5, type: 3}
       propertyPath: m_Name
-      value: walltriggerZone2
+      value: walltriggerZone3
       objectReference: {fileID: 0}
     - target: {fileID: 7511538107781538562, guid: 65faeac0a0688ee49b4107dbc138f5f5, type: 3}
       propertyPath: isWall

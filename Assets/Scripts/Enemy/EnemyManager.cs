@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private MechaSpawner mechaSpawn3;
     [SerializeField] private EnemyMecha mecha;
     //[SerializeField] private EnemyManager nextCombat;
-    [SerializeField] private CampActivationTrigger nextCombatTrigger;
     [SerializeField] private CampActivationTrigger nextWallTrigger;
     [SerializeField] private EnemyManager nextCombat;
     [SerializeField] private int goblinsToKill;
@@ -80,7 +79,6 @@ public class EnemyManager : MonoBehaviour
         if ( isActive && goblinsKilled >= goblinsToKill && coptersKilled >= coptersToKill && mechasKilled >= mechasToKill)
         {
             isActive = false;
-            if(nextCombatTrigger != null)nextCombatTrigger.ActivateTrigger();
             if(nextWallTrigger != null)nextWallTrigger.ActivateTrigger();
             if(nextCombat != null)nextCombat.ActivateCamp();
         }
