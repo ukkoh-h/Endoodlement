@@ -178,6 +178,8 @@ public class Enemy : MonoBehaviour
     }*/
     private void Death(bool byMelee)
     {
+        float coinFlip = -1;
+        coinFlip = Random.Range(-1, 1);
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
         if (enemyManager != null)enemyManager.GoblinDead();
@@ -188,7 +190,7 @@ public class Enemy : MonoBehaviour
             //Instantiate(money, GetRandomPosition(), Quaternion.identity);
         }
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
-        Instantiate(health, GetRandomPosition(), Quaternion.identity);
+        if (coinFlip>=0) Instantiate(health, GetRandomPosition(), Quaternion.identity);
         //Instantiate(money, GetRandomPosition(), Quaternion.identity);
 
         if(!isDying)DeathSequence();

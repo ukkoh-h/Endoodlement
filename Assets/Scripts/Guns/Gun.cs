@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -110,6 +111,9 @@ public class Gun : MonoBehaviour
 
     [Header("Melee")]
     [SerializeField] private Melee melee;
+
+    [Header("Ammo Count")]
+    [SerializeField] private TextMeshPro ammoCountText;
 
     /*[Header("Shooting Raycast Settings")]
     [SerializeField] private float fireDistance = 100f;

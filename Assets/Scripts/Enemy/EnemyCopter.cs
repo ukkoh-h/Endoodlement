@@ -271,6 +271,9 @@ public class EnemyCopter : MonoBehaviour
     {
         //Tänne loot dropit ja kuolema animaatiot
         //if (byMelee) ;
+        float coinFlip = -1;
+        coinFlip = Random.Range(-1, 1);
+
         if (enemyManager != null)enemyManager.CopterDead();
         AudioManager.Instance.StopAmb();
         if(byMelee)
@@ -280,7 +283,7 @@ public class EnemyCopter : MonoBehaviour
             //Instantiate(money, GetRandomPosition(), Quaternion.identity);
         }
         Instantiate(ammo, GetRandomPosition(), Quaternion.identity);
-        Instantiate(health, GetRandomPosition(), Quaternion.identity);
+        if (coinFlip>=0) Instantiate(health, GetRandomPosition(), Quaternion.identity);
         //Instantiate(money, GetRandomPosition(), Quaternion.identity);
 
         if(!isDying)DeathSequence();

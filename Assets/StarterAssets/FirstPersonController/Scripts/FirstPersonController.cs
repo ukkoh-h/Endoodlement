@@ -33,7 +33,7 @@ namespace StarterAssets
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("Players hit points")]
 		public float hitPoints = 100f;
-		public float healPickup = 15f;
+		public float healPickup = 10f;
 		public Image fill;
 
 		[Space(10)]
