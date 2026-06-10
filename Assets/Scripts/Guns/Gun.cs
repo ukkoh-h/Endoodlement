@@ -790,10 +790,10 @@ public class Gun : MonoBehaviour
         if (shredderActive) coinFlip = Random.Range(-1, 1);
         if (coinFlip>=0)
         {
-            GetShredderAmmo(5);
+            GetShredderAmmo(10);
         } else
         {
-            GetSlingShotAmmo(3);
+            GetSlingShotAmmo(5);
         }
     }
     public void GetSlingShot()

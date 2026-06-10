@@ -33,6 +33,7 @@ namespace StarterAssets
 		public float SpeedChangeRate = 10.0f;
 		[Tooltip("Players hit points")]
 		public float hitPoints = 100f;
+		public float healPickup = 15f;
 		public Image fill;
 
 		[Space(10)]
@@ -424,14 +425,14 @@ namespace StarterAssets
 		{
 			if (hitPoints >= 100)
 			{
-				hitPoints = 100;
-            } else if (hitPoints > 95)
+				hitPoints = 100f;
+            } else if (hitPoints > 100-healPickup)
 			{
-				hitPoints = 100;
+				hitPoints = 100f;
 			}
 			else
 			{
-				hitPoints += 5;
+				hitPoints += healPickup;
 			}
 				
 		} 
