@@ -55,6 +55,8 @@ public class GameUIManager : MonoBehaviour
         sfxSlider.value = data.sfxVolume;
         ambientSlider.value = data.ambVolume;
 
+        AudioManager.Instance.PlayMusic("Forest");
+
     }
     private void Update()
     {
