@@ -26,6 +26,7 @@ public class MainMenuController : MonoBehaviour
         musicSlider.value = data.musicVolume;
         sfxSlider.value = data.sfxVolume;
         ambientSlider.value = data.ambVolume;
+        Cursor.visible = false;
     }
 
     public void StartGame()
