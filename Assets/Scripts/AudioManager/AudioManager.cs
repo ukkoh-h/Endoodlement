@@ -90,13 +90,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayGravel()
     {
-        activeSound = FootGravel[Random.Range(0, FootGravel.Length)];
+        AudioClip clip = FootGravel[Random.Range(0, FootGravel.Length)];
 
-        float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
-        sfxSource.PlayOneShot(activeSound);
-        sfxSource.pitch = randomPitch;
-        sfxSource.Play();
-        Debug.Log(activeSound);
+        sfxSource.pitch = Random.Range(
+            1f - pitchVariance,
+            1f + pitchVariance);
+
+        sfxSource.PlayOneShot(clip);
+        sfxSource.pitch = 1f;
     }
 
 

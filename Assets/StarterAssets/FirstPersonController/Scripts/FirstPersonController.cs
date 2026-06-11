@@ -105,8 +105,9 @@ namespace StarterAssets
 		
 		private const float _threshold = 0.00f;
 
-		
-		private bool IsCurrentDeviceMouse
+        private Vector3 _lastStepPosition;
+        public float StepDistance = 2f;
+        private bool IsCurrentDeviceMouse
 		{
 			get
 			{
@@ -213,6 +214,8 @@ namespace StarterAssets
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;

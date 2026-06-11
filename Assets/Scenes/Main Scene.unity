@@ -4307,6 +4307,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3369621641582051581, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3824987197911836637, guid: b63d6dfb626d1b845b959a2a34ac1f1e, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -23746,7 +23750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.size
-      value: 47
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: 'Chopper.Array.data[0]'
@@ -24123,18 +24127,18 @@ PrefabInstance:
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[47].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 199abb2b84d46ac4d92a825fbb38fd43, type: 3}
+      objectReference: {fileID: 8300000, guid: 30f42108f3d7fe243b414fef41594a48, type: 3}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[47].name
-      value: GobYell
+      value: ShredderShoot
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[48].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 8376a80c09ca42d4c81ca86403a66976, type: 3}
+      objectReference: {fileID: 8300000, guid: 188f6c8cbd20eb74d9f9c73f144ce78a, type: 3}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[48].name
-      value: GobYell2
+      value: ShredderReload
       objectReference: {fileID: 0}
     - target: {fileID: 2698519021823975453, guid: 3da1baab3c22b474d95d2c50dad436f1, type: 3}
       propertyPath: sfxSounds.Array.data[49].clip
